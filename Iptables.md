@@ -25,9 +25,7 @@ route add default gw 192.168.4.1 dev eth0
         + output
         + forward
         + postrouting
-		
-![路由.png]({{ site.baseurl }}/assets/img/880d34d2190b9e9a4ec2bee13958694fcbd535a2ec66e63f2ab729dbb922bf3d.png)
-
+![路由](%E8%B7%AF%E7%94%B1.png)
 
 ### 表
 	+ 概念：相同规则放在同一个表中
