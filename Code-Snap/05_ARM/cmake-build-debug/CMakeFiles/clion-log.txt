@@ -1,0 +1,4 @@
+/home/xuqi/Tool/clion-2018.3.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/03_ARM
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/03_ARM/cmake-build-debug
