@@ -6,19 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.cpp
+/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.cpp
 SequenceContainer.h
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.h
+/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.h
 array
 -
 iostream
 -
 algorithm
 -
+vector
+-
 Type.h
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/Type.h
+/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/Type.h
+vector
+-
 
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.h
+/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.h
 
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/Type.h
+/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/Type.h
 

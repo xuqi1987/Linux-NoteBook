@@ -5,5 +5,6 @@
 int main() {
     std::cout << "Hello, World!" << std::endl;
     SequenceContainer::Instance()->ArrayDemo();
+    SequenceContainer::Instance()->VectorDemo();
     return 0;
 }
