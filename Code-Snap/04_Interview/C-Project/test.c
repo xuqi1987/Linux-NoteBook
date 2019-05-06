@@ -39,6 +39,19 @@ typedef struct {
   //  void *p;
 }StruE; // 12字节
 
+typedef struct {
+    u64 d; // 8 [0..7]
+    u64 b; // 8 [8..15]
+    u8 a; // 1 [16]
+    u8 a1; // 1 [17]
+    u64 b1; // 8 [24..31]
+}StruF; // 12字节
+
+typedef struct {
+    u64 d; // 8 [0..7]
+    StruE e; //12
+}StruG; // 24字节
+
 #pragma pack(push) //保存对齐状态
 #pragma pack(8) // 设定为 4 字节对齐
 typedef struct {
@@ -71,6 +84,7 @@ void sizeofDemo()
   P("数据结构大小StruC",StruC);
   P("数据结构大小StruD",StruD);
   P("数据结构大小StruE",StruE);
+  P("数据结构大小StruG",StruG);
   StruB B;
   P("对齐数组结构大小",B);
 

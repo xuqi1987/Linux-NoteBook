@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/C_Project.dir/test.c.o  -o C_Project 

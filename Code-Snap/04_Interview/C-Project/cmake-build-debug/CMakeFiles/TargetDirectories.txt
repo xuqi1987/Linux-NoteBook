@@ -1,0 +1,3 @@
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/C-Project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/C-Project/cmake-build-debug/CMakeFiles/C_Project.dir
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/C-Project/cmake-build-debug/CMakeFiles/edit_cache.dir

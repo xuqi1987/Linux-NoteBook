@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/interview.dir/interview/main.cpp.o  -o interview 
