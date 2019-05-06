@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Containers.dir/main.cpp.o CMakeFiles/Containers.dir/SequenceContainer.cpp.o  -o Containers 
