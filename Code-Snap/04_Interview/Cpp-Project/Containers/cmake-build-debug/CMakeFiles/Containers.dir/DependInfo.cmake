@@ -4,10 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.cpp" "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/cmake-build-debug/CMakeFiles/Containers.dir/SequenceContainer.cpp.o"
-  "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/main.cpp" "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/cmake-build-debug/CMakeFiles/Containers.dir/main.cpp.o"
+  "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/AssociativeContainers.cpp" "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/cmake-build-debug/CMakeFiles/Containers.dir/AssociativeContainers.cpp.o"
+  "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.cpp" "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/cmake-build-debug/CMakeFiles/Containers.dir/SequenceContainer.cpp.o"
+  "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/main.cpp" "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/cmake-build-debug/CMakeFiles/Containers.dir/main.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "AppleClang")
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

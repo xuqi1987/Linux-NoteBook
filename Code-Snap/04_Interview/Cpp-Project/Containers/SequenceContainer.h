@@ -14,8 +14,6 @@ public:
 
     void ArrayDemo();
     void VectorDemo();
-    void DequeDemo();
-    void Forward_listDemo();
     void ListDemo();
 
 private:

@@ -6,23 +6,49 @@
 
 #IncludeRegexTransform: 
 
-/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.cpp
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/AssociativeContainers.cpp
+AssociativeContainers.h
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/AssociativeContainers.h
+set
+-
+map
+-
+iostream
+-
+Type.h
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/Type.h
+
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/AssociativeContainers.h
+
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.cpp
 SequenceContainer.h
-/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.h
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.h
 array
 -
 iostream
 -
-algorithm
--
 vector
 -
 Type.h
-/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/Type.h
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/Type.h
 vector
 -
+list
+-
 
-/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.h
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.h
 
-/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/Type.h
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/Type.h
+algorithm
+-
+
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/main.cpp
+iostream
+-
+SequenceContainer.h
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.h
+AssociativeContainers.h
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/AssociativeContainers.h
+Type.h
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/Type.h
 
