@@ -6,49 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/AssociativeContainers.cpp
-AssociativeContainers.h
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/AssociativeContainers.h
-set
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/ContainerAdaptor.cpp
+ContainerAdaptor.h
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/ContainerAdaptor.h
+stack
 -
-map
--
-iostream
--
-Type.h
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/Type.h
-
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/AssociativeContainers.h
-
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.cpp
-SequenceContainer.h
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.h
-array
+queue
 -
 iostream
--
-vector
--
-Type.h
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/Type.h
-vector
 -
 list
 -
 
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.h
-
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/Type.h
-algorithm
--
-
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/main.cpp
-iostream
--
-SequenceContainer.h
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.h
-AssociativeContainers.h
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/AssociativeContainers.h
-Type.h
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/Type.h
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/ContainerAdaptor.h
 

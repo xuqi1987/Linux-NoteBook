@@ -90,6 +90,12 @@
 		<Unit filename="/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/AssociativeContainers.h">
 			<Option target="Containers"/>
 		</Unit>
+		<Unit filename="/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/ContainerAdaptor.cpp">
+			<Option target="Containers"/>
+		</Unit>
+		<Unit filename="/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/ContainerAdaptor.h">
+			<Option target="Containers"/>
+		</Unit>
 		<Unit filename="/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/SequenceContainer.cpp">
 			<Option target="Containers"/>
 		</Unit>

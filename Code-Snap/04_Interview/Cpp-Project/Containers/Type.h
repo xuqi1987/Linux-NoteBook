@@ -36,5 +36,11 @@ private:
 };
 
 #define PC(v) std::cout << std::endl; \
-            std::for_each(v.begin(),v.end(),[](const auto &d){std::cout << d <<" \t ";});
+                        std::cout <<__func__ <<" : ["<<__LINE__<<"]" << " ";                     \
+            std::for_each(v.begin(),v.end(),[](const auto &d){std::cout << d <<" ";});
+
+#define PCM(v) std::cout << std::endl; \
+                        std::cout <<__func__ <<" : ["<<__LINE__<<"]" << " "; \
+                        std::for_each(v.begin(),v.end(),[](const auto &d){std::cout << d.first  << ":"<< d.second <<"\t";});
+
 #endif //CONTAINERS_TYPE_H

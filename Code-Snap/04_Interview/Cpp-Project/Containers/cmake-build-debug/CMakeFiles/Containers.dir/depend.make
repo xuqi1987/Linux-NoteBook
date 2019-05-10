@@ -5,11 +5,15 @@ CMakeFiles/Containers.dir/AssociativeContainers.cpp.o: ../AssociativeContainers.
 CMakeFiles/Containers.dir/AssociativeContainers.cpp.o: ../AssociativeContainers.h
 CMakeFiles/Containers.dir/AssociativeContainers.cpp.o: ../Type.h
 
+CMakeFiles/Containers.dir/ContainerAdaptor.cpp.o: ../ContainerAdaptor.cpp
+CMakeFiles/Containers.dir/ContainerAdaptor.cpp.o: ../ContainerAdaptor.h
+
 CMakeFiles/Containers.dir/SequenceContainer.cpp.o: ../SequenceContainer.cpp
 CMakeFiles/Containers.dir/SequenceContainer.cpp.o: ../SequenceContainer.h
 CMakeFiles/Containers.dir/SequenceContainer.cpp.o: ../Type.h
 
 CMakeFiles/Containers.dir/main.cpp.o: ../AssociativeContainers.h
+CMakeFiles/Containers.dir/main.cpp.o: ../ContainerAdaptor.h
 CMakeFiles/Containers.dir/main.cpp.o: ../SequenceContainer.h
 CMakeFiles/Containers.dir/main.cpp.o: ../Type.h
 CMakeFiles/Containers.dir/main.cpp.o: ../main.cpp

@@ -150,6 +150,33 @@ AssociativeContainers.cpp.s:
 	$(MAKE) -f CMakeFiles/Containers.dir/build.make CMakeFiles/Containers.dir/AssociativeContainers.cpp.s
 .PHONY : AssociativeContainers.cpp.s
 
+ContainerAdaptor.o: ContainerAdaptor.cpp.o
+
+.PHONY : ContainerAdaptor.o
+
+# target to build an object file
+ContainerAdaptor.cpp.o:
+	$(MAKE) -f CMakeFiles/Containers.dir/build.make CMakeFiles/Containers.dir/ContainerAdaptor.cpp.o
+.PHONY : ContainerAdaptor.cpp.o
+
+ContainerAdaptor.i: ContainerAdaptor.cpp.i
+
+.PHONY : ContainerAdaptor.i
+
+# target to preprocess a source file
+ContainerAdaptor.cpp.i:
+	$(MAKE) -f CMakeFiles/Containers.dir/build.make CMakeFiles/Containers.dir/ContainerAdaptor.cpp.i
+.PHONY : ContainerAdaptor.cpp.i
+
+ContainerAdaptor.s: ContainerAdaptor.cpp.s
+
+.PHONY : ContainerAdaptor.s
+
+# target to generate assembly for a file
+ContainerAdaptor.cpp.s:
+	$(MAKE) -f CMakeFiles/Containers.dir/build.make CMakeFiles/Containers.dir/ContainerAdaptor.cpp.s
+.PHONY : ContainerAdaptor.cpp.s
+
 SequenceContainer.o: SequenceContainer.cpp.o
 
 .PHONY : SequenceContainer.o
@@ -216,6 +243,9 @@ help:
 	@echo "... AssociativeContainers.o"
 	@echo "... AssociativeContainers.i"
 	@echo "... AssociativeContainers.s"
+	@echo "... ContainerAdaptor.o"
+	@echo "... ContainerAdaptor.i"
+	@echo "... ContainerAdaptor.s"
 	@echo "... SequenceContainer.o"
 	@echo "... SequenceContainer.i"
 	@echo "... SequenceContainer.s"
