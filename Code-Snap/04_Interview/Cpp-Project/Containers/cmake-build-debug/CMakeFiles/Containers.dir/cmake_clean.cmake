@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Containers.dir/SequenceContainer.cpp.o"
   "CMakeFiles/Containers.dir/AssociativeContainers.cpp.o"
   "CMakeFiles/Containers.dir/ContainerAdaptor.cpp.o"
+  "CMakeFiles/Containers.dir/AlgorithmSTL.cpp.o"
   "Containers.pdb"
   "Containers"
 )

@@ -120,6 +120,8 @@ void SequenceContainer::VectorDemo() {
     int myints[] = {1,2,3,4};
     std::vector<int> fifth (myints, myints + sizeof(myints) / sizeof(int) );
 
+    third.push_back(2);
+
     std::cout << "The contents of fifth are:";
     for (std::vector<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
         std::cout << ' ' << *it;

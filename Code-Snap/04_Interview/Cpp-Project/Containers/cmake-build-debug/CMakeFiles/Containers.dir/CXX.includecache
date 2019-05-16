@@ -6,17 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/ContainerAdaptor.cpp
-ContainerAdaptor.h
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/ContainerAdaptor.h
-stack
--
-queue
--
+/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/AlgorithmSTL.cpp
+AlgorithmSTL.h
+/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/AlgorithmSTL.h
+Type.h
+/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/Type.h
+
+/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/AlgorithmSTL.h
 iostream
 -
-list
+algorithm
+-
+vector
+-
+cctype
 -
 
-/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/ContainerAdaptor.h
+/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/Containers/Type.h
+algorithm
+-
 

@@ -35,6 +35,14 @@ private:
 
 };
 
+
+#define P(v) std::cout << std::endl; \
+                        std::cout <<__func__ <<" : ["<<__LINE__<<"]" << " ";                     \
+                        std::cout << v <<" "<<std::endl;
+#define P2(v1,v2) std::cout << std::endl; \
+                        std::cout <<__func__ <<" : ["<<__LINE__<<"]" << " ";                     \
+                        std::cout << v1 << "   "<<v2<<std::endl;
+
 #define PC(v) std::cout << std::endl; \
                         std::cout <<__func__ <<" : ["<<__LINE__<<"]" << " ";                     \
             std::for_each(v.begin(),v.end(),[](const auto &d){std::cout << d <<" ";});
@@ -42,5 +50,6 @@ private:
 #define PCM(v) std::cout << std::endl; \
                         std::cout <<__func__ <<" : ["<<__LINE__<<"]" << " "; \
                         std::for_each(v.begin(),v.end(),[](const auto &d){std::cout << d.first  << ":"<< d.second <<"\t";});
+
 
 #endif //CONTAINERS_TYPE_H
