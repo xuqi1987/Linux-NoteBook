@@ -72,5 +72,5 @@ void AlgorithmSTL::nonModifySequenceOpe() {
 }
 
 void AlgorithmSTL::modifySequenceOpe() {
-    
+
 }
