@@ -1,0 +1,3 @@
+/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/07_Crash/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/07_Crash/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/07_Crash/cmake-build-debug/CMakeFiles/07_Crash.dir

@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/07_Crash/main.cpp
+iostream
+-
+signal.h
+-
+execinfo.h
+-
+unistd.h
+-
+
