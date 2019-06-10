@@ -11,4 +11,18 @@ iostream
 -
 bitset
 -
+stdio.h
+-
+cstdlib
+-
+time.h
+-
+sys/timeb.h
+-
+unistd.h
+-
+time.h
+-
+sys/syscall.h
+-
 

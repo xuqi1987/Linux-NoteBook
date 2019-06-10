@@ -4,4 +4,4 @@ project(01_CppPrimer)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(01_CppPrimer
-        main.cpp)
+        main.cpp String.cpp String.h)

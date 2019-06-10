@@ -123,6 +123,33 @@ depend:
 	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/build
 .PHONY : 01_CppPrimer/fast
 
+String.o: String.cpp.o
+
+.PHONY : String.o
+
+# target to build an object file
+String.cpp.o:
+	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/String.cpp.o
+.PHONY : String.cpp.o
+
+String.i: String.cpp.i
+
+.PHONY : String.i
+
+# target to preprocess a source file
+String.cpp.i:
+	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/String.cpp.i
+.PHONY : String.cpp.i
+
+String.s: String.cpp.s
+
+.PHONY : String.s
+
+# target to generate assembly for a file
+String.cpp.s:
+	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/String.cpp.s
+.PHONY : String.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -159,6 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... 01_CppPrimer"
+	@echo "... String.o"
+	@echo "... String.i"
+	@echo "... String.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
