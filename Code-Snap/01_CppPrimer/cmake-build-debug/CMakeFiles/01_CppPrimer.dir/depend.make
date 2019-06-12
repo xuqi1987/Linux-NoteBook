@@ -4,5 +4,9 @@
 CMakeFiles/01_CppPrimer.dir/String.cpp.o: ../String.cpp
 CMakeFiles/01_CppPrimer.dir/String.cpp.o: ../String.h
 
+CMakeFiles/01_CppPrimer.dir/ThreadManager.cpp.o: ../ThreadManager.cpp
+CMakeFiles/01_CppPrimer.dir/ThreadManager.cpp.o: ../ThreadManager.h
+
+CMakeFiles/01_CppPrimer.dir/main.cpp.o: ../ThreadManager.h
 CMakeFiles/01_CppPrimer.dir/main.cpp.o: ../main.cpp
 

@@ -9,6 +9,7 @@
 
 #include <sys/timeb.h>
 
+#include "ThreadManager.h"
 
 using namespace std;
 
@@ -132,6 +133,14 @@ int main()
     printf("unix_timestamp 现在的时间戳是=%d\n", unix_timestamp);
 
     printf("%s",log_Time());
+
+    cout << "\n======================" << endl;
+
+    ThreadManager::Inst()->runCase1();
+
+    cout << "======================" << endl;
+
+    ThreadManager::Inst()->runCase2();
     return 0;
 
 }

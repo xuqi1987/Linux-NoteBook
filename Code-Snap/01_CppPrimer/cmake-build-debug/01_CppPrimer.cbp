@@ -86,6 +86,12 @@
 		<Unit filename="/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/String.h">
 			<Option target="01_CppPrimer"/>
 		</Unit>
+		<Unit filename="/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadManager.cpp">
+			<Option target="01_CppPrimer"/>
+		</Unit>
+		<Unit filename="/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadManager.h">
+			<Option target="01_CppPrimer"/>
+		</Unit>
 		<Unit filename="/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/main.cpp">
 			<Option target="01_CppPrimer"/>
 		</Unit>

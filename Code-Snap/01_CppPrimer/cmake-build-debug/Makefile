@@ -150,6 +150,33 @@ String.cpp.s:
 	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/String.cpp.s
 .PHONY : String.cpp.s
 
+ThreadManager.o: ThreadManager.cpp.o
+
+.PHONY : ThreadManager.o
+
+# target to build an object file
+ThreadManager.cpp.o:
+	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/ThreadManager.cpp.o
+.PHONY : ThreadManager.cpp.o
+
+ThreadManager.i: ThreadManager.cpp.i
+
+.PHONY : ThreadManager.i
+
+# target to preprocess a source file
+ThreadManager.cpp.i:
+	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/ThreadManager.cpp.i
+.PHONY : ThreadManager.cpp.i
+
+ThreadManager.s: ThreadManager.cpp.s
+
+.PHONY : ThreadManager.s
+
+# target to generate assembly for a file
+ThreadManager.cpp.s:
+	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/ThreadManager.cpp.s
+.PHONY : ThreadManager.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -189,6 +216,9 @@ help:
 	@echo "... String.o"
 	@echo "... String.i"
 	@echo "... String.s"
+	@echo "... ThreadManager.o"
+	@echo "... ThreadManager.i"
+	@echo "... ThreadManager.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

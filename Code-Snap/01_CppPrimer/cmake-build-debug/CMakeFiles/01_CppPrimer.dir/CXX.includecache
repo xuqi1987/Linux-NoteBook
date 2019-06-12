@@ -6,6 +6,28 @@
 
 #IncludeRegexTransform: 
 
+/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadManager.cpp
+ThreadManager.h
+/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadManager.h
+iostream
+-
+utility
+-
+thread
+-
+chrono
+-
+functional
+-
+atomic
+-
+
+/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadManager.h
+iostream
+-
+thread
+-
+
 /Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/main.cpp
 iostream
 -
@@ -19,6 +41,8 @@ time.h
 -
 sys/timeb.h
 -
+ThreadManager.h
+/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadManager.h
 unistd.h
 -
 time.h
