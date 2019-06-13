@@ -93,5 +93,7 @@ void sizeofDemo()
 
 int main(int argc, char const *argv[]) {
   sizeofDemo();
+
+  char a[] = {0xef,0xbb,0xbf,0x00};
   return 0;
 }

@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/04_Interview/Cpp-Project/String/main.cpp
+iostream
+-
+string
+-
+string.h
+-
+
