@@ -29,8 +29,7 @@ ThreadPool::ThreadPool(size_t threads)
                         //将task取出
                         task = std::move(this->tasks.front());
                         //队列中移除以及取出的task
-                        this->t
-                        asks.pop();
+                        this->tasks.pop();
                     }
                     //执行task,完了则进入下一次循环
                     task();
