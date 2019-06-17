@@ -4,8 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/StdTask.cpp" "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles/01_CppPrimer.dir/StdTask.cpp.o"
   "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/String.cpp" "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles/01_CppPrimer.dir/String.cpp.o"
   "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadManager.cpp" "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles/01_CppPrimer.dir/ThreadManager.cpp.o"
+  "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadPool.cpp" "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles/01_CppPrimer.dir/ThreadPool.cpp.o"
   "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/main.cpp" "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles/01_CppPrimer.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")

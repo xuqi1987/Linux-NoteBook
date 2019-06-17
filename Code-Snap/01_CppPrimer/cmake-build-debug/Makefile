@@ -123,6 +123,33 @@ depend:
 	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/build
 .PHONY : 01_CppPrimer/fast
 
+StdTask.o: StdTask.cpp.o
+
+.PHONY : StdTask.o
+
+# target to build an object file
+StdTask.cpp.o:
+	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/StdTask.cpp.o
+.PHONY : StdTask.cpp.o
+
+StdTask.i: StdTask.cpp.i
+
+.PHONY : StdTask.i
+
+# target to preprocess a source file
+StdTask.cpp.i:
+	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/StdTask.cpp.i
+.PHONY : StdTask.cpp.i
+
+StdTask.s: StdTask.cpp.s
+
+.PHONY : StdTask.s
+
+# target to generate assembly for a file
+StdTask.cpp.s:
+	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/StdTask.cpp.s
+.PHONY : StdTask.cpp.s
+
 String.o: String.cpp.o
 
 .PHONY : String.o
@@ -177,6 +204,33 @@ ThreadManager.cpp.s:
 	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/ThreadManager.cpp.s
 .PHONY : ThreadManager.cpp.s
 
+ThreadPool.o: ThreadPool.cpp.o
+
+.PHONY : ThreadPool.o
+
+# target to build an object file
+ThreadPool.cpp.o:
+	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/ThreadPool.cpp.o
+.PHONY : ThreadPool.cpp.o
+
+ThreadPool.i: ThreadPool.cpp.i
+
+.PHONY : ThreadPool.i
+
+# target to preprocess a source file
+ThreadPool.cpp.i:
+	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/ThreadPool.cpp.i
+.PHONY : ThreadPool.cpp.i
+
+ThreadPool.s: ThreadPool.cpp.s
+
+.PHONY : ThreadPool.s
+
+# target to generate assembly for a file
+ThreadPool.cpp.s:
+	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/ThreadPool.cpp.s
+.PHONY : ThreadPool.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -213,12 +267,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... 01_CppPrimer"
+	@echo "... StdTask.o"
+	@echo "... StdTask.i"
+	@echo "... StdTask.s"
 	@echo "... String.o"
 	@echo "... String.i"
 	@echo "... String.s"
 	@echo "... ThreadManager.o"
 	@echo "... ThreadManager.i"
 	@echo "... ThreadManager.s"
+	@echo "... ThreadPool.o"
+	@echo "... ThreadPool.i"
+	@echo "... ThreadPool.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

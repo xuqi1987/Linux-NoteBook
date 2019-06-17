@@ -10,6 +10,7 @@
 #include <sys/timeb.h>
 
 #include "ThreadManager.h"
+#include "StdTask.h"
 
 using namespace std;
 
@@ -97,6 +98,15 @@ char* log_Time(void)
 }
 
 
+void hello()
+{
+    while(1)
+    {
+        cout << "============>" << endl;
+        this_thread::sleep_for(chrono::seconds(1));
+    }
+
+}
 
 
 int main()
@@ -134,13 +144,17 @@ int main()
 
     printf("%s",log_Time());
 
-    cout << "\n======================" << endl;
+    Task* task = new StdTask("aaa");
 
-    ThreadManager::Inst()->runCase1();
+    task->create(hello);
+    task->start();
 
-    cout << "======================" << endl;
+//    cout << "\n======================" << endl;
+//    ThreadManager::Inst()->runCase1();
+//    cout << "======================" << endl;
+//    ThreadManager::Inst()->runCase2();
 
-    ThreadManager::Inst()->runCase2();
+
     return 0;
 
 }

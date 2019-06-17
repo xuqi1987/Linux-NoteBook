@@ -80,16 +80,31 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/StdTask.cpp">
+			<Option target="01_CppPrimer"/>
+		</Unit>
+		<Unit filename="/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/StdTask.h">
+			<Option target="01_CppPrimer"/>
+		</Unit>
 		<Unit filename="/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/String.cpp">
 			<Option target="01_CppPrimer"/>
 		</Unit>
 		<Unit filename="/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/String.h">
 			<Option target="01_CppPrimer"/>
 		</Unit>
+		<Unit filename="/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/Task.h">
+			<Option target="01_CppPrimer"/>
+		</Unit>
 		<Unit filename="/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadManager.cpp">
 			<Option target="01_CppPrimer"/>
 		</Unit>
 		<Unit filename="/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadManager.h">
+			<Option target="01_CppPrimer"/>
+		</Unit>
+		<Unit filename="/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadPool.cpp">
+			<Option target="01_CppPrimer"/>
+		</Unit>
+		<Unit filename="/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadPool.h">
 			<Option target="01_CppPrimer"/>
 		</Unit>
 		<Unit filename="/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/main.cpp">

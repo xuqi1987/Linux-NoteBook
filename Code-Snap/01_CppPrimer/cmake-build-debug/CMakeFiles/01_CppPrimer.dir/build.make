@@ -96,11 +96,39 @@ CMakeFiles/01_CppPrimer.dir/ThreadManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/01_CppPrimer.dir/ThreadManager.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadManager.cpp -o CMakeFiles/01_CppPrimer.dir/ThreadManager.cpp.s
 
+CMakeFiles/01_CppPrimer.dir/StdTask.cpp.o: CMakeFiles/01_CppPrimer.dir/flags.make
+CMakeFiles/01_CppPrimer.dir/StdTask.cpp.o: ../StdTask.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/01_CppPrimer.dir/StdTask.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/01_CppPrimer.dir/StdTask.cpp.o -c /Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/StdTask.cpp
+
+CMakeFiles/01_CppPrimer.dir/StdTask.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/01_CppPrimer.dir/StdTask.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/StdTask.cpp > CMakeFiles/01_CppPrimer.dir/StdTask.cpp.i
+
+CMakeFiles/01_CppPrimer.dir/StdTask.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/01_CppPrimer.dir/StdTask.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/StdTask.cpp -o CMakeFiles/01_CppPrimer.dir/StdTask.cpp.s
+
+CMakeFiles/01_CppPrimer.dir/ThreadPool.cpp.o: CMakeFiles/01_CppPrimer.dir/flags.make
+CMakeFiles/01_CppPrimer.dir/ThreadPool.cpp.o: ../ThreadPool.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/01_CppPrimer.dir/ThreadPool.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/01_CppPrimer.dir/ThreadPool.cpp.o -c /Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadPool.cpp
+
+CMakeFiles/01_CppPrimer.dir/ThreadPool.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/01_CppPrimer.dir/ThreadPool.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadPool.cpp > CMakeFiles/01_CppPrimer.dir/ThreadPool.cpp.i
+
+CMakeFiles/01_CppPrimer.dir/ThreadPool.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/01_CppPrimer.dir/ThreadPool.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadPool.cpp -o CMakeFiles/01_CppPrimer.dir/ThreadPool.cpp.s
+
 # Object files for target 01_CppPrimer
 01_CppPrimer_OBJECTS = \
 "CMakeFiles/01_CppPrimer.dir/main.cpp.o" \
 "CMakeFiles/01_CppPrimer.dir/String.cpp.o" \
-"CMakeFiles/01_CppPrimer.dir/ThreadManager.cpp.o"
+"CMakeFiles/01_CppPrimer.dir/ThreadManager.cpp.o" \
+"CMakeFiles/01_CppPrimer.dir/StdTask.cpp.o" \
+"CMakeFiles/01_CppPrimer.dir/ThreadPool.cpp.o"
 
 # External object files for target 01_CppPrimer
 01_CppPrimer_EXTERNAL_OBJECTS =
@@ -108,9 +136,11 @@ CMakeFiles/01_CppPrimer.dir/ThreadManager.cpp.s: cmake_force
 01_CppPrimer: CMakeFiles/01_CppPrimer.dir/main.cpp.o
 01_CppPrimer: CMakeFiles/01_CppPrimer.dir/String.cpp.o
 01_CppPrimer: CMakeFiles/01_CppPrimer.dir/ThreadManager.cpp.o
+01_CppPrimer: CMakeFiles/01_CppPrimer.dir/StdTask.cpp.o
+01_CppPrimer: CMakeFiles/01_CppPrimer.dir/ThreadPool.cpp.o
 01_CppPrimer: CMakeFiles/01_CppPrimer.dir/build.make
 01_CppPrimer: CMakeFiles/01_CppPrimer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable 01_CppPrimer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable 01_CppPrimer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/01_CppPrimer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
