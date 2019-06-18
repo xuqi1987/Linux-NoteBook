@@ -75,7 +75,7 @@ ThreadPool::~ThreadPool()
         std::unique_lock<std::mutex> lock(queue_mutex);
         stop = true;
     }
-    condition.notify_all();/通知所有在等待锁的线程
+    condition.notify_all();//通知所有在等待锁的线程
     //等待所有的线程任务执行完成退出
     for (std::thread &worker: workers)
         worker.join();
