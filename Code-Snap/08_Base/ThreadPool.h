@@ -14,9 +14,7 @@
 #include <functional>
 #include <stdexcept>
 
-
-//#define C11
-#define C14
+//#define C14
 
 class ThreadPool
 {
@@ -26,9 +24,8 @@ public:
 #ifdef C14
     template<class F,class... Args>
     auto enqueue(F&& f,Args&&... args);
-#endif
 
-#ifdef C11
+#else
     template<class F, class... Args>
     auto enqueue(F&& f, Args&&... args)
     -> std::future<typename std::result_of<F(Args...)>::type>;
