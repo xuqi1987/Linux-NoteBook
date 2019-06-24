@@ -2,7 +2,7 @@
 // Created by xuqi on 2019-06-03.
 //
 #include <assert.h>
-#include <string>
+#include <string.h>
 #include "String.h"
 
 String::String(const char *str)

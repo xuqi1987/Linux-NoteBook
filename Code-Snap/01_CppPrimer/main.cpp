@@ -6,11 +6,14 @@
 #include <stdio.h>
 #include <cstdlib>
 #include<time.h>
+#include <string.h>
+#include <memory.h>
 
 #include <sys/timeb.h>
 
 #include "ThreadManager.h"
 #include "StdTask.h"
+#include "ThreadDemo.h"
 
 using namespace std;
 
@@ -112,6 +115,7 @@ void hello()
 int main()
 {
     //output(1.0);
+    /*
     Device d;
     Base *pb = &d;
     Device * pd = &d;
@@ -143,17 +147,18 @@ int main()
     printf("unix_timestamp 现在的时间戳是=%d\n", unix_timestamp);
 
     printf("%s",log_Time());
-
-    Task* task = new StdTask("aaa");
-
-    task->create(hello);
-    task->start();
+*/
+//    Task* task = new StdTask("aaa");
+//
+  //  task->create(hello);
+  //  task->start();
 
 //    cout << "\n======================" << endl;
 //    ThreadManager::Inst()->runCase1();
 //    cout << "======================" << endl;
 //    ThreadManager::Inst()->runCase2();
 
+    ThreadDemo::Inst()->testCase();
 
     return 0;
 

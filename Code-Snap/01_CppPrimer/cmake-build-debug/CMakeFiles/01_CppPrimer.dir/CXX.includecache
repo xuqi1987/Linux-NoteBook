@@ -6,45 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/StdTask.h
-Task.h
-/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/Task.h
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadDemo.cpp
+ThreadDemo.h
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadDemo.h
 thread
 -
-
-/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/Task.h
-string
+vector
 -
-functional
--
-
-/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadManager.h
 iostream
 -
-thread
+chrono
 -
 
-/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/main.cpp
-iostream
--
-bitset
--
-stdio.h
--
-cstdlib
--
-time.h
--
-sys/timeb.h
--
-ThreadManager.h
-/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadManager.h
-StdTask.h
-/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/StdTask.h
-unistd.h
--
-time.h
--
-sys/syscall.h
--
+/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadDemo.h
 
