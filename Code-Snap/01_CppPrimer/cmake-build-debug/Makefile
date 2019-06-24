@@ -123,32 +123,32 @@ depend:
 	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/build
 .PHONY : 01_CppPrimer/fast
 
-ThreadDemo.o: ThreadDemo.cpp.o
+TCPServer.o: TCPServer.cpp.o
 
-.PHONY : ThreadDemo.o
+.PHONY : TCPServer.o
 
 # target to build an object file
-ThreadDemo.cpp.o:
-	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/ThreadDemo.cpp.o
-.PHONY : ThreadDemo.cpp.o
+TCPServer.cpp.o:
+	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/TCPServer.cpp.o
+.PHONY : TCPServer.cpp.o
 
-ThreadDemo.i: ThreadDemo.cpp.i
+TCPServer.i: TCPServer.cpp.i
 
-.PHONY : ThreadDemo.i
+.PHONY : TCPServer.i
 
 # target to preprocess a source file
-ThreadDemo.cpp.i:
-	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/ThreadDemo.cpp.i
-.PHONY : ThreadDemo.cpp.i
+TCPServer.cpp.i:
+	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/TCPServer.cpp.i
+.PHONY : TCPServer.cpp.i
 
-ThreadDemo.s: ThreadDemo.cpp.s
+TCPServer.s: TCPServer.cpp.s
 
-.PHONY : ThreadDemo.s
+.PHONY : TCPServer.s
 
 # target to generate assembly for a file
-ThreadDemo.cpp.s:
-	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/ThreadDemo.cpp.s
-.PHONY : ThreadDemo.cpp.s
+TCPServer.cpp.s:
+	$(MAKE) -f CMakeFiles/01_CppPrimer.dir/build.make CMakeFiles/01_CppPrimer.dir/TCPServer.cpp.s
+.PHONY : TCPServer.cpp.s
 
 main.o: main.cpp.o
 
@@ -186,9 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... 01_CppPrimer"
 	@echo "... edit_cache"
-	@echo "... ThreadDemo.o"
-	@echo "... ThreadDemo.i"
-	@echo "... ThreadDemo.s"
+	@echo "... TCPServer.o"
+	@echo "... TCPServer.i"
+	@echo "... TCPServer.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

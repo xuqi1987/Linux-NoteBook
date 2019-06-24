@@ -7,7 +7,7 @@ include_directories(.)
 
 add_executable(01_CppPrimer
         main.cpp
-        ThreadDemo.cpp ThreadDemo.h)
+        TCPServer.cpp TCPServer.h)
 TARGET_LINK_LIBRARIES( 01_CppPrimer
         pthread
         )

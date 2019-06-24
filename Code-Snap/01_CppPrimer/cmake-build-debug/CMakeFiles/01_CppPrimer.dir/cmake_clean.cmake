@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/01_CppPrimer.dir/main.cpp.o"
-  "CMakeFiles/01_CppPrimer.dir/ThreadDemo.cpp.o"
+  "CMakeFiles/01_CppPrimer.dir/TCPServer.cpp.o"
   "01_CppPrimer.pdb"
   "01_CppPrimer"
 )

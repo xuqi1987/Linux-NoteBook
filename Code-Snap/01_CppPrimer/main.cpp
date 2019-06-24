@@ -13,7 +13,6 @@
 
 #include "ThreadManager.h"
 #include "StdTask.h"
-#include "ThreadDemo.h"
 
 using namespace std;
 
@@ -158,7 +157,6 @@ int main()
 //    cout << "======================" << endl;
 //    ThreadManager::Inst()->runCase2();
 
-    ThreadDemo::Inst()->testCase();
 
     return 0;
 

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer/ThreadDemo.cpp" "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles/01_CppPrimer.dir/ThreadDemo.cpp.o"
+  "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer/TCPServer.cpp" "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles/01_CppPrimer.dir/TCPServer.cpp.o"
   "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer/main.cpp" "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles/01_CppPrimer.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
