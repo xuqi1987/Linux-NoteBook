@@ -1,4 +1,4 @@
-/home/xuqi/Tool/clion-2018.3.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug
+-- Build files have been written to: /Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug

@@ -80,9 +80,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/08_Base/ThreadPool.cpp">
-			<Option target="08_Base"/>
-		</Unit>
 		<Unit filename="/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/08_Base/ThreadPool.h">
 			<Option target="08_Base"/>
 		</Unit>

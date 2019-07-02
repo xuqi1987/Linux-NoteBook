@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/08_Base.dir/main.cpp.o"
-  "CMakeFiles/08_Base.dir/ThreadPool.cpp.o"
   "08_Base.pdb"
   "08_Base"
 )

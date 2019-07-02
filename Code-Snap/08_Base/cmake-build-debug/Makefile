@@ -123,33 +123,6 @@ depend:
 	$(MAKE) -f CMakeFiles/08_Base.dir/build.make CMakeFiles/08_Base.dir/build
 .PHONY : 08_Base/fast
 
-ThreadPool.o: ThreadPool.cpp.o
-
-.PHONY : ThreadPool.o
-
-# target to build an object file
-ThreadPool.cpp.o:
-	$(MAKE) -f CMakeFiles/08_Base.dir/build.make CMakeFiles/08_Base.dir/ThreadPool.cpp.o
-.PHONY : ThreadPool.cpp.o
-
-ThreadPool.i: ThreadPool.cpp.i
-
-.PHONY : ThreadPool.i
-
-# target to preprocess a source file
-ThreadPool.cpp.i:
-	$(MAKE) -f CMakeFiles/08_Base.dir/build.make CMakeFiles/08_Base.dir/ThreadPool.cpp.i
-.PHONY : ThreadPool.cpp.i
-
-ThreadPool.s: ThreadPool.cpp.s
-
-.PHONY : ThreadPool.s
-
-# target to generate assembly for a file
-ThreadPool.cpp.s:
-	$(MAKE) -f CMakeFiles/08_Base.dir/build.make CMakeFiles/08_Base.dir/ThreadPool.cpp.s
-.PHONY : ThreadPool.cpp.s
-
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -186,9 +159,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... 08_Base"
-	@echo "... ThreadPool.o"
-	@echo "... ThreadPool.i"
-	@echo "... ThreadPool.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

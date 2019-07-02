@@ -4,7 +4,6 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/08_Base/ThreadPool.cpp" "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/08_Base/cmake-build-debug/CMakeFiles/08_Base.dir/ThreadPool.cpp.o"
   "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/08_Base/main.cpp" "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/08_Base/cmake-build-debug/CMakeFiles/08_Base.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
