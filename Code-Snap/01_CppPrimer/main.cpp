@@ -16,7 +16,7 @@
 using  namespace test;
 int main()
 {
-    LoggerTest::Inst().check();
+    LoggerTest::Instance().demo();
 
     return 0;
 

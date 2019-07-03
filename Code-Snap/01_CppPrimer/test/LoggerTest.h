@@ -19,8 +19,8 @@ public:
     virtual ~LoggerTest();
     LoggerTest(){};
     LoggerTest(const string &name);
-    static LoggerTest &Inst();
-    void check();
+    static LoggerTest &Instance();
+    void demo();
 
 };
 

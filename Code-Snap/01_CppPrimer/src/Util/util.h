@@ -13,9 +13,8 @@ using namespace std;
 namespace toolkit
 {
 
-
 #define INSTANCE_IMP(class_name, args...) \
-class_name & class_name::Inst() { \
+class_name & class_name::Instance() { \
     static auto s_pInst = std::make_shared<class_name>(args); \
     return *s_pInst; \
 }

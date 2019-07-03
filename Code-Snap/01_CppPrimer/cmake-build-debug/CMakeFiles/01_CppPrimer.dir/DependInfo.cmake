@@ -4,12 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer/main.cpp" "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles/01_CppPrimer.dir/main.cpp.o"
-  "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer/src/Util/logger.cpp" "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles/01_CppPrimer.dir/src/Util/logger.cpp.o"
-  "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer/src/Util/util.cpp" "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles/01_CppPrimer.dir/src/Util/util.cpp.o"
-  "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer/test/LoggerTest.cpp" "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles/01_CppPrimer.dir/test/LoggerTest.cpp.o"
+  "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/main.cpp" "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles/01_CppPrimer.dir/main.cpp.o"
+  "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/src/Util/logger.cpp" "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles/01_CppPrimer.dir/src/Util/logger.cpp.o"
+  "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/src/Util/util.cpp" "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles/01_CppPrimer.dir/src/Util/util.cpp.o"
+  "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/test/LoggerTest.cpp" "/Users/xuqi/Documents/Linux-NoteBook/Code-Snap/01_CppPrimer/cmake-build-debug/CMakeFiles/01_CppPrimer.dir/test/LoggerTest.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

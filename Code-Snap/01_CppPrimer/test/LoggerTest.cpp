@@ -5,17 +5,19 @@
 #include "LoggerTest.h"
 namespace test
 {
-INSTANCE_IMP(LoggerTest,string("aaa"))
-void LoggerTest::check()
+INSTANCE_IMP(LoggerTest,string("Log"))
+void LoggerTest::demo()
 {
-    cout << "check" << endl;
+    ErrorL << "hello" <<endl;
 }
 LoggerTest::~LoggerTest()
 {
-    cout << "~LoggerTest" << endl;
+    cout << "\n~LoggerTest" << endl;
 }
 LoggerTest::LoggerTest(const string &name)
 {
-    cout << "LoggerTest:" << name <<endl;
+    Logger::Instance().add(std::make_shared<ConsoleChannel>());
+   // cout << "LoggerTest:" << name <<endl;
+   cout << endl;
 }
 }
