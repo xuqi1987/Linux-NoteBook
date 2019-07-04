@@ -163,6 +163,7 @@ class Logger : public std::enable_shared_from_this<Logger>, public noncopyable {
   }
 
  private:
+
   void writeChannels(const LogContextPtr &stream) {
     for (auto &c : m_ChannelsPoint) {
       c.second->write(*this, stream);
@@ -185,7 +186,7 @@ class Logger : public std::enable_shared_from_this<Logger>, public noncopyable {
 /**
  *  可以有多个Capturer，每个Capture可以logContext，他们使用同一个logger用于输出Log
  */
-class LogContextCapturer : public noncopyable {
+class LogContextCapturer : public noncopyable { //禁止拷贝构造函数
  public:
   LogContextCapturer(Logger &logger, LogLevel level, const char *file, const char *function, int line)
       : m_pLogContext(new LogContext(level, file, function, line)), m_logger(logger) {}
@@ -198,6 +199,7 @@ class LogContextCapturer : public noncopyable {
   ~LogContextCapturer() { *this << endl; }
 
   LogContextCapturer &operator<<(ostream &(*f)(ostream &)) {
+
     if (!m_pLogContext) {
       return *this;
     }
@@ -208,18 +210,20 @@ class LogContextCapturer : public noncopyable {
 
   template<typename T>
   LogContextCapturer &operator<<(T &&data) {
+
     if (!m_pLogContext) {
       return *this;
     }
     (*m_pLogContext) << std::forward<T>(data); // 将log存到自己的logContext中
+
     return *this;
   }
 
   void clear() { m_pLogContext.reset(); }
 
  private:
-  LogContextPtr m_pLogContext;
-  Logger &m_logger;
+  LogContextPtr m_pLogContext; // 用于保存log的内容
+  Logger &m_logger; // Log对象的输出
 };
 
 class AsyncLogWriter : public LogWriter {
@@ -249,10 +253,36 @@ class ConsoleChannel : public LogChannel {
 
 };
 
+/**
+ * 输出日志至文件
+ */
 class FileChannel : public LogChannel {
  public:
-  void write(const Logger &logger, const LogContextPtr &logContext) override;
+  FileChannel(const string &name = "FileChannel", const string &path = exePath() + ".log", LogLevel level = LTrace)
+      : LogChannel(name, level), m_path(path) {};
+  ~FileChannel() {};
 
+  void write(const Logger &logger, const std::shared_ptr<LogContext> &logContext) override;
+  void setPath(const string &path) {
+    m_path = path;
+    open();
+  };
+  const string &path() const { return m_path; };
+
+ protected:
+  virtual void open();
+  virtual void close();
+ protected:
+  ofstream m_fstream;
+  string m_path;
+
+};
+
+class SysLogChannel : public LogChannel {
+ public:
+  SysLogChannel(const string &name = "SysLogChannel" , LogLevel level = LTrace) : LogChannel(name, level) {};
+  ~SysLogChannel(){};
+  void write(const Logger &logger , const LogContextPtr &logContext) override;
 };
 
 #define TraceL LogContextCapturer(Logger::Instance(), LTrace, __FILE__,__FUNCTION__, __LINE__)

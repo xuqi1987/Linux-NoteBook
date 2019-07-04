@@ -8,6 +8,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <unistd.h>
+#include <sys/time.h>
 
 using namespace std;
 namespace toolkit
@@ -62,6 +64,12 @@ private:
 
     noncopyable &operator=(noncopyable &&that) = delete;
 };
+
+
+string exePath();
+string exeDir();
+string exeName();
+
 
 class util
 {
