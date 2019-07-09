@@ -65,16 +65,10 @@ private:
     noncopyable &operator=(noncopyable &&that) = delete;
 };
 
-
 string exePath();
 string exeDir();
 string exeName();
 
-
-class util
-{
-
-};
 }
 
 

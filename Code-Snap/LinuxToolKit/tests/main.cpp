@@ -13,11 +13,3 @@
 #include <sys/timeb.h>
 #include "LoggerTest.h"
 
-using  namespace test;
-int main()
-{
-    LoggerTest::Instance().demo();
-
-    return 0;
-
-}

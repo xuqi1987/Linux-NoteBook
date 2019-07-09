@@ -2,7 +2,27 @@
 // Created by xuqi on 2019-07-02.
 //
 
-#include "LoggerTest.h"
+#include <ostream>
+#include <string>
+#include "Util/logger.h"
+
+using namespace std;
+using namespace toolkit;
+
+namespace test
+{
+class LoggerTest
+{
+ public:
+  virtual ~LoggerTest();
+  LoggerTest(){};
+  LoggerTest(const string &name);
+  static LoggerTest &Instance();
+  void demo();
+
+};
+
+}
 namespace test
 {
 INSTANCE_IMP(LoggerTest,string("Log"))
@@ -22,4 +42,14 @@ LoggerTest::LoggerTest(const string &name)
    // cout << "LoggerTest:" << name <<endl;
    cout << endl;
 }
+}
+
+
+using  namespace test;
+int main()
+{
+  LoggerTest::Instance().demo();
+
+  return 0;
+
 }
