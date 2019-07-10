@@ -9,7 +9,7 @@
 #include <atomic>
 #include <functional>
 #include <unordered_set>
-#include "Util/List.h"
+#include <list>
 
 using namespace std;
 
@@ -72,9 +72,10 @@ public:
 
 	~ResourcePool_l(){
 		std::lock_guard<decltype(_mutex)> lck(_mutex);
-		_objs.for_each([](C *ptr){
-			delete ptr;
-		});
+
+		for(auto ptr : _objs){
+		    delete ptr;
+        }
 	}
 	void setSize(int size) {
 		_poolsize = size;
@@ -89,6 +90,7 @@ public:
 			ptr = _objs.front();
 			_objs.pop_front();
 		}
+      ErrorL << "获取一个对象"<< ptr;
 		return ValuePtr(ptr,this->shared_from_this(),std::make_shared<atomic_bool>(false));
 	}
 private:
@@ -96,12 +98,14 @@ private:
 		std::lock_guard<decltype(_mutex)> lck(_mutex);
 		if ((int)_objs.size() >= _poolsize) {
 			delete obj;
+			ErrorL << "该对象"<< obj <<"因为池满无法放回池中，被析构️⬆";
 			return;
 		}
+      ErrorL << "将对象"<< obj <<"放入池中️⬆";
 		_objs.emplace_back(obj);
 	}
 private:
-	List<C*> _objs;
+	std::list<C*> _objs;
 	function<C*(void)> _allotter;
 	mutex _mutex;
 	int _poolsize = 8;
@@ -140,7 +144,7 @@ shared_ptr_imp<C>::shared_ptr_imp(C *ptr,
 								  const std::weak_ptr<ResourcePool_l<C> > &weakPool ,
 								  const std::shared_ptr<atomic_bool> &quit ) :
 		shared_ptr<C>(ptr,[weakPool,quit](C *ptr){
-			auto strongPool = weakPool.lock();
+			auto strongPool = weakPool.lock(); // 变成share_ptr
 			if (strongPool && !(*quit)) {
 				//循环池还在并且不放弃放入循环池
 				strongPool->recycle(ptr);
