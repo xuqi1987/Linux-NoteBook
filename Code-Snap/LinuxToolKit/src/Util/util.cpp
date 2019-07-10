@@ -4,7 +4,10 @@
 
 #include "util.h"
 
+
 namespace toolkit {
+
+#define PATH_MAX 256
 
 string exePath() {
   char buffer[PATH_MAX * 2 + 1] = {0};

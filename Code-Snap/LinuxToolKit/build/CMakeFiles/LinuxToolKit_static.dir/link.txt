@@ -1,0 +1,2 @@
+/usr/bin/ar qc lib/libLinuxToolKit.a  CMakeFiles/LinuxToolKit_static.dir/src/Util/logger.cpp.o CMakeFiles/LinuxToolKit_static.dir/src/Util/util.cpp.o
+/usr/bin/ranlib lib/libLinuxToolKit.a

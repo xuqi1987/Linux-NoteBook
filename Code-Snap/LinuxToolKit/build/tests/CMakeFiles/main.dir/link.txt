@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/main.dir/main.cpp.o  -o ../bin/main -Wl,-rpath,/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/LinuxToolKit/build/lib ../lib/libLinuxToolKit.so -lpthread 
