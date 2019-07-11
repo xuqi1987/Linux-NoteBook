@@ -19,7 +19,7 @@
 #include <mutex>
 #include <list>
 #include "Util/util.h"
-#include "Util/semaphore.h"
+#include "Thread/semaphore.h"
 
 using namespace std;
 
