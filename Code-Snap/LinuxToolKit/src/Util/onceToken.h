@@ -31,11 +31,11 @@ public:
 		}
 	}
 private:
-	onceToken();
-	onceToken(const onceToken &);
-	onceToken(onceToken &&);
-	onceToken &operator =(const onceToken &);
-	onceToken &operator =(onceToken &&);
+	onceToken(){};
+	onceToken(const onceToken &){};
+	onceToken(onceToken &&){};
+	onceToken &operator =(const onceToken &){};
+	onceToken &operator =(onceToken &&){};
 	task _onDestructed;
 };
 

@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/LoggerTest.dir/LoggerTest.cpp.o  -o ../bin/LoggerTest -Wl,-rpath,/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/LinuxToolKit/build/lib ../lib/libLinuxToolKit.so -lpthread 

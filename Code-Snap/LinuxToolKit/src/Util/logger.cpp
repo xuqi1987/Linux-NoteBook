@@ -184,9 +184,6 @@ void AsyncLogWriter::flushAll(){
 
 ///////////////////ConsoleChannel///////////////////
 
-#ifdef ANDROID
-#include <android/log.h>
-#endif //ANDROID
 
 ConsoleChannel::ConsoleChannel(const string &name, LogLevel level) : LogChannel(name, level) {}
 ConsoleChannel:: ~ConsoleChannel() {}
@@ -200,7 +197,7 @@ void ConsoleChannel::write(const Logger &logger,const LogContextPtr &logContext)
 
 
 ///////////////////SysLogChannel///////////////////
-#if defined(__MACH__) || ((defined(__linux) || defined(__linux__)) &&  !defined(ANDROID))
+
 #include <sys/syslog.h>
 SysLogChannel::SysLogChannel(const string &name, LogLevel level) : LogChannel(name, level) {
 }
@@ -224,7 +221,6 @@ void SysLogChannel::write(const Logger &logger,const LogContextPtr &logContext) 
          LOG_CONST_TABLE[logContext->_level][2], logContext->_function, logContext->str().c_str());
 }
 
-#endif//#if defined(__MACH__) || ((defined(__linux) || defined(__linux__)) &&  !defined(ANDROID))
 
 ///////////////////LogChannel///////////////////
 LogChannel::LogChannel(const string &name, LogLevel level) : _name(name), _level(level) {}
@@ -254,11 +250,9 @@ void LogChannel::format(const Logger &logger,ostream &ost,const LogContextPtr & 
   }
 
   if (enableDetail) {
-#if defined(_WIN32)
-    ost << logger.getName() <<"(" << GetCurrentProcessId() << ") " << logContext->_file << " " << logContext->_line << endl;
-#else
+
     ost << logger.getName() << "(" << getpid() << ") " << logContext->_file << " " << logContext->_line << endl;
-#endif
+
   }
 
   if (enableColor) {
