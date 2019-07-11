@@ -24,9 +24,9 @@
 #include <signal.h>
 #include <iostream>
 #include <random>
-#include "Util/util.h"
-#include "Util/logger.h"
-#include "Util/ResourcePool.h"
+#include "Util/Util.h"
+#include "Util/Logger.h"
+#include "Util/RecycleResourcePool.h"
 #include <list>
 
 using namespace std;

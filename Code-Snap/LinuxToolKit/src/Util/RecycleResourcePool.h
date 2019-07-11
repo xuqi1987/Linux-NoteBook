@@ -90,7 +90,7 @@ public:
 			ptr = _objs.front();
 			_objs.pop_front();
 		}
-      ErrorL << "获取一个对象"<< ptr;
+      	TraceL << "获取一个对象"<< ptr;
 		return ValuePtr(ptr,this->shared_from_this(),std::make_shared<atomic_bool>(false));
 	}
 private:
@@ -98,10 +98,10 @@ private:
 		std::lock_guard<decltype(_mutex)> lck(_mutex);
 		if ((int)_objs.size() >= _poolsize) {
 			delete obj;
-			ErrorL << "该对象"<< obj <<"因为池满无法放回池中，被析构️⬆";
+			TraceL << "该对象"<< obj <<"因为池满无法放回池中，被析构";
 			return;
 		}
-      ErrorL << "将对象"<< obj <<"放入池中️⬆";
+		TraceL << "将对象"<< obj <<"放入池中️";
 		_objs.emplace_back(obj);
 	}
 private:
@@ -116,15 +116,15 @@ private:
  * @tparam C
  */
 template<typename C>
-class ResourcePool {
+class RecycleResourcePool {
 public:
 	typedef shared_ptr_imp<C> ValuePtr;
-	ResourcePool() {
+	RecycleResourcePool() {
 			pool.reset(new ResourcePool_l<C>());
 	}
 #if defined(SUPPORT_DYNAMIC_TEMPLATE)
 	template<typename ...ArgTypes>
-	ResourcePool(ArgTypes &&...args) {
+	RecycleResourcePool(ArgTypes &&...args) {
 		pool = std::make_shared<ResourcePool_l<C> >(std::forward<ArgTypes>(args)...);
 	}
 #endif //defined(SUPPORT_DYNAMIC_TEMPLATE)

@@ -19,7 +19,7 @@ INCLUDE_DIRECTORIES(${CV2X_Root})
 
 #收集源代码
 file(GLOB ToolKit_src_list ${ToolKit_Root}/*/*.cpp ${ToolKit_Root}/*/*.h ${ToolKit_Root}/*/*.c)
-file(GLOB CV2X_src_list ${CV2X_Root}/*.cpp ${CV2X_Root}/*.h ${CV2X_Root}/*.c)
+file(GLOB CV2X_src_list ${CV2X_Root}/*.cpp ${CV2X_Root}/v2x/*.cpp  ${CV2X_Root}/v2x/*.h ${CV2X_Root}/v2x/*.c)
 
 
 #添加库

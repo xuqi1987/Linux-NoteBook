@@ -4,7 +4,7 @@
 
 #include <ostream>
 #include <string>
-#include "Util/logger.h"
+#include "Util/Logger.h"
 
 using namespace std;
 using namespace toolkit;

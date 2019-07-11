@@ -1,11 +1,12 @@
 #include <iostream>
-#include "Util/logger.h"
-#include "Util/ResourcePool.h"
-#include "v2x/msgqueue.h"
-#include "v2x/v2xcar.h"
-
+#include <signal.h>
 #include <thread>
 #include <future>
+#include "Util/Logger.h"
+#include "Util/RecycleResourcePool.h"
+#include "v2x/MsgQueue.h"
+#include "v2x/V2xcar.h"
+#include "v2x/V2xApp.h"
 
 using namespace std;
 using namespace v2x;
@@ -14,29 +15,14 @@ using namespace toolkit;
 int main()
 {
     Logger::Instance().add(make_shared<ConsoleChannel>());
+    Logger::Instance().setLevel(LTrace);
 
-    ResourcePool<V2xcar> cars_pool;
-    cars_pool.setSize(187);
+    std:shared_ptr<V2xApp> app = std::make_shared<V2xApp>();
+    app->run();
 
-    MsgQueue<V2xcar> recv_queue;
-
-    std::async(std::launch::async,[&]() {
-        while(1)
-        {
-            static int count = 0;
-
-            count ++;
-            auto car = cars_pool.obtain();
-            string info = StrPrinter << "This is Car No." << count;
-            car->assign(info);
-
-            WarnL << *car;
-            //recv_queue.push(std::move(car));
-            sleep(1);
-        }
-
-    });
-
-
+    while(1)
+    {
+        sleep(1);
+    }
     return 0;
 }

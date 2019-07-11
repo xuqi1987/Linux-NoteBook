@@ -26,8 +26,8 @@
  */
 
 
-#include "logger.h"
-#include "onceToken.h"
+#include "Logger.h"
+#include "OnceToken.h"
 
 namespace toolkit {
 
@@ -208,7 +208,7 @@ void SysLogChannel::write(const Logger &logger,const LogContextPtr &logContext) 
     return;
   }
   static int s_syslog_lev[10];
-  static onceToken s_token([](){
+  static OnceToken s_token([](){
     s_syslog_lev[LTrace] = LOG_DEBUG;
     s_syslog_lev[LDebug] = LOG_INFO;
     s_syslog_lev[LInfo] = LOG_NOTICE;

@@ -10,32 +10,32 @@ using namespace std;
 
 namespace toolkit {
 
-class onceToken {
+class OnceToken {
 public:
 	typedef function<void(void)> task;
-	onceToken(const task &onConstructed, const task &onDestructed = nullptr) {
+	OnceToken(const task &onConstructed, const task &onDestructed = nullptr) {
 		if (onConstructed) {
 			onConstructed();
 		}
 		_onDestructed = onDestructed;
 	}
-	onceToken(const task &onConstructed, task &&onDestructed) {
+	OnceToken(const task &onConstructed, task &&onDestructed) {
 		if (onConstructed) {
 			onConstructed();
 		}
 		_onDestructed = std::move(onDestructed);
 	}
-	~onceToken() {
+	~OnceToken() {
 		if (_onDestructed) {
 			_onDestructed();
 		}
 	}
 private:
-	onceToken(){};
-	onceToken(const onceToken &){};
-	onceToken(onceToken &&){};
-	onceToken &operator =(const onceToken &){};
-	onceToken &operator =(onceToken &&){};
+	OnceToken(){};
+	OnceToken(const OnceToken &){};
+	OnceToken(OnceToken &&){};
+	OnceToken &operator =(const OnceToken &){};
+	OnceToken &operator =(OnceToken &&){};
 	task _onDestructed;
 };
 
