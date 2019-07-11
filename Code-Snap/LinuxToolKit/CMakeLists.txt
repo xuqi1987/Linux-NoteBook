@@ -8,7 +8,7 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 #设置可执行程序路径
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 #设置子目录
-set(SUB_DIR_LIST  "Util")
+set(SUB_DIR_LIST  "Util" "Thread")
 
 
 set(INSTALL_PATH_LIB lib)
@@ -18,9 +18,11 @@ set(INSTALL_PATH_INCLUDE include)
 foreach(SUB_DIR ${SUB_DIR_LIST})
     #遍历源文件
     aux_source_directory(src/${SUB_DIR} SRC_LIST)
+    message(STATUS "文件夹:${SUB_DIR} 文件:${SRC_LIST}")
     #安装头文件至系统目录
     install(DIRECTORY src/${SUB_DIR} DESTINATION ${INSTALL_PATH_INCLUDE} FILES_MATCHING PATTERN "*.h")
 endforeach()
+
 
 
 set(LINK_LIB_LIST)

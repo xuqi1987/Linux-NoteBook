@@ -15,7 +15,7 @@ using namespace toolkit;
 int main()
 {
     Logger::Instance().add(make_shared<ConsoleChannel>());
-    Logger::Instance().setLevel(LTrace);
+    Logger::Instance().setLevel(LDebug);
 
     std:shared_ptr<V2xApp> app = std::make_shared<V2xApp>();
     app->run();

@@ -2,9 +2,12 @@
 // Created by xuqi on 2019-07-02.
 //
 
+#include <thread>
 #include "Util.h"
+#include "Logger.h"
+#include "OnceToken.h"
 
-
+using namespace std;
 namespace toolkit {
 
 #define PATH_MAX 256
@@ -33,6 +36,44 @@ string exeDir() {
 string exeName() {
   auto path = exePath();
   return path.substr(path.rfind('/') + 1);
+}
+
+static inline uint64_t getCurrentMicrosecondOrigin() {
+  struct timeval tv;
+  gettimeofday(&tv, NULL);
+  return tv.tv_sec * 1000000LL + tv.tv_usec;
+
+}
+
+static atomic<uint64_t> s_currentMicrosecond(getCurrentMicrosecondOrigin());
+static atomic<uint64_t> s_currentMillisecond(getCurrentMicrosecondOrigin() / 1000);
+
+static inline bool initMillisecondThread() {
+  static std::thread s_thread([]() {
+    DebugL << "Stamp thread started!";
+    uint64_t now;
+    while (true) {
+      now = getCurrentMicrosecondOrigin();
+      s_currentMicrosecond.store(now, memory_order_release);
+      s_currentMillisecond.store(now / 1000, memory_order_release);
+      usleep(500);
+
+    }
+  });
+  static OnceToken s_token([]() {
+    s_thread.detach();
+  });
+  return true;
+}
+
+uint64_t getCurrentMillisecond() {
+  static bool flag = initMillisecondThread();
+  return s_currentMillisecond.load(memory_order_acquire);
+}
+
+uint64_t getCurrentMicrosecond() {
+  static bool flag = initMillisecondThread();
+  return s_currentMicrosecond.load(memory_order_acquire);
 }
 
 }

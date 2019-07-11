@@ -12,6 +12,8 @@
 #include "Util/RecycleResourcePool.h"
 #include "v2x/MsgQueue.h"
 #include "v2x/V2xcar.h"
+#include "Thread/ThreadPool.h"
+
 
 using namespace std;
 using namespace v2x;
@@ -27,11 +29,15 @@ public:
 private:
 
     void runGNSSThread();
-    void runRVFilterThread();
+    void runRVFilterThread(int i);
     void runCANRecvThread();
 
-    RecycleResourcePool<V2xcar> cars_pool;
-    MsgQueue<decltype(cars_pool)::ValuePtr> recv_queue;
+ private:
+
+    ThreadPool::Ptr _thread_pool;
+    RecycleResourcePool<V2xcar> _cars_pool;
+    MsgQueue<decltype(_cars_pool)::ValuePtr> _recv_queue;
+    
 
 };
 }

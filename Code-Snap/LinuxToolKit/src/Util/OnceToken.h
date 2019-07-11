@@ -34,8 +34,8 @@ private:
 	OnceToken(){};
 	OnceToken(const OnceToken &){};
 	OnceToken(OnceToken &&){};
-	OnceToken &operator =(const OnceToken &){};
-	OnceToken &operator =(OnceToken &&){};
+	OnceToken &operator =(const OnceToken &);
+	OnceToken &operator =(OnceToken &&);
 	task _onDestructed;
 };
 
