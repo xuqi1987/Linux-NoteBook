@@ -195,21 +195,7 @@ void ConsoleChannel::write(const Logger &logger,const LogContextPtr &logContext)
     return;
   }
 
-#if defined(_WIN32) || defined(OS_IPHONE)
-  format(logger,std::cout, logContext , false);
-#elif defined(ANDROID)
-  static android_LogPriority LogPriorityArr[10];
-    static onceToken s_token([](){
-        LogPriorityArr[LTrace] = ANDROID_LOG_VERBOSE;
-        LogPriorityArr[LDebug] = ANDROID_LOG_DEBUG;
-        LogPriorityArr[LInfo] = ANDROID_LOG_INFO;
-        LogPriorityArr[LWarn] = ANDROID_LOG_WARN;
-        LogPriorityArr[LError] = ANDROID_LOG_ERROR;
-    }, nullptr);
-    __android_log_print(LogPriorityArr[logContext->_level],"JNI","%s %s",logContext->_function,logContext->str().c_str());
-#else
-  format(logger,std::cout,logContext, true);
-#endif
+  format(logger,std::cout,logContext, true,false);
 }
 
 
