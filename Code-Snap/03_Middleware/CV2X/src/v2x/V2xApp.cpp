@@ -11,11 +11,11 @@ namespace v2x
 void V2xApp::run()
 {
     // 设置总共资源187个
-    _cars_pool.setSize(187);
+    _othercars_pool.setSize(187);
     // 设置线程池
     _thread_pool = make_shared<ThreadPool>(20,ThreadPool::PRIORITY_HIGHEST, false);
 
-    _thread_pool->async(bind(&V2xApp::runOriginThread,this));
+    _thread_pool->async(bind(&V2xApp::runITSThread,this));
 
     for(int i = 0; i < 10; i++)
     {
@@ -27,14 +27,14 @@ void V2xApp::run()
     _thread_pool->start();
 }
 
-void V2xApp::runOriginThread()
+void V2xApp::runITSThread()
 {
 
      while (1) {
          static int count = 0;
 
          count++;
-         auto car = _cars_pool.obtain();
+         auto car = _othercars_pool.obtain();
          string info = StrPrinter << "车辆数据包 No." << count;
 
          car->assign(info);
@@ -49,7 +49,7 @@ void V2xApp::runOriginThread()
 
 void V2xApp::runRVFilterThread(int i)
 {
-    decltype(_cars_pool)::ValuePtr oneCar;
+    decltype(_othercars_pool)::ValuePtr oneCar;
 
     while (1) {
         bool ret = _orgin_pool.get_data(oneCar);

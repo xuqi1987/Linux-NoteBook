@@ -15,10 +15,12 @@ namespace v2x {
 class V2xcar : public string
 {
 public:
+    typedef shared_ptr<V2xcar> Ptr;
     template<typename ...ArgTypes>
     V2xcar(ArgTypes &&...args) : string(std::forward<ArgTypes>(args)...){
         DebugL << "创建V2XCar对象:" << this << " " << *this;
     };
+
     ~V2xcar() {
         WarnL << "销毁string对象:" << this << " " << *this;
     }
