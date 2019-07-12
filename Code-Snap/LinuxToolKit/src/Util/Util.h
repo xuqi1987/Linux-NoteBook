@@ -70,10 +70,6 @@ string exeDir();
 string exeName();
 
 
-#ifndef bzero
-#define bzero(ptr,size)  memset((ptr),0,(size));
-#endif //bzero
-
 /**
  * 获取1970年至今的毫秒数
  * @return

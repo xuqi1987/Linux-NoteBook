@@ -18,6 +18,7 @@ class MsgQueue
 {
 public:
 
+    typedef shared_ptr<MsgQueue<T> > Ptr;
     template <typename C>
     void push(C &&data) {
         {
