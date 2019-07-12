@@ -28,7 +28,7 @@ public:
 
 private:
 
-    void runGNSSThread();
+    void runOriginThread();
     void runRVFilterThread(int i);
     void runCANRecvThread();
 
@@ -36,7 +36,7 @@ private:
 
     ThreadPool::Ptr _thread_pool;
     RecycleResourcePool<V2xcar> _cars_pool;
-    MsgQueue<decltype(_cars_pool)::ValuePtr> _recv_queue;
+    MsgQueue<decltype(_cars_pool)::ValuePtr> _orgin_pool;
     
 
 };
