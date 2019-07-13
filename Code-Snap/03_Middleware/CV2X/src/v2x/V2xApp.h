@@ -13,7 +13,7 @@
 #include "v2x/MsgQueue.h"
 #include "v2x/V2xcar.h"
 #include "Thread/ThreadPool.h"
-
+#include "V2xITSProducer.h"
 
 using namespace std;
 using namespace v2x;
@@ -24,7 +24,8 @@ namespace v2x
 class V2xApp: public std::enable_shared_from_this<V2xApp>
 {
 public:
-    void run();
+  V2xApp();
+  void run();
 
 private:
 
@@ -35,8 +36,12 @@ private:
  private:
 
     ThreadPool::Ptr _thread_pool;
-    RecycleResourcePool<V2xcar> _othercars_pool;
-    MsgQueue<decltype(_othercars_pool)::ValuePtr> _recv_queue;
+    //RecycleResourcePool<V2xcar> _othercars_pool;
+    //MsgQueue<decltype(_othercars_pool)::ValuePtr> _recv_queue;
+
+    V2xITSProducer::Ptr _its_producer;
+
+
 };
 }
 

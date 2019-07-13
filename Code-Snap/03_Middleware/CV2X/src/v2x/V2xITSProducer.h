@@ -12,22 +12,23 @@
 #include "Util/RecycleResourcePool.h"
 #include "v2x/MsgQueue.h"
 #include "v2x/V2xcar.h"
-#include "Thread/ThreadPool.h"
+#include "Producer.h"
 
 using namespace std;
 using namespace v2x;
 using namespace toolkit;
 
-class V2xITSProducer
+class V2xITSProducer : public Producer
 {
 public:
-    V2xITSProducer(int objnum);
+
+    typedef shared_ptr<V2xITSProducer> Ptr;
     V2xITSProducer();
     bool get(V2xcar::Ptr car);
-    void startWorking();
     virtual ~V2xITSProducer();
+    void recv() override;
 
-private:
+ private:
     RecycleResourcePool<V2xcar> _othercars;
     MsgQueue<decltype(_othercars)::ValuePtr> _data_queue;
 
