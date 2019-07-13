@@ -57,7 +57,7 @@ auto ThreadPoolResult::enqueue(F&& f, Args&&... args) // 右值引用
       std::bind(std::forward<F>(f), std::forward<Args>(args)...)
   );
 
-  //after finishing the task, then get result by res.get() (mainly used in the invoked function)
+  //after finishing the task, then get result by res.pop() (mainly used in the invoked function)
   std::future<return_type> res = task->get_future();
   {
     // 压入队列需要线程安全，因此需要先获取锁

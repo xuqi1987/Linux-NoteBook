@@ -4,7 +4,7 @@
 #include <future>
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
-#include "v2x/MsgQueue.h"
+#include "MsgQueue.h"
 #include "v2x/V2xcar.h"
 #include "v2x/V2xApp.h"
 
@@ -15,7 +15,7 @@ using namespace toolkit;
 int main()
 {
     Logger::Instance().add(make_shared<ConsoleChannel>());
-    Logger::Instance().setLevel(LDebug);
+    Logger::Instance().setLevel(LTrace);
 
     std:shared_ptr<V2xApp> app = std::make_shared<V2xApp>();
     app->run();

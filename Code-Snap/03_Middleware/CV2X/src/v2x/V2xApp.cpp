@@ -10,66 +10,53 @@ namespace v2x
 {
 
 V2xApp::V2xApp() {
-  _its_producer = make_shared<V2xITSProducer>();
 
-  // 设置线程池
-  _thread_pool = make_shared<ThreadPool>(20,ThreadPool::PRIORITY_HIGHEST, false);
+
 }
 
 void V2xApp::run()
 {
 
-    _its_producer->start();
 
-    for(int i = 0; i < 10; i++)
-    {
-      _thread_pool->async(bind(&V2xApp::runRVFilterThread,this,i));
-    }
+  _its_out_pool = make_shared< V2xITSProducer::Queue>();
 
+  // 生产者
+  _its_producer = make_shared<V2xITSProducer>(_its_out_pool);
+  _its_producer->start();
 
-    _thread_pool->start();
+  auto & _filter_in_pool = _its_out_pool;
 
+  // 过滤器
+  _filter_out_pool = make_shared<V2xFilter::Queue>();
+  _filter = make_shared<V2xFilter> (10,_filter_in_pool,_filter_out_pool);
 
-}
-
-void V2xApp::runITSThread()
-{
-
-//     while (1) {
-//         static int count = 0;
-//
-//         count++;
-//         auto car = _othercars_pool.obtain();
-//         string info = StrPrinter << "车辆数据包 No." << count;
-//
-//         car->assign(info);
-//         DebugL << "新数据包来了 No." << count << " 放入地址：" << car;
-//
-//       _recv_queue.push(car);
-//         usleep(1000*50);
-//
-//     }
+  _filter->start();
 
 }
+
 
 void V2xApp::runRVFilterThread(int i)
 {
-//    decltype(_othercars_pool)::ValuePtr oneCar;
-//
-//    while (1) {
-//        bool ret = _recv_queue.get_data(oneCar);
-//        InfoL << "线程( "<<i<< " )\t从pool中拿到数据处理，数据内容是：" << *oneCar << " 地址是：" << oneCar;
-//
-//        oneCar.reset();
-//        sleep(1);
-//    }
+    V2xITSProducer::ValuePtr oneCar;
+
+    while (1) {
+        //bool ret = _its_out_pool->pop(oneCar);
+        //DebugL << _its_out_pool;
+        //InfoL << "线程( "<<i<< " )\t从pool中拿到数据处理，数据内容是：" << *oneCar << " 地址是：" << oneCar;
+        //InfoL <<i ;
+        //oneCar.reset();
+        sleep(1);
+    }
 }
 
 void V2xApp::runCANRecvThread()
 {
     while (1) {
-      InfoL << "更新自车信息=====";
-        sleep(1);
+//      V2xITSProducer::ValuePtr oneCar;
+//      bool ret = _its_producer->pop(oneCar);
+//
+//      InfoL << "拿到数据处理，数据内容是:"<< oneCar <<"返回值" << ret;
+//        sleep(1);
     }
 }
 

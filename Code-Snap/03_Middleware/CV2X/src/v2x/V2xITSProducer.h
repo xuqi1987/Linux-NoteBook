@@ -10,29 +10,31 @@
 #include <future>
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
-#include "v2x/MsgQueue.h"
+#include "MsgQueue.h"
 #include "v2x/V2xcar.h"
 #include "Producer.h"
 
 using namespace std;
 using namespace v2x;
 using namespace toolkit;
+using namespace mwkit;
 
 class V2xITSProducer : public Producer
 {
 public:
 
     typedef shared_ptr<V2xITSProducer> Ptr;
-    V2xITSProducer();
-    bool get(V2xcar::Ptr car);
+    typedef RecycleResourcePool<V2xcar>::ValuePtr ValuePtr;
+    typedef MsgQueue<ValuePtr> Queue;
+
+
+    V2xITSProducer(Queue::Ptr &queue);
     virtual ~V2xITSProducer();
     void recv() override;
 
  private:
     RecycleResourcePool<V2xcar> _othercars;
-    MsgQueue<decltype(_othercars)::ValuePtr> _data_queue;
-
-    //MsgQueue<RecycleResourcePool<V2xcar>::ValuePtr> _data_queue;
+    Queue::Ptr _data_queue;
 };
 
 

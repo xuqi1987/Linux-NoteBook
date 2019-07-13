@@ -10,10 +10,11 @@
 #include <future>
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
-#include "v2x/MsgQueue.h"
+#include "MsgQueue.h"
 #include "v2x/V2xcar.h"
 #include "Thread/ThreadPool.h"
 #include "V2xITSProducer.h"
+#include "V2xFilter.h"
 
 using namespace std;
 using namespace v2x;
@@ -29,17 +30,18 @@ public:
 
 private:
 
-    void runITSThread();
     void runRVFilterThread(int i);
     void runCANRecvThread();
 
  private:
 
     ThreadPool::Ptr _thread_pool;
-    //RecycleResourcePool<V2xcar> _othercars_pool;
-    //MsgQueue<decltype(_othercars_pool)::ValuePtr> _recv_queue;
 
+    V2xITSProducer::Queue::Ptr _its_out_pool;
     V2xITSProducer::Ptr _its_producer;
+
+    V2xFilter::Queue::Ptr _filter_out_pool;
+    V2xFilter::Ptr _filter;
 
 
 };

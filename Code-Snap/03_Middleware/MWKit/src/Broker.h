@@ -4,11 +4,22 @@
 
 #ifndef CV2X_BROKER_H
 #define CV2X_BROKER_H
+#include "Thread/ThreadPool.h"
+
+using namespace toolkit;
 
 
 class Broker
 {
-
+ public:
+  Broker();
+  Broker(int threadnum);
+  virtual ~Broker();
+  void start();
+  virtual void work(int num) = 0;
+ private:
+  ThreadPool::Ptr _thread;
+  int _thread_num;
 };
 
 

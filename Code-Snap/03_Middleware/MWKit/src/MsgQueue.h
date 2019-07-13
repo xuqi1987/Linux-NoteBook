@@ -11,10 +11,10 @@
 
 using namespace toolkit;
 
-namespace v2x {
+namespace mwkit {
 
 template <typename T>
-class MsgQueue
+class MsgQueue : public std::enable_shared_from_this<MsgQueue<T> > , public noncopyable
 {
 public:
 
@@ -29,7 +29,7 @@ public:
     }
 
     template <typename C>
-    bool get_data(C &data) {
+    bool pop(C &data) {
         _sem.wait();
         lock_guard<decltype(_mutex)> lock(_mutex);
 
@@ -40,6 +40,8 @@ public:
         _queue.pop();
         return true;
     }
+
+
 private:
     std::queue<T> _queue;
     mutable mutex _mutex;
