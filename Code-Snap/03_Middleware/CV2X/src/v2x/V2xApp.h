@@ -28,15 +28,11 @@ public:
   V2xApp();
   void run();
 
-private:
-
-    void runRVFilterThread(int i);
-    void runCANRecvThread();
+  void createProducer();
+  void createBroker();
+  void createConsumer();
 
  private:
-
-    ThreadPool::Ptr _thread_pool;
-
     V2xITSProducer::Queue::Ptr _its_out_pool;
     V2xITSProducer::Ptr _its_producer;
 
