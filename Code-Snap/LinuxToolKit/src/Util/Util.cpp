@@ -10,7 +10,9 @@
 using namespace std;
 namespace toolkit {
 
+#ifndef PATH_MAX
 #define PATH_MAX 256
+#endif
 
 string exePath() {
   char buffer[PATH_MAX * 2 + 1] = {0};

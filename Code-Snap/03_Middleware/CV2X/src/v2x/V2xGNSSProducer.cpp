@@ -21,14 +21,14 @@ void V2xGNSSProducer::recv() {
 
     count++;
     ValuePtr car = _cur_car.obtain();
-    string info = StrPrinter << "车辆数据包 No." << count;
+    string info = StrPrinter << "自车数据No." << count;
 
     car->assign(info);
-    DebugL << "新数据包来了 No." << count << " 放入地址：" << car;
+    DebugL << "自车数据更新 No." << count << " 放入地址：" << car;
 
     _data_queue->push(car);
 
-    usleep(1000*100);
+    usleep(1000*1000);
 
   }
 }

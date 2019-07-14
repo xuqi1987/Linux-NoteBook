@@ -23,12 +23,14 @@ void V2xApp::run()
 
 void V2xApp::createProducer() {
 
-  _its_out_pool = make_shared< V2xITSProducer::Queue>();
+  _its_out_pool = make_shared<V2xITSProducer::Queue>();
   // 生产者
   _its_producer = make_shared<V2xITSProducer>(_its_out_pool);
   _its_producer->start();
 
-
+  _gnss_out_pool = make_shared<V2xGNSSProducer::Queue>();
+  _gnss_producer = make_shared<V2xGNSSProducer>(_gnss_out_pool);
+  _gnss_producer->start();
 
 }
 

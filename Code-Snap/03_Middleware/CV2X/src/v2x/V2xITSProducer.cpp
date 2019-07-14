@@ -25,7 +25,7 @@ void V2xITSProducer::recv() {
 
     _data_queue->push(car);
 
-    usleep(1000*100);
+    usleep(1000*1000);
 
   }
 }
