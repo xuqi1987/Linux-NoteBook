@@ -11,7 +11,7 @@
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
 #include "MsgQueue.h"
-#include "v2x/V2xcar.h"
+#include "v2x/message/V2xMsgBSM.h"
 #include "Producer.h"
 
 using namespace std;
@@ -24,7 +24,7 @@ class V2xITSProducer : public Producer
 public:
 
     typedef shared_ptr<V2xITSProducer> Ptr;
-    typedef RecycleResourcePool<V2xcar>::ValuePtr ValuePtr;
+    typedef RecycleResourcePool<V2xMsgBSM>::ValuePtr ValuePtr;
     typedef MsgQueue<ValuePtr> Queue;
 
 
@@ -33,7 +33,7 @@ public:
     void recv() override;
 
  private:
-    RecycleResourcePool<V2xcar> _othercars;
+    RecycleResourcePool<V2xMsgBSM> _othercars;
     Queue::Ptr _data_queue;
 };
 

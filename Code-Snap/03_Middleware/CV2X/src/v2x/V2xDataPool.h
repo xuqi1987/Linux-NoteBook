@@ -12,7 +12,7 @@
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
 #include "MsgQueue.h"
-#include "v2x/V2xcar.h"
+#include "v2x/message/V2xMsgBSM.h"
 #include "Thread/ThreadPool.h"
 #include "V2xITSProducer.h"
 #include "V2xFilter.h"
