@@ -41,7 +41,6 @@ void V2xApp::createBroker() {
   // 对数据进行 过滤器
   _filter_out_pool = make_shared<V2xFilter::Queue>();
   _filter = make_shared<V2xFilter> (10,_filter_in_pool,_filter_out_pool);
-
   _filter->start();
 
 }

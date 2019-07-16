@@ -12,7 +12,7 @@
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
 #include "MsgQueue.h"
-#include "v2x/message/V2xMsgBSM.h"
+#include "v2x/message/V2xMsg.h"
 #include "Producer.h"
 
 using namespace std;
@@ -25,7 +25,7 @@ class V2xGNSSProducer : public Producer {
  public:
 
   typedef shared_ptr<V2xGNSSProducer> Ptr;
-  typedef RecycleResourcePool<V2xMsgBSM>::ValuePtr ValuePtr;
+  typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
   typedef MsgQueue<ValuePtr> Queue;
 
   V2xGNSSProducer(Queue::Ptr &queue);
@@ -33,7 +33,7 @@ class V2xGNSSProducer : public Producer {
   void recv() override;
 
  private:
-  RecycleResourcePool<V2xMsgBSM> _cur_car;
+  RecycleResourcePool<V2xMsg> _cur_car;
   Queue::Ptr _data_queue;
 
 };

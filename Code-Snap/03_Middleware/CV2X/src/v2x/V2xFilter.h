@@ -11,7 +11,7 @@
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
 #include "MsgQueue.h"
-#include "v2x/message/V2xMsgBSM.h"
+#include "v2x/message/V2xMsg.h"
 #include "Broker.h"
 
 using namespace std;
@@ -24,7 +24,7 @@ class V2xFilter : public Broker{
  public:
 
   typedef shared_ptr<V2xFilter> Ptr;
-  typedef RecycleResourcePool<V2xMsgBSM>::ValuePtr ValuePtr;
+  typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
   typedef MsgQueue<ValuePtr> Queue;
 
   V2xFilter(int threadnum,Queue::Ptr &iQueue,Queue::Ptr &oQueue);
