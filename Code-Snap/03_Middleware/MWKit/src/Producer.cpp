@@ -11,6 +11,6 @@ Producer::~Producer() {
 }
 void Producer::start() {
 
-  _thread->async(bind(&Producer::recv,this));
+  _thread->async(bind(&Producer::run,this));
   _thread->start();
 }

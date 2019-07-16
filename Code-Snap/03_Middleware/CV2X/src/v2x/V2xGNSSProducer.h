@@ -12,7 +12,7 @@
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
 #include "MsgQueue.h"
-#include "v2x/message/V2xMsg.h"
+#include "V2xMsg.h"
 #include "Producer.h"
 
 using namespace std;
@@ -29,12 +29,13 @@ class V2xGNSSProducer : public Producer {
   typedef MsgQueue<ValuePtr> Queue;
 
   V2xGNSSProducer(Queue::Ptr &queue);
+
   virtual ~V2xGNSSProducer();
-  void recv() override;
+  void run() override;
 
  private:
-  RecycleResourcePool<V2xMsg> _cur_car;
-  Queue::Ptr _data_queue;
+  RecycleResourcePool<V2xMsg> _hv_gnss_pool;
+  Queue::Ptr _hv_gnss_queue;
 
 };
 

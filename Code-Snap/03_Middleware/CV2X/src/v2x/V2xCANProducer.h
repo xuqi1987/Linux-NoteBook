@@ -1,9 +1,10 @@
 //
-// Created by root on 19-7-12.
+// Created by xuqi on 2019-07-16.
 //
 
-#ifndef CV2X_V2XITSPRODUCER_H
-#define CV2X_V2XITSPRODUCER_H
+#ifndef V2XCANPRODUCER_H
+#define V2XCANPRODUCER_H
+
 #include <iostream>
 #include <memory>
 #include <thread>
@@ -19,23 +20,23 @@ using namespace v2x;
 using namespace toolkit;
 using namespace mwkit;
 
-class V2xITSProducer : public Producer
+
+class V2xCANProducer: public Producer
 {
 public:
 
-    typedef shared_ptr<V2xITSProducer> Ptr;
+    typedef shared_ptr<V2xCANProducer> Ptr;
     typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
     typedef MsgQueue<ValuePtr> Queue;
 
-
-    V2xITSProducer(Queue::Ptr &queue);
-    virtual ~V2xITSProducer();
+    V2xCANProducer(Queue::Ptr &queue);
+    virtual ~V2xCANProducer();
     void run() override;
 
- private:
-    RecycleResourcePool<V2xMsg> _rv_bsm_pool;
-    Queue::Ptr _rv_bsm_queue;
+private:
+    RecycleResourcePool<V2xMsg> _hv_can_pool;
+    Queue::Ptr _hv_can_queue;
 };
 
 
-#endif //CV2X_V2XITSPRODUCER_H
+#endif //V2XCANPRODUCER_H

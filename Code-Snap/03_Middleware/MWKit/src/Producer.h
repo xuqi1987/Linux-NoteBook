@@ -15,7 +15,7 @@ public:
   Producer();
   virtual ~Producer();
   void start();
-  virtual void recv() = 0;
+  virtual void run() = 0;
 
 private:
   ThreadPool::Ptr _thread;

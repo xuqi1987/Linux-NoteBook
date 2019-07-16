@@ -11,7 +11,7 @@
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
 #include "MsgQueue.h"
-#include "v2x/message/V2xMsg.h"
+#include "V2xMsg.h"
 #include "Broker.h"
 
 using namespace std;
@@ -20,14 +20,14 @@ using namespace toolkit;
 using namespace mwkit;
 
 
-class V2xFilter : public Broker{
+class V2xRvBsmFilter : public Broker{
  public:
 
-  typedef shared_ptr<V2xFilter> Ptr;
+  typedef shared_ptr<V2xRvBsmFilter> Ptr;
   typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
   typedef MsgQueue<ValuePtr> Queue;
 
-  V2xFilter(int threadnum,Queue::Ptr &iQueue,Queue::Ptr &oQueue);
+  V2xRvBsmFilter(int threadnum,Queue::Ptr &iQueue,Queue::Ptr &oQueue);
   void work(int num) override;
 
  private:

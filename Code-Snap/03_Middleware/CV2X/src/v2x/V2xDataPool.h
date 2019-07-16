@@ -12,10 +12,10 @@
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
 #include "MsgQueue.h"
-#include "v2x/message/V2xMsg.h"
+#include "V2xMsg.h"
 #include "Thread/ThreadPool.h"
 #include "V2xITSProducer.h"
-#include "V2xFilter.h"
+#include "V2xRvBsmFilter.h"
 
 using namespace std;
 using namespace v2x;
@@ -26,7 +26,7 @@ namespace v2x {
 class V2xDataPool {
  public:
   V2xITSProducer::Queue::Ptr _its_out_pool;
-  V2xFilter::Queue::Ptr _filter_out_pool;
+  V2xRvBsmFilter::Queue::Ptr _filter_out_pool;
 
 };
 

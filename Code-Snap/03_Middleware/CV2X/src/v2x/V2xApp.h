@@ -11,11 +11,12 @@
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
 #include "MsgQueue.h"
-#include "v2x/message/V2xMsg.h"
+#include "V2xMsg.h"
 #include "Thread/ThreadPool.h"
 #include "V2xITSProducer.h"
 #include "V2xGNSSProducer.h"
-#include "V2xFilter.h"
+#include "V2xCANProducer.h"
+#include "V2xRvBsmFilter.h"
 
 using namespace std;
 using namespace v2x;
@@ -23,7 +24,7 @@ using namespace toolkit;
 
 namespace v2x
 {
-class V2xApp: public std::enable_shared_from_this<V2xApp>
+class V2xApp
 {
 public:
   V2xApp();
@@ -40,8 +41,11 @@ public:
     V2xGNSSProducer::Queue::Ptr _gnss_out_pool;
     V2xGNSSProducer::Ptr _gnss_producer;
 
-    V2xFilter::Queue::Ptr _filter_out_pool;
-    V2xFilter::Ptr _filter;
+    V2xCANProducer::Queue::Ptr _can_out_pool;
+    V2xCANProducer::Ptr _can_producer;
+
+    V2xRvBsmFilter::Queue::Ptr _filter_out_pool;
+    V2xRvBsmFilter::Ptr _filter;
 
 
 };

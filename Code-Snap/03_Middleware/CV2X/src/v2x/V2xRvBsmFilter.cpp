@@ -2,24 +2,24 @@
 // Created by xuqi on 2019-07-13.
 //
 
-#include "V2xFilter.h"
+#include "V2xRvBsmFilter.h"
 
-V2xFilter::V2xFilter(int threadnum, Queue::Ptr &iQueue,Queue::Ptr &oQueue)
-:Broker(10)
+V2xRvBsmFilter::V2xRvBsmFilter(int threadnum, Queue::Ptr &iQueue,Queue::Ptr &oQueue)
+:Broker(3)
 {
   _input_queue = iQueue;
   _output_queue = oQueue;
 
 }
 
-void V2xFilter::work(int num) {
+void V2xRvBsmFilter::work(int num) {
 
   ValuePtr oneCar;
 
   while (1) {
     bool ret = _input_queue->pop(oneCar);
 
-    InfoL << "线程( "<<num<<" )\t从pool中拿到数据处理，数据内容是：" << *oneCar << " 地址是：" << oneCar;
+      TraceL << "线程( "<<num<<" )\t从pool中拿到数据处理，数据内容是：" << *oneCar << " 地址是：" << oneCar;
 
     if (num %2 == 0)
     {
