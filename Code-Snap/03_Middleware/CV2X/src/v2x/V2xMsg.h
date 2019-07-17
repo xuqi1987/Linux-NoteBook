@@ -6,9 +6,11 @@
 #define CV2X_V2XCAR_H
 #include <string>
 #include "Util/Logger.h"
+#include "V2xType.h"
 
 using namespace std;
 using namespace toolkit;
+
 
 namespace v2x
 {
@@ -28,44 +30,44 @@ class V2xBSMMsg
 {
 
 public:
-    uint32_t getTempId() const;
-    void setTempId(uint32_t tempId);
-    uint32_t getSecMark() const;
-    void setSecMark(uint32_t secMark);
-    uint32_t getLatitude() const;
-    void setLatitude(uint32_t latitude);
-    uint32_t getLongitude() const;
-    void setLongitude(uint32_t longitude);
-    uint32_t getElevation() const;
-    void setElevation(uint32_t elevation);
-    uint32_t getTransmissionState() const;
-    void setTransmissionState(uint32_t transmissionState);
-    uint32_t getSpeed() const;
-    void setSpeed(uint32_t speed);
-    uint32_t getHeading() const;
-    void setHeading(uint32_t heading);
+    uint8_t getTempId() const;
+    void setTempId(uint8_t tempId);
+    DSecond_t getSecMark() const;
+    void setSecMark(DSecond_t secMark);
+    Latitude_t getLatitude() const;
+    void setLatitude(Latitude_t latitude);
+    Longitude_t getLongitude() const;
+    void setLongitude(Longitude_t longitude);
+    Elevation_t getElevation() const;
+    void setElevation(Elevation_t elevation);
+    TransmissionState_t getTransmissionState() const;
+    void setTransmissionState(TransmissionState_t transmissionState);
+    Speed_t getSpeed() const;
+    void setSpeed(Speed_t speed);
+    Heading_t getHeading() const;
+    void setHeading(Heading_t heading);
 private:
-    uint32_t _temp_id;
-    uint32_t _sec_mark;
-    uint32_t _latitude;
-    uint32_t _longitude;
-    uint32_t _elevation;
-    uint32_t _transmission_state;
-    uint32_t _speed;
-    uint32_t _heading;
+    uint8_t _temp_id;
+    DSecond_t _sec_mark;
+    Latitude_t _latitude;
+    Longitude_t _longitude;
+    Elevation_t _elevation;
+    TransmissionState_t _transmission_state;
+    Speed_t _speed;
+    Heading_t _heading;
 };
 
 class V2xCANMsg
 {
 public:
-    uint32_t getSpeed() const;
-    void setSpeed(uint32_t speed);
+    Speed_t getSpeed() const;
+    void setSpeed(Speed_t speed);
     uint32_t getSteerWhlAngle() const;
     void setSteerWhlAngle(uint32_t steerWhlAngle);
     uint32_t getEngineStatus() const;
     void setEngineStatus(uint32_t engineStatus);
 private:
-    uint32_t _speed;
+    Speed_t _speed;
     uint32_t _steer_whl_angle;
     uint32_t _engine_status;
 
@@ -75,23 +77,23 @@ class V2xGNSSMsg
 {
 
 public:
-    uint32_t getLatitude() const;
-    void setLatitude(uint32_t latitude);
-    uint32_t getLongitude() const;
-    void setLongitude(uint32_t longitude);
-    uint32_t getAltitude() const;
-    void setAltitude(uint32_t altitude);
-    uint32_t getSpeed() const;
-    void setSpeed(uint32_t speed);
-    uint32_t getHeading() const;
-    void setHeading(uint32_t heading);
 
+    Latitude_t getLatitude() const;
+    void setLatitude(Latitude_t latitude);
+    Longitude_t getLongitude() const;
+    void setLongitude(Longitude_t longitude);
+    Elevation_t getAltitude() const;
+    void setAltitude(Elevation_t altitude);
+    Speed_t getSpeed() const;
+    void setSpeed(Speed_t speed);
+    Heading_t getHeading() const;
+    void setHeading(Heading_t heading);
 private:
-    uint32_t _latitude;
-    uint32_t _longitude;
-    uint32_t _altitude;
-    uint32_t _speed;
-    uint32_t _heading;
+    Latitude_t _latitude;
+    Longitude_t _longitude;
+    Elevation_t _altitude;
+    Speed_t _speed;
+    Heading_t _heading;
 };
 
 class V2xMsg: public string

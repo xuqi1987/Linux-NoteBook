@@ -3,134 +3,8 @@
 //
 
 #include "V2xMsg.h"
-uint32_t v2x::V2xBSMMsg::getTempId() const
-{
-    return _temp_id;
-}
-void v2x::V2xBSMMsg::setTempId(uint32_t tempId)
-{
-    _temp_id = tempId;
-}
-uint32_t v2x::V2xBSMMsg::getSecMark() const
-{
-    return _sec_mark;
-}
-void v2x::V2xBSMMsg::setSecMark(uint32_t secMark)
-{
-    _sec_mark = secMark;
-}
-uint32_t v2x::V2xBSMMsg::getLatitude() const
-{
-    return _latitude;
-}
-void v2x::V2xBSMMsg::setLatitude(uint32_t latitude)
-{
-    _latitude = latitude;
-}
-uint32_t v2x::V2xBSMMsg::getLongitude() const
-{
-    return _longitude;
-}
-void v2x::V2xBSMMsg::setLongitude(uint32_t longitude)
-{
-    _longitude = longitude;
-}
-uint32_t v2x::V2xBSMMsg::getElevation() const
-{
-    return _elevation;
-}
-void v2x::V2xBSMMsg::setElevation(uint32_t elevation)
-{
-    _elevation = elevation;
-}
-uint32_t v2x::V2xBSMMsg::getTransmissionState() const
-{
-    return _transmission_state;
-}
-void v2x::V2xBSMMsg::setTransmissionState(uint32_t transmissionState)
-{
-    _transmission_state = transmissionState;
-}
-uint32_t v2x::V2xBSMMsg::getSpeed() const
-{
-    return _speed;
-}
-void v2x::V2xBSMMsg::setSpeed(uint32_t speed)
-{
-    _speed = speed;
-}
-uint32_t v2x::V2xBSMMsg::getHeading() const
-{
-    return _heading;
-}
-void v2x::V2xBSMMsg::setHeading(uint32_t heading)
-{
-    _heading = heading;
-}
-uint32_t v2x::V2xCANMsg::getSpeed() const
-{
-    return _speed;
-}
-void v2x::V2xCANMsg::setSpeed(uint32_t speed)
-{
-    _speed = speed;
-}
-uint32_t v2x::V2xCANMsg::getSteerWhlAngle() const
-{
-    return _steer_whl_angle;
-}
-void v2x::V2xCANMsg::setSteerWhlAngle(uint32_t steerWhlAngle)
-{
-    _steer_whl_angle = steerWhlAngle;
-}
-uint32_t v2x::V2xCANMsg::getEngineStatus() const
-{
-    return _engine_status;
-}
-void v2x::V2xCANMsg::setEngineStatus(uint32_t engineStatus)
-{
-    _engine_status = engineStatus;
-}
-uint32_t v2x::V2xGNSSMsg::getLatitude() const
-{
-    return _latitude;
-}
-void v2x::V2xGNSSMsg::setLatitude(uint32_t latitude)
-{
-    _latitude = latitude;
-}
-uint32_t v2x::V2xGNSSMsg::getLongitude() const
-{
-    return _longitude;
-}
-void v2x::V2xGNSSMsg::setLongitude(uint32_t longitude)
-{
-    _longitude = longitude;
-}
-uint32_t v2x::V2xGNSSMsg::getAltitude() const
-{
-    return _altitude;
-}
-void v2x::V2xGNSSMsg::setAltitude(uint32_t altitude)
-{
-    _altitude = altitude;
-}
-uint32_t v2x::V2xGNSSMsg::getSpeed() const
-{
-    return _speed;
-}
-void v2x::V2xGNSSMsg::setSpeed(uint32_t speed)
-{
-    _speed = speed;
-}
-uint32_t v2x::V2xGNSSMsg::getHeading() const
-{
-    return _heading;
-}
-void v2x::V2xGNSSMsg::setHeading(uint32_t heading)
-{
-    _heading = heading;
-}
+
+
 v2x::V2xMsg::msg_type_e v2x::V2xMsg::getMsgType() const
 {
     return _msg_type;
@@ -175,4 +49,133 @@ void v2x::V2xMsg::Print()
     }
     DebugL << info;
 
+}
+
+uint8_t v2x::V2xBSMMsg::getTempId() const
+{
+    return _temp_id;
+}
+void v2x::V2xBSMMsg::setTempId(uint8_t tempId)
+{
+    _temp_id = tempId;
+}
+v2x::DSecond_t v2x::V2xBSMMsg::getSecMark() const
+{
+    return _sec_mark;
+}
+void v2x::V2xBSMMsg::setSecMark(v2x::DSecond_t secMark)
+{
+    _sec_mark = secMark;
+}
+v2x::Latitude_t v2x::V2xBSMMsg::getLatitude() const
+{
+    return _latitude;
+}
+void v2x::V2xBSMMsg::setLatitude(v2x::Latitude_t latitude)
+{
+    _latitude = latitude;
+}
+v2x::Longitude_t v2x::V2xBSMMsg::getLongitude() const
+{
+    return _longitude;
+}
+void v2x::V2xBSMMsg::setLongitude(v2x::Longitude_t longitude)
+{
+    _longitude = longitude;
+}
+v2x::Elevation_t v2x::V2xBSMMsg::getElevation() const
+{
+    return _elevation;
+}
+void v2x::V2xBSMMsg::setElevation(v2x::Elevation_t elevation)
+{
+    _elevation = elevation;
+}
+v2x::TransmissionState_t v2x::V2xBSMMsg::getTransmissionState() const
+{
+    return _transmission_state;
+}
+void v2x::V2xBSMMsg::setTransmissionState(v2x::TransmissionState_t transmissionState)
+{
+    _transmission_state = transmissionState;
+}
+v2x::Speed_t v2x::V2xBSMMsg::getSpeed() const
+{
+    return _speed;
+}
+void v2x::V2xBSMMsg::setSpeed(v2x::Speed_t speed)
+{
+    _speed = speed;
+}
+v2x::Heading_t v2x::V2xBSMMsg::getHeading() const
+{
+    return _heading;
+}
+void v2x::V2xBSMMsg::setHeading(v2x::Heading_t heading)
+{
+    _heading = heading;
+}
+v2x::Speed_t v2x::V2xCANMsg::getSpeed() const
+{
+    return _speed;
+}
+void v2x::V2xCANMsg::setSpeed(v2x::Speed_t speed)
+{
+    _speed = speed;
+}
+uint32_t v2x::V2xCANMsg::getSteerWhlAngle() const
+{
+    return _steer_whl_angle;
+}
+void v2x::V2xCANMsg::setSteerWhlAngle(uint32_t steerWhlAngle)
+{
+    _steer_whl_angle = steerWhlAngle;
+}
+uint32_t v2x::V2xCANMsg::getEngineStatus() const
+{
+    return _engine_status;
+}
+void v2x::V2xCANMsg::setEngineStatus(uint32_t engineStatus)
+{
+    _engine_status = engineStatus;
+}
+v2x::Latitude_t v2x::V2xGNSSMsg::getLatitude() const
+{
+    return _latitude;
+}
+void v2x::V2xGNSSMsg::setLatitude(v2x::Latitude_t latitude)
+{
+    _latitude = latitude;
+}
+v2x::Longitude_t v2x::V2xGNSSMsg::getLongitude() const
+{
+    return _longitude;
+}
+void v2x::V2xGNSSMsg::setLongitude(v2x::Longitude_t longitude)
+{
+    _longitude = longitude;
+}
+v2x::Elevation_t v2x::V2xGNSSMsg::getAltitude() const
+{
+    return _altitude;
+}
+void v2x::V2xGNSSMsg::setAltitude(v2x::Elevation_t altitude)
+{
+    _altitude = altitude;
+}
+v2x::Speed_t v2x::V2xGNSSMsg::getSpeed() const
+{
+    return _speed;
+}
+void v2x::V2xGNSSMsg::setSpeed(v2x::Speed_t speed)
+{
+    _speed = speed;
+}
+v2x::Heading_t v2x::V2xGNSSMsg::getHeading() const
+{
+    return _heading;
+}
+void v2x::V2xGNSSMsg::setHeading(v2x::Heading_t heading)
+{
+    _heading = heading;
 }

@@ -44,7 +44,7 @@ ThreadPoolResult::ThreadPoolResult(size_t threads)
 }
 
 
-// add new work item to the pool
+// add new run item to the pool
 // 将队列压入线程池,其中f是要执行的函数， args是多有的参数
 template<class F, class... Args>
 auto ThreadPoolResult::enqueue(F&& f, Args&&... args) // 右值引用

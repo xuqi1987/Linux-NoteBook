@@ -20,7 +20,7 @@ Broker::~Broker() {
 }
 void Broker::start() {
   for (int i = 0; i < _thread_num; i++) {
-    _thread->async(bind(&Broker::work,this,i));
+    _thread->async(bind(&Broker::run,this,i));
   }
 
   _thread->start();

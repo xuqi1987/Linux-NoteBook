@@ -28,7 +28,7 @@ class V2xRvBsmFilter : public Broker{
   typedef MsgQueue<ValuePtr> Queue;
 
   V2xRvBsmFilter(int threadnum,Queue::Ptr &iQueue,Queue::Ptr &oQueue);
-  void work(int num) override;
+  void run(int num) override;
 
  private:
   Queue::Ptr _input_queue;

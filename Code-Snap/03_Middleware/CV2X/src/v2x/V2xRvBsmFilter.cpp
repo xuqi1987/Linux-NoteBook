@@ -12,7 +12,7 @@ V2xRvBsmFilter::V2xRvBsmFilter(int threadnum, Queue::Ptr &iQueue,Queue::Ptr &oQu
 
 }
 
-void V2xRvBsmFilter::work(int num) {
+void V2xRvBsmFilter::run(int num) {
 
   ValuePtr oneCar;
 

@@ -16,7 +16,7 @@ class Broker
   Broker(int threadnum);
   virtual ~Broker();
   void start();
-  virtual void work(int num) = 0;
+  virtual void run(int num) = 0;
  private:
   ThreadPool::Ptr _thread;
   int _thread_num;

@@ -4,6 +4,15 @@
 #include <sys/types.h>
 #include <stdio.h>
 #include "BasicSafetyMessage.h"
+#include "Util/Logger.h"
+#include "Util/RecycleResourcePool.h"
+#include "MsgQueue.h"
+#include "v2x/V2xMsg.h"
+#include "v2x/V2xApp.h"
+
+using namespace std;
+using namespace v2x;
+using namespace toolkit;
 
 static int write_out(const void *buffer, size_t size, void *app_key)
 {
@@ -14,6 +23,10 @@ static int write_out(const void *buffer, size_t size, void *app_key)
 
 int main()
 {
+
+    Logger::Instance().add(make_shared<ConsoleChannel>());
+    Logger::Instance().setLevel(LDebug);
+
     BasicSafetyMessage_t *BSM = new BasicSafetyMessage_t();
     BSM->msgCnt = (MsgCount_t) 100;
 
