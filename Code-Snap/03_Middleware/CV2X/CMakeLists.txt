@@ -13,20 +13,22 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 set(ToolKit_Root ${CMAKE_SOURCE_DIR}/3rdpart/LinuxToolKit/src)
 set(MWKit_Root ${CMAKE_SOURCE_DIR}/3rdpart/MWKit/src)
 set(CV2X_Root ${CMAKE_SOURCE_DIR}/src)
-set(ASN1_Root ${CMAKE_SOURCE_DIR}/3rdpart/Asn1/src)
+set(CV2XAsn1_Root ${CMAKE_SOURCE_DIR}/3rdpart/CV2XAsn1/src)
 
 #设置头文件目录
 INCLUDE_DIRECTORIES(${MWKit_Root})
 INCLUDE_DIRECTORIES(${ToolKit_Root})
 INCLUDE_DIRECTORIES(${CV2X_Root})
-INCLUDE_DIRECTORIES(${ASN1_Root})
+INCLUDE_DIRECTORIES(${CV2XAsn1_Root})
 
 #收集源代码
 file(GLOB ToolKit_src_list ${ToolKit_Root}/*/*.cpp ${ToolKit_Root}/*/*.h ${ToolKit_Root}/*/*.c)
 file(GLOB CV2X_src_list ${CV2X_Root}/*.cpp ${CV2X_Root}/v2x/*.cpp  ${CV2X_Root}/v2x/*.h ${CV2X_Root}/v2x/*.c ${CV2X_Root}/v2x/message/*.cpp  ${CV2X_Root}/v2x/message
-        /*.h ${CV2X_Root}/test/*.h ${CV2X_Root}/test/*.cpp ${ASN1_Root}/*.c ${ASN1_Root}/*.h)
-file(GLOB MWKit_src_list ${MWKit_Root}/*.cpp  ${MWKit_Root}/*.h ${MWKit_Root}/*.c)
+        /*.h ${CV2X_Root}/test/*.h ${CV2X_Root}/test/*.cpp)
 
+file(GLOB CV2XAsn1_src_list ${CV2XAsn1_Root}/*.cpp  ${CV2XAsn1_Root}/*.h ${CV2XAsn1_Root}/*.c)
+file(GLOB MWKit_src_list ${MWKit_Root}/*.cpp  ${MWKit_Root}/*.h ${MWKit_Root}/*.c)
+message(STATUS "File:${CV2XAsn1_Root}")
 
 #添加库
 add_library(toolkit STATIC ${ToolKit_src_list})

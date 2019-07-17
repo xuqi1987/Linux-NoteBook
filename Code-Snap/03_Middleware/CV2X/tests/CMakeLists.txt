@@ -5,7 +5,7 @@ foreach(TEST_SRC ${TEST_SRC_LIST})
     message(STATUS "添加测试程序:${TEST_EXE_NAME}")
     add_executable(${TEST_EXE_NAME} ${TEST_SRC})
 
-    target_link_libraries(${TEST_EXE_NAME} ${CMAKE_PROJECT_NAME}_shared ${LINK_LIB_LIST} pthread)
+    target_link_libraries(${TEST_EXE_NAME}  ${LINK_LIB_LIST} pthread)
 
 endforeach(TEST_SRC ${TEST_SRC_LIST})
 
