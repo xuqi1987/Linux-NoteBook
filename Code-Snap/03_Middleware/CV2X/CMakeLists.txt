@@ -27,14 +27,17 @@ file(GLOB CV2X_src_list ${CV2X_Root}/*.cpp ${CV2X_Root}/v2x/*.cpp  ${CV2X_Root}/
         /*.h ${CV2X_Root}/test/*.h ${CV2X_Root}/test/*.cpp)
 
 file(GLOB CV2XAsn1_src_list ${CV2XAsn1_Root}/*.cpp  ${CV2XAsn1_Root}/*.h ${CV2XAsn1_Root}/*.c)
+
 file(GLOB MWKit_src_list ${MWKit_Root}/*.cpp  ${MWKit_Root}/*.h ${MWKit_Root}/*.c)
+
 message(STATUS "File:${CV2XAsn1_Root}")
 
 #添加库
 add_library(toolkit STATIC ${ToolKit_src_list})
 add_library(mwkit STATIC ${MWKit_src_list})
+add_library(asn1 STATIC ${CV2XAsn1_src_list})
 
-set(LINK_LIB_LIST  toolkit mwkit)
+set(LINK_LIB_LIST  toolkit mwkit asn1)
 
 list(APPEND LINK_LIB_LIST pthread)
 #打印库文件
