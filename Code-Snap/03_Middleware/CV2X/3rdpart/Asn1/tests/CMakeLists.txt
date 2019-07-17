@@ -1,3 +1,4 @@
+﻿#execute_process(COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/ssl.p12 ${EXECUTABLE_OUTPUT_PATH}/)
 
 aux_source_directory(. TEST_SRC_LIST)
 foreach(TEST_SRC ${TEST_SRC_LIST})
@@ -7,5 +8,5 @@ foreach(TEST_SRC ${TEST_SRC_LIST})
 
     target_link_libraries(${TEST_EXE_NAME} ${CMAKE_PROJECT_NAME}_shared ${LINK_LIB_LIST} pthread)
 
-endforeach(TEST_SRC ${TEST_SRC_LIST})
 
+endforeach(TEST_SRC ${TEST_SRC_LIST})
