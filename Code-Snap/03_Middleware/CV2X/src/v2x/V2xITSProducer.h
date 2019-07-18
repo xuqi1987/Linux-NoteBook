@@ -13,6 +13,7 @@
 #include "MsgQueue.h"
 #include "V2xMsg.h"
 #include "Producer.h"
+#include "V2xRvBsmFilter.h"
 
 using namespace std;
 using namespace v2x;
@@ -35,6 +36,9 @@ public:
  private:
     RecycleResourcePool<V2xMsg> _rv_bsm_pool;
     Queue::Ptr _rv_bsm_queue;
+    Queue::Ptr _tmp_rv_bsm_queue;
+
+    V2xRvBsmFilter::Ptr _filter;
 };
 
 

@@ -10,8 +10,6 @@
 #include <thread>
 #include <future>
 #include "Util/Logger.h"
-#include "Util/RecycleResourcePool.h"
-#include "MsgQueue.h"
 #include "V2xMsg.h"
 #include "Producer.h"
 
@@ -24,18 +22,16 @@ using namespace mwkit;
 class V2xCANProducer: public Producer
 {
 public:
-
     typedef shared_ptr<V2xCANProducer> Ptr;
-    typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
-    typedef MsgQueue<ValuePtr> Queue;
 
-    V2xCANProducer(Queue::Ptr &queue);
+    V2xCANProducer();
     virtual ~V2xCANProducer();
     void run() override;
+    const V2xCANMsg &getCANMsg() const;
 
 private:
-    RecycleResourcePool<V2xMsg> _hv_can_pool;
-    Queue::Ptr _hv_can_queue;
+    V2xCANMsg _can_msg;
+
 };
 
 

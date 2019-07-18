@@ -7,12 +7,14 @@
 
 #include <string>
 #include <random>
+#include "v2x/V2xMsg.h"
 
 using namespace std;
+using namespace v2x;
 namespace test
 {
 
-class TestITSProducer
+class TestITSProducer : public V2xBSMMsg
 {
 public:
 
@@ -22,44 +24,14 @@ public:
         return sInst;
     }
 
-    uint32_t getSecMark() const
-    {
-        return _sec_mark;
-    }
-    uint32_t getLatitude() const
-    {
-        return _latitude;
-    }
-    uint32_t getLongitude() const
-    {
-        return _longitude;
-    }
-    uint32_t getSpeed() const
-    {
-        return _speed;
-    }
-    uint32_t getHeading() const
-    {
-        return _heading;
-    }
-    uint32_t getId() const
-    {
-        return _id;
-    }
 
     void update();
+
 
 private:
     default_random_engine e;
 
-    uint32_t _id;
 
-    uint32_t _sec_mark;
-    uint32_t _latitude;
-
-    uint32_t _longitude;
-    uint32_t _speed;
-    uint32_t _heading;
 
 };
 }

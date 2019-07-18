@@ -9,18 +9,22 @@
 
 using namespace toolkit;
 
+namespace mwkit
+{
+
+
 class Producer
 {
 public:
-  Producer();
-  virtual ~Producer();
-  void start();
-  virtual void run() = 0;
+    Producer();
+    virtual ~Producer();
+    void start();
+    virtual void run() = 0;
 
 private:
-  ThreadPool::Ptr _thread;
+    ThreadPool::Ptr _thread;
 
 };
-
+}
 
 #endif //CV2X_PRODUCER_H

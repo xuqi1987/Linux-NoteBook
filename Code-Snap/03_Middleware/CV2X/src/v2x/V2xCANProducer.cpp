@@ -9,13 +9,6 @@
 
 using namespace test;
 
-V2xCANProducer::V2xCANProducer(Queue::Ptr &queue)
-    : Producer()
-{
-    _hv_can_pool.setSize(100);
-    _hv_can_queue = queue;
-}
-
 V2xCANProducer::~V2xCANProducer()
 {
 
@@ -26,19 +19,21 @@ void V2xCANProducer::run()
 
     while (1) {
 
-        ValuePtr hvcan= _hv_can_pool.obtain();
-
-        hvcan->setMsgType(V2xMsg::MSG_TYPE_CAN);
         TestCANProducer::Inst().update();
 
-        hvcan->u.hvcan.setSpeed(TestCANProducer::Inst().getSpeed());
-        hvcan->u.hvcan.setEngineStatus(TestCANProducer::Inst().getEngineStatus());
-        hvcan->u.hvcan.setSteerWhlAngle(TestCANProducer::Inst().getSteerWhlAngle());
-        hvcan->Print();
-
-        _hv_can_queue->push(hvcan);
+        _can_msg.setSpeed(TestCANProducer::Inst().getSpeed());
+        _can_msg.setEngineStatus(TestCANProducer::Inst().getEngineStatus());
+        _can_msg.setSteerWhlAngle(TestCANProducer::Inst().getSteerWhlAngle());
 
         usleep(1000 * 1000);
 
     }
+}
+V2xCANProducer::V2xCANProducer()
+{
+
+}
+const V2xCANMsg &V2xCANProducer::getCANMsg() const
+{
+    return _can_msg;
 }

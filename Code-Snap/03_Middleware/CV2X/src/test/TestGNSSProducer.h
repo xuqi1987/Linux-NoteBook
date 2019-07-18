@@ -7,12 +7,15 @@
 
 #include <string>
 #include <random>
+#include "v2x/V2xMsg.h"
 
 using namespace std;
+using namespace v2x;
+
 namespace test
 {
 
-class TestGNSSProducer
+class TestGNSSProducer : public V2xGNSSMsg
 {
 public:
 
@@ -22,37 +25,11 @@ public:
         return sInst;
     }
 
-private:
-    uint32_t _latitude;
-public:
-    uint32_t getLatitude() const
-    {
-        return _latitude;
-    }
-    uint32_t getLongitude() const
-    {
-        return _longitude;
-    }
-    uint32_t getAltitude() const
-    {
-        return _altitude;
-    }
-    uint32_t getSpeed() const
-    {
-        return _speed;
-    }
-    uint32_t getHeading() const
-    {
-        return _heading;
-    }
 
     void update();
 private:
     default_random_engine e;
-    uint32_t _longitude;
-    uint32_t _altitude;
-    uint32_t _speed;
-    uint32_t _heading;
+
 };
 }
 

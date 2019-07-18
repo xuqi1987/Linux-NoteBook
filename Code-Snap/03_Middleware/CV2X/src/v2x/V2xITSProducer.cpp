@@ -13,6 +13,9 @@ V2xITSProducer::V2xITSProducer(Queue::Ptr &queue)
 {
     _rv_bsm_pool.setSize(100);
     _rv_bsm_queue = queue;
+    _tmp_rv_bsm_queue = make_shared<V2xITSProducer::Queue>();
+
+    _filter = make_shared<V2xRvBsmFilter>(10, _tmp_rv_bsm_queue, _rv_bsm_queue);
 }
 
 V2xITSProducer::~V2xITSProducer()
@@ -24,6 +27,7 @@ V2xITSProducer::~V2xITSProducer()
 void V2xITSProducer::run()
 {
 
+    _filter->start();
 
     while (1) {
 
@@ -32,18 +36,18 @@ void V2xITSProducer::run()
 
         TestITSProducer::Inst().update();
 
-        rv_bsm->u.hvbsm.setTempId(TestITSProducer::Inst().getId());
-        rv_bsm->u.hvbsm.setSecMark(TestITSProducer::Inst().getSecMark());
-        rv_bsm->u.hvbsm.setLatitude(TestITSProducer::Inst().getLatitude());
-        rv_bsm->u.hvbsm.setLongitude(TestITSProducer::Inst().getLongitude());
-        rv_bsm->u.hvbsm.setHeading(TestITSProducer::Inst().getHeading());
-        rv_bsm->u.hvbsm.setSpeed(TestITSProducer::Inst().getSpeed());
+        rv_bsm->u.rvbsm.setTempId(TestITSProducer::Inst().getTempId());
+        rv_bsm->u.rvbsm.setSecMark(TestITSProducer::Inst().getTempId());
+        rv_bsm->u.rvbsm.setLatitude(TestITSProducer::Inst().getLatitude());
+        rv_bsm->u.rvbsm.setLongitude(TestITSProducer::Inst().getLongitude());
+        rv_bsm->u.rvbsm.setHeading(TestITSProducer::Inst().getHeading());
+        rv_bsm->u.rvbsm.setSpeed(TestITSProducer::Inst().getSpeed());
 
-        rv_bsm->assign(StrPrinter << rv_bsm->u.hvbsm.getTempId());
+        rv_bsm->assign(StrPrinter << rv_bsm->u.rvbsm.getTempId());
 
         rv_bsm->Print();
 
-        _rv_bsm_queue->push(rv_bsm);
+        _tmp_rv_bsm_queue->push(rv_bsm);
 
         usleep(1000 * 1000);
 

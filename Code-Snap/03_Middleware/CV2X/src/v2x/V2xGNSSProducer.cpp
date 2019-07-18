@@ -5,6 +5,7 @@
 #include <v2x/V2xMsg.h>
 #include "V2xGNSSProducer.h"
 #include "test/TestGNSSProducer.h"
+#include "V2xMsg.h"
 
 using namespace test;
 
@@ -12,8 +13,9 @@ using namespace test;
 V2xGNSSProducer::V2xGNSSProducer(Queue::Ptr &queue)
     : Producer()
 {
-    _hv_gnss_pool.setSize(100);
-    _hv_gnss_queue = queue;
+    _hv_bsm_pool.setSize(100);
+    _hv_bsm_queue = queue;
+    _can_producer = make_shared<V2xCANProducer>();
 }
 
 V2xGNSSProducer::~V2xGNSSProducer()
@@ -24,20 +26,24 @@ V2xGNSSProducer::~V2xGNSSProducer()
 void V2xGNSSProducer::run()
 {
 
+    _can_producer->start();
+
     while (1) {
-        ValuePtr gnss = _hv_gnss_pool.obtain();
+        ValuePtr gnss = _hv_bsm_pool.obtain();
 
         gnss->assign("");
-        gnss->setMsgType(V2xMsg::MSG_TYPE_GNSS);
+        gnss->setMsgType(V2xMsg::MSG_TYPE_HV_BSM);
 
         TestGNSSProducer::Inst().update();
-        gnss->u.hvgnss.setSpeed(TestGNSSProducer::Inst().getSpeed());
-        gnss->u.hvgnss.setHeading(TestGNSSProducer::Inst().getHeading());
-        gnss->u.hvgnss.setLongitude(TestGNSSProducer::Inst().getLongitude());
-        gnss->u.hvgnss.setLatitude(TestGNSSProducer::Inst().getLatitude());
+        gnss->u.hvbsm.setTempId(0);
+
+        gnss->u.hvbsm.setSpeed(_can_producer->getCANMsg().getSpeed());
+        gnss->u.hvbsm.setHeading(TestGNSSProducer::Inst().getHeading());
+        gnss->u.hvbsm.setLongitude(TestGNSSProducer::Inst().getLongitude());
+        gnss->u.hvbsm.setLatitude(TestGNSSProducer::Inst().getLatitude());
 
         gnss->Print();
-        _hv_gnss_queue->push(gnss);
+        _hv_bsm_queue->push(gnss);
 
         usleep(1000 * 1000);
 

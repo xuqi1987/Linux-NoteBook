@@ -6,21 +6,20 @@
 void test::TestITSProducer::update()
 {
     uniform_int_distribution<uint32_t> id(1, 9);
-    _id = id(e);
+    this->setTempId(id(e));
 
-    _sec_mark = 0;
+    this->setSecMark(0);
 
     uniform_int_distribution<uint32_t> latitude(1, 9);
-    _latitude = latitude(e);
+    this->setLatitude(latitude(e));
 
     uniform_int_distribution<uint32_t> longitude(1, 9);
-    _longitude = longitude(e);
+    this->setLongitude(longitude(e));
 
     uniform_int_distribution<uint32_t> speed(1, 9);
-    _speed = speed(e);
+    this->setSpeed(speed(e));
 
     uniform_int_distribution<uint32_t> heading(1, 9);
-    _heading = heading(e);
-
+    this->setHeading(heading(e));
 
 }

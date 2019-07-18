@@ -35,17 +35,13 @@ public:
   void createConsumer();
 
  private:
-    V2xITSProducer::Queue::Ptr _its_out_pool;
-    V2xITSProducer::Ptr _its_producer;
+    V2xITSProducer::Queue::Ptr _rv_data_pool;
+    V2xITSProducer::Ptr _rv_producer;
 
-    V2xGNSSProducer::Queue::Ptr _gnss_out_pool;
-    V2xGNSSProducer::Ptr _gnss_producer;
+    V2xGNSSProducer::Queue::Ptr _hv_data_pool;
+    V2xGNSSProducer::Ptr _hv_producer;
 
-    V2xCANProducer::Queue::Ptr _can_out_pool;
-    V2xCANProducer::Ptr _can_producer;
 
-    V2xRvBsmFilter::Queue::Ptr _filter_out_pool;
-    V2xRvBsmFilter::Ptr _filter;
 
 
 };

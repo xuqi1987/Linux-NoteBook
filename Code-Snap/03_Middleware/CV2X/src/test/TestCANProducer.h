@@ -7,13 +7,16 @@
 
 #include <string>
 #include <random>
+#include "v2x/V2xMsg.h"
 
 using namespace std;
+using namespace v2x;
+
 
 namespace test
 {
 
-class TestCANProducer
+class TestCANProducer : public V2xCANMsg
 {
 public:
 
@@ -22,26 +25,12 @@ public:
         static TestCANProducer sInst;
         return sInst;
     }
-    uint32_t getSpeed() const
-    {
-        return _speed;
-    }
-    uint32_t getSteerWhlAngle() const
-    {
-        return _steer_whl_angle;
-    }
-    uint32_t getEngineStatus() const
-    {
-        return _engine_status;
-    }
+
 
     void update();
 private:
     default_random_engine e;
 
-    uint32_t _speed;
-    uint32_t _steer_whl_angle;
-    uint32_t _engine_status;
 };
 
 }

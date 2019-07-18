@@ -21,9 +21,9 @@ void V2xRvBsmFilter::run(int num) {
 
       TraceL << "线程( "<<num<<" )\t从pool中拿到数据处理，数据内容是：" << *oneCar << " 地址是：" << oneCar;
 
-    if (num %2 == 0)
+    if (oneCar->u.rvbsm.getSpeed() > 5)
     {
-      TraceL << "过滤掉的数据" << *oneCar << "数据地址: " << oneCar ;
+      DebugL << "过滤掉的数据，速度大于5" << *oneCar << "数据地址: " << oneCar ;
       oneCar.reset();
 
     }

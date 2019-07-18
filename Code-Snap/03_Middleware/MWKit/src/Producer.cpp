@@ -3,14 +3,22 @@
 //
 
 #include "Producer.h"
-Producer::Producer() {
-  _thread = make_shared<ThreadPool>(1,ThreadPool::PRIORITY_HIGHEST,false);
+
+namespace mwkit
+{
+
+Producer::Producer()
+{
+    _thread = make_shared<ThreadPool>(1, ThreadPool::PRIORITY_HIGHEST, false);
 }
-Producer::~Producer() {
+Producer::~Producer()
+{
 
 }
-void Producer::start() {
+void Producer::start()
+{
 
-  _thread->async(bind(&Producer::run,this));
-  _thread->start();
+    _thread->async(bind(&Producer::run, this));
+    _thread->start();
+}
 }

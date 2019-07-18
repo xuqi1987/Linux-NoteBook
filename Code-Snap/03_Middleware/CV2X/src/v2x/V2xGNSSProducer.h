@@ -15,27 +15,33 @@
 #include "V2xMsg.h"
 #include "Producer.h"
 
+#include "V2xCANProducer.h"
+
 using namespace std;
 using namespace v2x;
 using namespace toolkit;
 using namespace mwkit;
 
-class V2xGNSSProducer : public Producer {
+class V2xGNSSProducer: public Producer
+{
 
- public:
+public:
 
-  typedef shared_ptr<V2xGNSSProducer> Ptr;
-  typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
-  typedef MsgQueue<ValuePtr> Queue;
+    typedef shared_ptr<V2xGNSSProducer> Ptr;
+    typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
+    typedef MsgQueue<ValuePtr> Queue;
 
-  V2xGNSSProducer(Queue::Ptr &queue);
+    V2xGNSSProducer(Queue::Ptr &queue);
 
-  virtual ~V2xGNSSProducer();
-  void run() override;
+    virtual ~V2xGNSSProducer();
+    void run() override;
 
- private:
-  RecycleResourcePool<V2xMsg> _hv_gnss_pool;
-  Queue::Ptr _hv_gnss_queue;
+private:
+
+    V2xCANProducer::Ptr _can_producer;
+
+    RecycleResourcePool<V2xMsg> _hv_bsm_pool;
+    Queue::Ptr _hv_bsm_queue;
 
 };
 

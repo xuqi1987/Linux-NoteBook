@@ -22,7 +22,7 @@ void v2x::V2xMsg::Print()
                           << "\tlongitude:" << u.hvbsm.getLongitude()
                           << "\tspeed:" << u.hvbsm.getSpeed()
                           << "\theading:" << u.hvbsm.getHeading()
-                          << "\t车辆id:" << u.hvbsm.getTempId();
+                          << "\t车辆id:" << int(u.hvbsm.getTempId());
 
     }
     else if (_msg_type == MSG_TYPE_RV_BSM) {
@@ -31,7 +31,7 @@ void v2x::V2xMsg::Print()
                           << "\tlongitude:" << u.rvbsm.getLongitude()
                           << "\tspeed:" << u.rvbsm.getSpeed()
                           << "\theading:" << u.rvbsm.getHeading()
-                          << "\t车辆id:" << u.rvbsm.getTempId();
+                          << "\t车辆id:" << int(u.rvbsm.getTempId());
     }
     else if (_msg_type == MSG_TYPE_GNSS) {
         info = StrPrinter << "【GNSS】"
