@@ -7,6 +7,7 @@
 #include "test/TestITSProducer.h"
 
 using namespace test;
+namespace v2x {
 
 V2xITSProducer::V2xITSProducer(Queue::Ptr &queue)
     : Producer()
@@ -52,6 +53,8 @@ void V2xITSProducer::run()
         usleep(1000 * 1000);
 
     }
+}
+
 }
 
 

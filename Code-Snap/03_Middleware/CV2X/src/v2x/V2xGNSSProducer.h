@@ -22,6 +22,8 @@ using namespace v2x;
 using namespace toolkit;
 using namespace mwkit;
 
+namespace v2x
+{
 class V2xGNSSProducer: public Producer
 {
 
@@ -44,5 +46,6 @@ private:
     Queue::Ptr _hv_bsm_queue;
 
 };
+}
 
 #endif //CV2X_SRC_V2X_V2XGNSSPRODUCER_H_

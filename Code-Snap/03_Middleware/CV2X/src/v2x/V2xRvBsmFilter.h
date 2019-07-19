@@ -18,21 +18,24 @@ using namespace std;
 using namespace v2x;
 using namespace toolkit;
 using namespace mwkit;
+namespace v2x
+{
 
+class V2xRvBsmFilter: public Broker
+{
+public:
 
-class V2xRvBsmFilter : public Broker{
- public:
+    typedef shared_ptr<V2xRvBsmFilter> Ptr;
+    typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
+    typedef MsgQueue<ValuePtr> Queue;
 
-  typedef shared_ptr<V2xRvBsmFilter> Ptr;
-  typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
-  typedef MsgQueue<ValuePtr> Queue;
+    V2xRvBsmFilter(int threadnum, Queue::Ptr &iQueue, Queue::Ptr &oQueue);
+    void run(int num) override;
 
-  V2xRvBsmFilter(int threadnum,Queue::Ptr &iQueue,Queue::Ptr &oQueue);
-  void run(int num) override;
-
- private:
-  Queue::Ptr _input_queue;
-  Queue::Ptr _output_queue;
+private:
+    Queue::Ptr _input_queue;
+    Queue::Ptr _output_queue;
 };
+}
 
 #endif //CV2X_SRC_V2X_V2XFILTER_H_

@@ -4,7 +4,8 @@
 
 #include "V2xMsg.h"
 
-
+namespace v2x
+{
 v2x::V2xMsg::msg_type_e v2x::V2xMsg::getMsgType() const
 {
     return _msg_type;
@@ -178,4 +179,5 @@ v2x::Heading_t v2x::V2xGNSSMsg::getHeading() const
 void v2x::V2xGNSSMsg::setHeading(v2x::Heading_t heading)
 {
     _heading = heading;
+}
 }

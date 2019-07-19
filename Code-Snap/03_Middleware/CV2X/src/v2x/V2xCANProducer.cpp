@@ -9,6 +9,10 @@
 
 using namespace test;
 
+namespace v2x
+{
+
+
 V2xCANProducer::~V2xCANProducer()
 {
 
@@ -36,4 +40,5 @@ V2xCANProducer::V2xCANProducer()
 const V2xCANMsg &V2xCANProducer::getCANMsg() const
 {
     return _can_msg;
+}
 }

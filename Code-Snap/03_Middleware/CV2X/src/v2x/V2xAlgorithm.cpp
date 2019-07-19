@@ -4,6 +4,8 @@
 
 #include "V2xAlgorithm.h"
 
+namespace v2x {
+
 double v2x::V2xAlgorithm::lonlat2dis(Longitude_t lon1, Latitude_t lat1, Longitude_t lon2, Latitude_t lat2)
 {
     //R = 6371.004;%km
@@ -115,4 +117,5 @@ bool v2x::V2xAlgorithm::isFront(v2x::V2xBSMMsg &bsm1, v2x::V2xBSMMsg &bsm2)
 
 
 
+}
 

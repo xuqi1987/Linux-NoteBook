@@ -20,7 +20,9 @@ using namespace v2x;
 using namespace toolkit;
 using namespace mwkit;
 
-class V2xITSProducer : public Producer
+namespace v2x
+{
+class V2xITSProducer: public Producer
 {
 public:
 
@@ -28,18 +30,17 @@ public:
     typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
     typedef MsgQueue<ValuePtr> Queue;
 
-
     V2xITSProducer(Queue::Ptr &queue);
     virtual ~V2xITSProducer();
     void run() override;
 
- private:
+private:
     RecycleResourcePool<V2xMsg> _rv_bsm_pool;
     Queue::Ptr _rv_bsm_queue;
     Queue::Ptr _tmp_rv_bsm_queue;
 
     V2xRvBsmFilter::Ptr _filter;
 };
-
+}
 
 #endif //CV2X_V2XITSPRODUCER_H

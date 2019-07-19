@@ -8,7 +8,8 @@
 #include "V2xMsg.h"
 
 using namespace test;
-
+namespace v2x
+{
 
 V2xGNSSProducer::V2xGNSSProducer(Queue::Ptr &queue)
     : Producer()
@@ -48,4 +49,5 @@ void V2xGNSSProducer::run()
         usleep(1000 * 1000);
 
     }
+}
 }

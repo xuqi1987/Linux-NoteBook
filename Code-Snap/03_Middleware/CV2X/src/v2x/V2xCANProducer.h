@@ -17,7 +17,8 @@ using namespace std;
 using namespace v2x;
 using namespace toolkit;
 using namespace mwkit;
-
+namespace v2x
+{
 
 class V2xCANProducer: public Producer
 {
@@ -33,6 +34,6 @@ private:
     V2xCANMsg _can_msg;
 
 };
-
+}
 
 #endif //V2XCANPRODUCER_H
