@@ -12,8 +12,8 @@
 #include "Util/RecycleResourcePool.h"
 #include "MsgQueue.h"
 #include "V2xMsg.h"
-#include "Producer.h"
-#include "V2xRvBsmFilter.h"
+#include "v2xApp/V2xRvBsmFilter.h"
+#include "V2xThread.h"
 
 using namespace std;
 using namespace v2x;
@@ -22,7 +22,7 @@ using namespace mwkit;
 
 namespace v2x
 {
-class V2xITSProducer: public Producer
+class V2xITSProducer: public V2xThread
 {
 public:
 
@@ -37,9 +37,9 @@ public:
 private:
     RecycleResourcePool<V2xMsg> _rv_bsm_pool;
     Queue::Ptr _rv_bsm_queue;
-    Queue::Ptr _tmp_rv_bsm_queue;
+    //Queue::Ptr _tmp_rv_bsm_queue;
 
-    V2xRvBsmFilter::Ptr _filter;
+    //V2xRvBsmFilter::Ptr _filter;
 };
 }
 

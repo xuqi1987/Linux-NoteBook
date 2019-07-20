@@ -13,7 +13,7 @@
 #include "Util/RecycleResourcePool.h"
 #include "MsgQueue.h"
 #include "V2xMsg.h"
-#include "Producer.h"
+#include "V2xThread.h"
 
 #include "V2xCANProducer.h"
 
@@ -24,11 +24,9 @@ using namespace mwkit;
 
 namespace v2x
 {
-class V2xGNSSProducer: public Producer
+class V2xGNSSProducer: public V2xThread
 {
-
 public:
-
     typedef shared_ptr<V2xGNSSProducer> Ptr;
     typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
     typedef MsgQueue<ValuePtr> Queue;
@@ -44,6 +42,8 @@ private:
 
     RecycleResourcePool<V2xMsg> _hv_bsm_pool;
     Queue::Ptr _hv_bsm_queue;
+
+    ThreadPool::Ptr _thread;
 
 };
 }

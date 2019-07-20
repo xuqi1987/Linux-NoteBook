@@ -7,7 +7,7 @@
 
 #include <string>
 #include <random>
-#include "v2x/V2xMsg.h"
+#include "v2xFacility/V2xMsg.h"
 
 using namespace std;
 using namespace v2x;

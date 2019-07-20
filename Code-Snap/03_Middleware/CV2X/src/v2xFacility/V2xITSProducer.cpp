@@ -2,7 +2,7 @@
 // Created by root on 19-7-12.
 //
 
-#include <v2x/V2xMsg.h>
+#include <v2xFacility/V2xMsg.h>
 #include "V2xITSProducer.h"
 #include "test/TestITSProducer.h"
 
@@ -10,13 +10,13 @@ using namespace test;
 namespace v2x {
 
 V2xITSProducer::V2xITSProducer(Queue::Ptr &queue)
-    : Producer()
+    : V2xThread()
 {
     _rv_bsm_pool.setSize(100);
     _rv_bsm_queue = queue;
-    _tmp_rv_bsm_queue = make_shared<V2xITSProducer::Queue>();
+   // _tmp_rv_bsm_queue = make_shared<V2xITSProducer::Queue>();
 
-    _filter = make_shared<V2xRvBsmFilter>(10, _tmp_rv_bsm_queue, _rv_bsm_queue);
+   // _filter = make_shared<V2xRvBsmFilter>(10, _tmp_rv_bsm_queue, _rv_bsm_queue);
 }
 
 V2xITSProducer::~V2xITSProducer()
@@ -28,7 +28,7 @@ V2xITSProducer::~V2xITSProducer()
 void V2xITSProducer::run()
 {
 
-    _filter->start();
+    //_filter->start();
 
     while (1) {
 
@@ -46,9 +46,9 @@ void V2xITSProducer::run()
 
         rv_bsm->assign(StrPrinter << rv_bsm->u.rvbsm.getTempId());
 
-        rv_bsm->Print();
+        //rv_bsm->Print();
 
-        _tmp_rv_bsm_queue->push(rv_bsm);
+        _rv_bsm_queue->push(rv_bsm);
 
         usleep(1000 * 1000);
 

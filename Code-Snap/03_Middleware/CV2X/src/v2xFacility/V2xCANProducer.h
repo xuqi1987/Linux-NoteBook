@@ -11,16 +11,17 @@
 #include <future>
 #include "Util/Logger.h"
 #include "V2xMsg.h"
-#include "Producer.h"
+#include "V2xThread.h"
 
 using namespace std;
 using namespace v2x;
 using namespace toolkit;
-using namespace mwkit;
+
+
 namespace v2x
 {
 
-class V2xCANProducer: public Producer
+class V2xCANProducer: public V2xThread
 {
 public:
     typedef shared_ptr<V2xCANProducer> Ptr;
