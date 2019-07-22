@@ -6,7 +6,7 @@
 #define CV2X_V2XCAR_H
 #include <string>
 #include "Util/Logger.h"
-#include "V2xType.h"
+#include "v2xStack/V2xType.h"
 
 using namespace std;
 using namespace toolkit;
@@ -128,7 +128,7 @@ public:
 
     ~V2xMsg()
     {
-        WarnL << "销毁V2xMsg对象:" << this << " " << *this;
+        DebugL << "销毁V2xMsg对象:" << this << " " << *this;
     };
 
     void Print();

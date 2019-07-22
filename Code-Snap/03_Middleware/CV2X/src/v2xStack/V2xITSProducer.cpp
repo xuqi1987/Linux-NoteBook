@@ -2,7 +2,7 @@
 // Created by root on 19-7-12.
 //
 
-#include <v2xFacility/V2xMsg.h>
+#include "v2xApp/V2xMsg.h"
 #include "V2xITSProducer.h"
 #include "test/TestITSProducer.h"
 
@@ -46,7 +46,7 @@ void V2xITSProducer::run()
 
         rv_bsm->assign(StrPrinter << rv_bsm->u.rvbsm.getTempId());
 
-        //rv_bsm->Print();
+        rv_bsm->Print();
 
         _rv_bsm_queue->push(rv_bsm);
 

@@ -11,13 +11,17 @@
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
 #include "MsgQueue.h"
-#include "v2xFacility/V2xMsg.h"
+#include "V2xMsg.h"
 #include "Thread/ThreadPool.h"
-#include "v2xFacility/V2xITSProducer.h"
-#include "v2xFacility/V2xGNSSProducer.h"
-#include "v2xFacility/V2xCANProducer.h"
-#include "v2xFacility/V2xFacilityAPI.h"
+#include "v2xStack/V2xITSProducer.h"
+#include "v2xStack/V2xGNSSProducer.h"
+#include "v2xStack/V2xCANProducer.h"
+#include "v2xStack/v2xStackAPI.h"
+
 #include "V2xRvBsmFilter.h"
+#include "V2xReceiver.h"
+#include "V2xBroker.h"
+#include "V2xSender.h"
 
 using namespace std;
 using namespace v2x;
@@ -32,8 +36,13 @@ public:
   void run();
 
  private:
-    V2xFacilityAPI::Queue::Ptr _hv_data_queue;
-    V2xFacilityAPI::Queue::Ptr _rv_data_queue;
+    V2xReceiver::Ptr _receiver;
+    V2xReceiver::Queue::Ptr _hv_out_pool;
+    V2xReceiver::Queue::Ptr _rv_out_pool;
+
+
+    V2xBroker::Ptr _broker;
+    V2xSender::Ptr _sender;
 };
 }
 

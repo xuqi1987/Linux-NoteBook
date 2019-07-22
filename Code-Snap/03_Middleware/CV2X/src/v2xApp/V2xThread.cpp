@@ -3,6 +3,7 @@
 //
 
 #include "V2xThread.h"
+#include "Util/Logger.h"
 namespace v2x
 {
 

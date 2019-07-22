@@ -11,9 +11,9 @@
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
 #include "MsgQueue.h"
-#include "V2xMsg.h"
+#include "v2xApp/V2xMsg.h"
 #include "v2xApp/V2xRvBsmFilter.h"
-#include "V2xThread.h"
+#include "v2xApp/V2xThread.h"
 
 using namespace std;
 using namespace v2x;

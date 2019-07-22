@@ -6,7 +6,7 @@
 #define V2XALGORITHM_H
 #include <math.h>
 #include <cstdint>
-#include "v2xFacility/V2xMsg.h"
+#include "V2xMsg.h"
 
 namespace v2x {
 

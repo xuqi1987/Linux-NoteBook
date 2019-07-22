@@ -2,10 +2,10 @@
 // Created by xuqi on 2019-07-13.
 //
 
-#include <v2xFacility/V2xMsg.h>
+#include "v2xApp/V2xMsg.h"
 #include "V2xGNSSProducer.h"
 #include "test/TestGNSSProducer.h"
-#include "V2xMsg.h"
+#include "v2xApp/V2xMsg.h"
 
 using namespace test;
 namespace v2x
@@ -14,7 +14,7 @@ namespace v2x
 V2xGNSSProducer::V2xGNSSProducer(Queue::Ptr &queue)
     : V2xThread()
 {
-    _hv_bsm_pool.setSize(100);
+    _hv_bsm_pool.setSize(1);
     _hv_bsm_queue = queue;
     _can_producer = make_shared<V2xCANProducer>();
 }
@@ -43,7 +43,7 @@ void V2xGNSSProducer::run()
         gnss->u.hvbsm.setLongitude(TestGNSSProducer::Inst().getLongitude());
         gnss->u.hvbsm.setLatitude(TestGNSSProducer::Inst().getLatitude());
 
-        //gnss->Print();
+        gnss->Print();
         _hv_bsm_queue->push(gnss);
 
         usleep(1000 * 1000);

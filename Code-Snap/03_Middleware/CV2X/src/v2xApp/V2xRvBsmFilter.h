@@ -11,7 +11,7 @@
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
 #include "MsgQueue.h"
-#include "v2xFacility/V2xMsg.h"
+#include "V2xMsg.h"
 #include "Broker.h"
 
 using namespace std;

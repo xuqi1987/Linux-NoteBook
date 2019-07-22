@@ -15,7 +15,7 @@ class V2xFacilityMgnt
 {
 public:
 
-    friend  class V2xFacilityAPI;
+    friend  class v2xStackAPI;
     typedef shared_ptr<V2xFacilityMgnt> Ptr;
     typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
     typedef MsgQueue<ValuePtr> Queue;

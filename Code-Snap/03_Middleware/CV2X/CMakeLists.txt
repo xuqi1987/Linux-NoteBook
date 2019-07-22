@@ -23,7 +23,7 @@ INCLUDE_DIRECTORIES(${CV2XAsn1_Root})
 
 #收集源代码
 file(GLOB ToolKit_src_list ${ToolKit_Root}/*/*.cpp ${ToolKit_Root}/*/*.h ${ToolKit_Root}/*/*.c)
-file(GLOB CV2X_src_list ${CV2X_Root}/*.cpp ${CV2X_Root}/*/*.cpp  ${CV2X_Root}/*/*.h ${CV2X_Root}/*/*.c)
+file(GLOB CV2X_src_list ${CV2X_Root}/*.cpp ${CV2X_Root}/*/*.cpp  ${CV2X_Root}/*/*.h ${CV2X_Root}/*/*.c ${CV2X_Root}/*/*/*.cpp  ${CV2X_Root}/*/*/*.h ${CV2X_Root}/*/*/*.c)
 
 file(GLOB CV2XAsn1_src_list ${CV2XAsn1_Root}/*.cpp  ${CV2XAsn1_Root}/*.h ${CV2XAsn1_Root}/*.c)
 

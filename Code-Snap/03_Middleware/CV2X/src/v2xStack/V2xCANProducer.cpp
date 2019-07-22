@@ -2,7 +2,7 @@
 // Created by xuqi on 2019-07-16.
 //
 
-#include <v2xFacility/V2xMsg.h>
+#include "v2xApp/V2xMsg.h"
 #include "V2xCANProducer.h"
 
 #include "test/TestCANProducer.h"

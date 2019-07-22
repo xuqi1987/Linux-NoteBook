@@ -15,6 +15,8 @@ void V2xFacilityMgnt::run()
     _hv_producer->start();
     usleep(1000 * 10);
     _rv_producer->start();
+
+   // DebugL << "V2xFacilityMgnt::run()";
 }
 
 V2xFacilityMgnt::V2xFacilityMgnt()

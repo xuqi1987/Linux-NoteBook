@@ -2,10 +2,10 @@
 // Created by xuqi on 2019-07-20.
 //
 
-#ifndef V2XFACILITYAPI_H
-#define V2XFACILITYAPI_H
+#ifndef V2XSTACKAPI_H
+#define V2XSTACKAPI_H
 
-#include "V2xMsg.h"
+#include "v2xApp/V2xMsg.h"
 #include "Util/RecycleResourcePool.h"
 #include "MsgQueue.h"
 #include "V2xFacilityMgnt.h"
@@ -18,12 +18,12 @@ class V2xFacilityMgnt;
 
 namespace v2x {
 
-class V2xFacilityAPI
+class v2xStackAPI
 {
 public:
-    static V2xFacilityAPI & Instance();
+    static v2xStackAPI & Instance();
 
-    typedef shared_ptr<V2xFacilityAPI> Ptr;
+    typedef shared_ptr<v2xStackAPI> Ptr;
     typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
     typedef MsgQueue<ValuePtr> Queue;
 
@@ -38,4 +38,4 @@ private:
 }
 
 
-#endif //V2XFACILITYAPI_H
+#endif //V2XSTACKAPI_H

@@ -3,40 +3,42 @@
 //
 
 #include "V2xApp.h"
-#include "v2xFacility/V2xFacilityAPI.h"
+#include "v2xStack/v2xStackAPI.h"
 #include "Util/Logger.h"
 namespace v2x
 {
 
 V2xApp::V2xApp()
 {
+    // 接收消息
+    _receiver = make_shared<V2xReceiver>();
+    _hv_out_pool = make_shared<V2xReceiver::Queue>();
+    _rv_out_pool = make_shared<V2xReceiver::Queue>();
 
+    _broker = make_shared<V2xBroker>();
+    _sender = make_shared<V2xSender>();
 }
 
 void V2xApp::run()
 {
-    V2xFacilityAPI::Instance().init();
-    V2xFacilityAPI::ValuePtr msg;
-    _hv_data_queue = make_shared<V2xFacilityAPI::Queue>();
-    _rv_data_queue = make_shared<V2xFacilityAPI::Queue>();
 
-    while (V2xFacilityAPI::Instance().recv(msg))
+    try {
+
+        // 设置Receiver的输出是_hv_out_pool和_rv_out_pool
+        _receiver->setHvDataQueue(_hv_out_pool);
+        _receiver->setRvDataQueue(_rv_out_pool);
+        _receiver->start();
+
+
+        //_broker->start();
+        //_sender->start();
+    }
+    catch (...)
     {
-       switch (msg->getMsgType())
-       {
-           case V2xMsg::MSG_TYPE_HV_BSM:
-               _hv_data_queue->push(msg);
-               break;
-           case V2xMsg::MSG_TYPE_RV_BSM:
-               _rv_data_queue->push(msg);
-               break;
-           default:
-               break;
-       }
+        ErrorL << "Error";
     }
 
+
 }
-
-
 
 }
