@@ -10,6 +10,7 @@
 #include <functional>
 #include <unordered_set>
 #include <list>
+#include "Util/Logger.h"
 
 using namespace std;
 
@@ -101,7 +102,7 @@ private:
 			TraceL << "该对象"<< obj <<"因为池满无法放回池中，被析构";
 			return;
 		}
-		TraceL << "将对象"<< obj <<"放入池中️";
+		TraceL << "将对象放回池中: "<< obj;
 		_objs.emplace_back(obj);
 	}
 private:

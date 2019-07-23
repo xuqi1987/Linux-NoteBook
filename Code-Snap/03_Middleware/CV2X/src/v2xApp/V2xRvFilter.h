@@ -8,6 +8,8 @@
 #include <memory>
 #include <thread>
 #include <future>
+#include "Util/RecycleResourcePool.h"
+#include "V2xMsg.h"
 
 using namespace std;
 
@@ -16,6 +18,8 @@ class V2xRvFilter
 {
 public:
     typedef shared_ptr<V2xRvFilter> Ptr;
+    bool isDiscard(V2xMsg::ValuePtr &pHv, V2xMsg::ValuePtr &pRv);
+
 };
 }
 

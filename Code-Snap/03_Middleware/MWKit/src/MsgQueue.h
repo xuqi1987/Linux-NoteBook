@@ -42,6 +42,7 @@ public:
     }
 
 
+
 private:
     std::queue<T> _queue;
     mutable mutex _mutex;

@@ -5,7 +5,7 @@
 #ifndef V2XTYPE_H
 #define V2XTYPE_H
 
-#endif //V2XTYPE_H
+
 
 namespace v2x {
 
@@ -46,3 +46,4 @@ typedef long	 VehicleWidth_t;
 typedef long	 VehicleLength_t;
 
 }
+#endif //V2XTYPE_H

@@ -37,10 +37,10 @@ public:
 
  private:
     V2xReceiver::Ptr _receiver;
-    V2xReceiver::Queue::Ptr _hv_out_pool;
-    V2xReceiver::Queue::Ptr _rv_out_pool;
+    V2xMsg::Queue::Ptr _hv_out_queue;
+    V2xMsg::Queue::Ptr _rv_out_queue;
 
-
+    V2xScene::Queue::Ptr _scene_out_queue;
     V2xBroker::Ptr _broker;
     V2xSender::Ptr _sender;
 };

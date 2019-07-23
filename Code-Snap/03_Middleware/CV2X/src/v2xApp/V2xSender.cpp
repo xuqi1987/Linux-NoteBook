@@ -3,7 +3,14 @@
 //
 
 #include "V2xSender.h"
-void v2x::V2xSender::run()
+namespace v2x {
+void V2xSender::run()
 {
 
 }
+void V2xSender::setSceneQueue(V2xScene::Queue::Ptr &sceneQueue)
+{
+    _scene_queue = sceneQueue;
+}
+}
+

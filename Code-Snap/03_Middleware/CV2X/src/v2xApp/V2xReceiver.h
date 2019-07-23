@@ -30,20 +30,18 @@ class V2xReceiver : public V2xThread
 {
 public:
     typedef shared_ptr<V2xReceiver> Ptr;
-    typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
-    typedef MsgQueue<ValuePtr> Queue;
 
     V2xReceiver();
     void run() override;
     void distribute();
 
-    void setHvDataQueue(Queue::Ptr &q);
-    void setRvDataQueue(Queue::Ptr &q);
+    void setHvDataQueue(V2xMsg::Queue::Ptr &q);
+    void setRvDataQueue(V2xMsg::Queue::Ptr &q);
 
 private:
-    Queue::Ptr _hv_data_queue;
-    Queue::Ptr _rv_data_queue;
-    ValuePtr _curCar;
+    V2xMsg::Queue::Ptr _hv_data_queue;
+    V2xMsg::Queue::Ptr _rv_data_queue;
+    V2xMsg::ValuePtr _curCar;
 
     V2xRvFilter::Ptr _filter;
 };
