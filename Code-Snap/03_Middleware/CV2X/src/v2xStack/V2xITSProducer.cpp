@@ -16,7 +16,7 @@ V2xITSProducer::V2xITSProducer(Queue::Ptr &queue)
     _rv_bsm_queue = queue;
    // _tmp_rv_bsm_queue = make_shared<V2xITSProducer::Queue>();
 
-   // _filter = make_shared<V2xRvBsmFilter>(10, _tmp_rv_bsm_queue, _rv_bsm_queue);
+   // _filter = make_shared<V2xRvAsyncFilter>(10, _tmp_rv_bsm_queue, _rv_bsm_queue);
 }
 
 V2xITSProducer::~V2xITSProducer()

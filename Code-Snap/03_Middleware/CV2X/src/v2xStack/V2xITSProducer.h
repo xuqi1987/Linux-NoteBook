@@ -12,7 +12,7 @@
 #include "Util/RecycleResourcePool.h"
 #include "MsgQueue.h"
 #include "v2xApp/V2xMsg.h"
-#include "v2xApp/V2xRvBsmFilter.h"
+#include "v2xApp/V2xRvAsyncFilter.h"
 #include "v2xApp/V2xThread.h"
 
 using namespace std;
@@ -39,7 +39,7 @@ private:
     Queue::Ptr _rv_bsm_queue;
     //Queue::Ptr _tmp_rv_bsm_queue;
 
-    //V2xRvBsmFilter::Ptr _filter;
+    //V2xRvAsyncFilter::Ptr _filter;
 };
 }
 

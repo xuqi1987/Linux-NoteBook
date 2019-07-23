@@ -23,8 +23,8 @@ void v2x::V2xReceiver::distribute()
 
                 break;
             case V2xMsg::MSG_TYPE_RV_BSM:
-                
                 _rv_data_queue->push(msg);
+                _filter->
 
                 break;
             default:
@@ -43,5 +43,10 @@ void V2xReceiver::setRvDataQueue(Queue::Ptr &q)
 {
     _rv_data_queue = q;
 
+}
+V2xReceiver::V2xReceiver()
+    : _hv_data_queue(nullptr), _rv_data_queue(nullptr), _filter(nullptr)
+{
+    _filter = make_shared<V2xRvFilter>();
 }
 

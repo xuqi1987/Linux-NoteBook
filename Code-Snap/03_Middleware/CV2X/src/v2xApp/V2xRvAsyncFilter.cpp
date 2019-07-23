@@ -2,10 +2,10 @@
 // Created by xuqi on 2019-07-13.
 //
 
-#include "V2xRvBsmFilter.h"
+#include "V2xRvAsyncFilter.h"
 namespace v2x
 {
-V2xRvBsmFilter::V2xRvBsmFilter(int threadnum, Queue::Ptr &iQueue, Queue::Ptr &oQueue)
+V2xRvAsyncFilter::V2xRvAsyncFilter(int threadnum, Queue::Ptr &iQueue, Queue::Ptr &oQueue)
     : Broker(3)
 {
   _input_queue = iQueue;
@@ -13,7 +13,7 @@ V2xRvBsmFilter::V2xRvBsmFilter(int threadnum, Queue::Ptr &iQueue, Queue::Ptr &oQ
 
 }
 
-void V2xRvBsmFilter::run(int num)
+void V2xRvAsyncFilter::run(int num)
 {
 
   ValuePtr oneCar;

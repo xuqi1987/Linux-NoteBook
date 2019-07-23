@@ -17,6 +17,7 @@
 #include "v2xStack/V2xGNSSProducer.h"
 #include "v2xStack/V2xCANProducer.h"
 #include "v2xStack/v2xStackAPI.h"
+#include "V2xRvFilter.h"
 
 using namespace std;
 using namespace v2x;
@@ -32,6 +33,7 @@ public:
     typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
     typedef MsgQueue<ValuePtr> Queue;
 
+    V2xReceiver();
     void run() override;
     void distribute();
 
@@ -43,6 +45,7 @@ private:
     Queue::Ptr _rv_data_queue;
     ValuePtr _curCar;
 
+    V2xRvFilter::Ptr _filter;
 };
 }
 
