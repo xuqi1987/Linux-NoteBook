@@ -29,7 +29,7 @@ void V2xCANProducer::run()
         _can_msg.setEngineStatus(TestCANProducer::Inst().getEngineStatus());
         _can_msg.setSteerWhlAngle(TestCANProducer::Inst().getSteerWhlAngle());
 
-        usleep(1000 * 1000);
+        usleep(1000 * 100);
 
     }
 }

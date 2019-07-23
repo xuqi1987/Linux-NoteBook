@@ -46,7 +46,7 @@ void V2xGNSSProducer::run()
         gnss->Print();
         _hv_bsm_queue->push(gnss);
 
-        usleep(1000 * 1000);
+        usleep(1000 * 100);
 
     }
 }

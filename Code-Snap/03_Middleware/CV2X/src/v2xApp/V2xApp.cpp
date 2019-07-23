@@ -39,6 +39,7 @@ void V2xApp::run()
         _broker->setSceneOutQueue(_scene_out_queue);
         _broker->start();
 
+        _sender->setSceneQueue(_scene_out_queue);
         _sender->start();
     }
     catch (...)

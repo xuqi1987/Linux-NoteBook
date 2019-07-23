@@ -50,7 +50,7 @@ void V2xITSProducer::run()
 
         _rv_bsm_queue->push(rv_bsm);
 
-        usleep(1000 * 1000);
+        usleep(1000 * 100);
 
     }
 }
