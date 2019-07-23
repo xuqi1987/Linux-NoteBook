@@ -24,7 +24,7 @@ void v2x::V2xReceiver::distribute()
                 break;
             case V2xMsg::MSG_TYPE_RV_BSM:
                 _rv_data_queue->push(msg);
-                _filter->
+                //_filter->
 
                 break;
             default:
