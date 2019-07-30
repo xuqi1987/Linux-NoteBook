@@ -69,6 +69,19 @@ string exePath();
 string exeDir();
 string exeName();
 
+//去除前后的空格、回车符、制表符...
+std::string& trim(std::string &s,const string &chars=" \r\n\t");
+std::string trim(std::string &&s,const string &chars=" \r\n\t");
+// string转小写
+std::string &strToLower(std::string &str);
+std::string strToLower(std::string &&str);
+// string转大写
+std::string &strToUpper(std::string &str);
+std::string strToUpper(std::string &&str);
+void replace(string &str, const string &old_str, const string &new_str) ;
+
+
+
 
 /**
  * 获取1970年至今的毫秒数
