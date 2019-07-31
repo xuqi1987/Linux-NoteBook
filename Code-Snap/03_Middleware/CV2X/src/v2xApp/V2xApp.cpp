@@ -33,7 +33,6 @@ void V2xApp::run()
         _receiver->setRvDataQueue(_rv_out_queue);
         _receiver->start();
 
-
         _broker->setHvDataQueue(_hv_out_queue);
         _broker->setRvDataQueue(_rv_out_queue);
         _broker->setSceneOutQueue(_scene_out_queue);

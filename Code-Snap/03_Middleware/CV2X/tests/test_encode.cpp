@@ -6,7 +6,7 @@
 #include "BasicSafetyMessage.h"
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
-#include "MsgQueue.h"
+#include "v2xUtil/V2xMsgQueue.h"
 #include "v2xApp/V2xMsg.h"
 #include "v2x/V2xApp.h"
 

@@ -11,16 +11,16 @@
 #include <future>
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
-#include "MsgQueue.h"
+#include "v2xUtil/V2xMsgQueue.h"
 #include "v2xApp/V2xMsg.h"
-#include "v2xApp/V2xThread.h"
+#include "v2xUtil/V2xThread.h"
 
 #include "V2xCANProducer.h"
 
 using namespace std;
 using namespace v2x;
 using namespace toolkit;
-using namespace mwkit;
+
 
 namespace v2x
 {
@@ -29,7 +29,7 @@ class V2xGNSSProducer: public V2xThread
 public:
     typedef shared_ptr<V2xGNSSProducer> Ptr;
     typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
-    typedef MsgQueue<ValuePtr> Queue;
+    typedef V2xMsgQueue<ValuePtr> Queue;
 
     V2xGNSSProducer(Queue::Ptr &queue);
 

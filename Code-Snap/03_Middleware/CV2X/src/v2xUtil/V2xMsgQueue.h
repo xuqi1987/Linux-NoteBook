@@ -11,14 +11,14 @@
 
 using namespace toolkit;
 
-namespace mwkit {
+namespace v2x {
 
 template <typename T>
-class MsgQueue : public std::enable_shared_from_this<MsgQueue<T> > , public noncopyable
+class V2xMsgQueue : public std::enable_shared_from_this<V2xMsgQueue<T> > , public noncopyable
 {
 public:
 
-    typedef shared_ptr<MsgQueue<T> > Ptr;
+    typedef shared_ptr<V2xMsgQueue<T> > Ptr;
     template <typename C>
     void push(C &&data) {
         {

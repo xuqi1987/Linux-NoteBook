@@ -4,27 +4,31 @@
 
 #include "v2xApp/V2xReceiver.h"
 #include <exception>
-void v2x::V2xReceiver::run()
+
+namespace v2x
 {
+
+
+void V2xReceiver::run()
+{
+    // 测试程序启动，模拟发假数据
     v2xStackAPI::Instance().init();
+
+
     distribute();
 }
-void v2x::V2xReceiver::distribute()
+void V2xReceiver::distribute()
 {
 
     v2xStackAPI::ValuePtr msg;
-    while (v2xStackAPI::Instance().recv(msg))
-    {
+    while (v2xStackAPI::Instance().recv(msg)) {
 
-        switch (msg->getMsgType())
-        {
-            case V2xMsg::MSG_TYPE_HV_BSM:
-                TraceL << "V2xReceiver HV 分配:" << msg;
+        switch (msg->getMsgType()) {
+            case V2xMsg::MSG_TYPE_HV_BSM:TraceL << "V2xReceiver HV 分配:" << msg;
                 _hv_data_queue->push(msg);
                 _curCar = msg;
                 break;
-            case V2xMsg::MSG_TYPE_RV_BSM:
-            {
+            case V2xMsg::MSG_TYPE_RV_BSM: {
                 if (!_filter->isDiscard(msg, _curCar)) {
 
                     TraceL << "V2xReceiver RV 分配:" << msg;
@@ -33,8 +37,7 @@ void v2x::V2xReceiver::distribute()
 
             }
                 break;
-            default:
-                break;
+            default:break;
         }
     }
 
@@ -54,3 +57,4 @@ V2xReceiver::V2xReceiver()
     _filter = make_shared<V2xRvFilter>();
 }
 
+}

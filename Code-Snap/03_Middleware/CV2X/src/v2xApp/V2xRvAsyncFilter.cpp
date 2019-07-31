@@ -6,7 +6,7 @@
 namespace v2x
 {
 V2xRvAsyncFilter::V2xRvAsyncFilter(int threadnum, Queue::Ptr &iQueue, Queue::Ptr &oQueue)
-    : Broker(3)
+
 {
   _input_queue = iQueue;
   _output_queue = oQueue;

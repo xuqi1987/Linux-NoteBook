@@ -8,11 +8,10 @@
 #include "Util/Logger.h"
 #include "v2xStack/V2xType.h"
 #include "Util/RecycleResourcePool.h"
-#include "MsgQueue.h"
+#include "v2xUtil/V2xMsgQueue.h"
 
 using namespace std;
 using namespace toolkit;
-using namespace mwkit;
 
 namespace v2x {
 
@@ -23,7 +22,7 @@ public:
     typedef shared_ptr<V2xScene> Ptr;
     typedef RecycleResourcePool<V2xScene> Pool;
     typedef RecycleResourcePool<V2xScene>::ValuePtr ValuePtr;
-    typedef MsgQueue<ValuePtr> Queue;
+    typedef V2xMsgQueue<ValuePtr> Queue;
 
     typedef enum
     {

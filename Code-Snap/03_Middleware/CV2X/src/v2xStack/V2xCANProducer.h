@@ -11,7 +11,7 @@
 #include <future>
 #include "Util/Logger.h"
 #include "v2xApp/V2xMsg.h"
-#include "v2xApp/V2xThread.h"
+#include "v2xUtil/V2xThread.h"
 
 using namespace std;
 using namespace v2x;

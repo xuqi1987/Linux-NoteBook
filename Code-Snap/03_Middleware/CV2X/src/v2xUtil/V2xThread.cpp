@@ -17,6 +17,7 @@ v2x::V2xThread::~V2xThread()
 }
 void v2x::V2xThread::start()
 {
+
     _thread->async(bind(&V2xThread::run, this));
     _thread->start();
 }

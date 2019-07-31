@@ -4,7 +4,7 @@
 
 #ifndef V2XSENDER_H
 #define V2XSENDER_H
-#include "V2xThread.h"
+#include "v2xUtil/V2xThread.h"
 #include "V2xScene.h"
 
 namespace v2x {

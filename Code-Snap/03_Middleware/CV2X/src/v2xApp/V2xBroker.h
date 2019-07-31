@@ -4,18 +4,18 @@
 
 #ifndef V2XBROKER_H
 #define V2XBROKER_H
-#include "V2xThread.h"
+#include "v2xUtil/V2xThread.h"
 #include "Thread/ThreadPool.h"
 #include "Util/RecycleResourcePool.h"
 #include "V2xMsg.h"
 #include "V2xScene.h"
-#include "MsgQueue.h"
+#include "v2xUtil/V2xMsgQueue.h"
 
 
 using namespace std;
 using namespace v2x;
 using namespace toolkit;
-using namespace mwkit;
+
 
 namespace v2x {
 

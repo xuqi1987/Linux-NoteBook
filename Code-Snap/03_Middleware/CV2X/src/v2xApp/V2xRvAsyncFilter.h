@@ -10,27 +10,28 @@
 #include <future>
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
-#include "MsgQueue.h"
+#include "v2xUtil/V2xMsgQueue.h"
 #include "V2xMsg.h"
-#include "Broker.h"
+#include "v2xUtil/V2xThreadPool.h"
 
 using namespace std;
 using namespace v2x;
 using namespace toolkit;
-using namespace mwkit;
 namespace v2x
 {
 
-class V2xRvAsyncFilter: public Broker
+class V2xRvAsyncFilter: public V2xThreadPool
 {
 public:
+    void run(int num) override;
 
     typedef shared_ptr<V2xRvAsyncFilter> Ptr;
     typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
-    typedef MsgQueue<ValuePtr> Queue;
+    typedef V2xMsgQueue<ValuePtr> Queue;
 
     V2xRvAsyncFilter(int threadnum, Queue::Ptr &iQueue, Queue::Ptr &oQueue);
-    void run(int num) override;
+
+
 
 private:
     Queue::Ptr _input_queue;

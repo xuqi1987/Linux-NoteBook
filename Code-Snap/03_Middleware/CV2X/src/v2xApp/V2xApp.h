@@ -10,7 +10,7 @@
 #include <future>
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
-#include "MsgQueue.h"
+#include "v2xUtil/V2xMsgQueue.h"
 #include "V2xMsg.h"
 #include "Thread/ThreadPool.h"
 #include "v2xStack/V2xITSProducer.h"

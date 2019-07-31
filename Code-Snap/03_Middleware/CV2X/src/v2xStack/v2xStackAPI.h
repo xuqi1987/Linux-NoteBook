@@ -7,12 +7,11 @@
 
 #include "v2xApp/V2xMsg.h"
 #include "Util/RecycleResourcePool.h"
-#include "MsgQueue.h"
+#include "v2xUtil/V2xMsgQueue.h"
 #include "V2xFacilityMgnt.h"
 
 
 using namespace toolkit;
-using namespace mwkit;
 
 class V2xFacilityMgnt;
 
@@ -25,7 +24,7 @@ public:
 
     typedef shared_ptr<v2xStackAPI> Ptr;
     typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
-    typedef MsgQueue<ValuePtr> Queue;
+    typedef V2xMsgQueue<ValuePtr> Queue;
 
     void init();
     bool recv(ValuePtr &msg);
