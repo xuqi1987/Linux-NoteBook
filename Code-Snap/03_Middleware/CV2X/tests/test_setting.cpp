@@ -9,15 +9,18 @@ using namespace toolkit;
 using namespace v2x;
 int main()
 {
-    V2xSettting set1;
-    set1["RV.a"] = 1 ;
-    set1["RV.b"] = 2 ;
-    set1["RV.c"] = 3;
-    set1.dumpFile("./set.ini");
+    V2xSettting conf;
 
-    V2xSettting set2;
-    set2.parseFile("./set.ini");
-    std::cout << set2["RV.c"];
+    conf["Debug.LOG"] = "ON";
+    conf["Common.SpeedLimt"] = 60;
+    conf.save();
+
+
+    V2xSettting conf2;
+    conf.load();
+//    SET.load();
+//
+//    cout << SET["RV.TIME"];
 
     return 0;
 }
