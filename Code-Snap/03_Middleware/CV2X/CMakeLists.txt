@@ -14,11 +14,15 @@ set(ToolKit_Root ${CMAKE_SOURCE_DIR}/3rdpart/LinuxToolKit/src)
 
 set(CV2X_Root ${CMAKE_SOURCE_DIR}/src/)
 set(CV2XAsn1_Root ${CMAKE_SOURCE_DIR}/3rdpart/CV2XAsn1/src)
+set(CV2XCVS_Root ${CMAKE_SOURCE_DIR}/3rdpart/csv)
 
 #设置头文件目录
 INCLUDE_DIRECTORIES(${ToolKit_Root})
 INCLUDE_DIRECTORIES(${CV2X_Root})
 INCLUDE_DIRECTORIES(${CV2XAsn1_Root})
+INCLUDE_DIRECTORIES(${CV2XCVS_Root})
+
+LINK_DIRECTORIES()
 
 #收集源代码
 file(GLOB ToolKit_src_list ${ToolKit_Root}/*/*.cpp ${ToolKit_Root}/*/*.h ${ToolKit_Root}/*/*.c)

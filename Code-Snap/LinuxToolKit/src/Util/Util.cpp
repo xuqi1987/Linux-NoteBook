@@ -3,6 +3,7 @@
 //
 
 #include <thread>
+#include <algorithm>
 #include "Util.h"
 #include "Logger.h"
 #include "OnceToken.h"
