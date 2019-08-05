@@ -11,10 +11,12 @@ v2x::V2xThread::V2xThread()
 {
     _thread = make_shared<ThreadPool>(1, ThreadPool::PRIORITY_HIGHEST, false);
 }
+
 v2x::V2xThread::~V2xThread()
 {
 
 }
+
 void v2x::V2xThread::start()
 {
 

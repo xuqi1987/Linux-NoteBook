@@ -36,8 +36,9 @@ message(STATUS "File:${CV2XAsn1_Root}")
 #添加库
 add_library(toolkit STATIC ${ToolKit_src_list})
 add_library(asn1 STATIC ${CV2XAsn1_src_list})
+add_library(v2xapp STATIC ${CV2X_src_list})
 
-set(LINK_LIB_LIST  toolkit asn1)
+set(LINK_LIB_LIST  toolkit asn1 v2xapp)
 
 list(APPEND LINK_LIB_LIST pthread)
 #打印库文件

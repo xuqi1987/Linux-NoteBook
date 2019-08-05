@@ -41,8 +41,6 @@ public:
         return true;
     }
 
-
-
 private:
     std::queue<T> _queue;
     mutable mutex _mutex;
