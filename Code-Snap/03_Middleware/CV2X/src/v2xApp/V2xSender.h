@@ -19,5 +19,6 @@ private:
     V2xScene::Queue::Ptr _scene_queue;
 };
 
+
 }
 #endif //V2XSENDER_H

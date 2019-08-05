@@ -14,7 +14,7 @@ set(ToolKit_Root ${CMAKE_SOURCE_DIR}/3rdpart/LinuxToolKit/src)
 
 set(CV2X_Root ${CMAKE_SOURCE_DIR}/src/)
 set(CV2XAsn1_Root ${CMAKE_SOURCE_DIR}/3rdpart/CV2XAsn1/src)
-set(CV2XCVS_Root ${CMAKE_SOURCE_DIR}/3rdpart/csv)
+set(CV2XCVS_Root ${CMAKE_SOURCE_DIR}/3rdpart)
 
 #设置头文件目录
 INCLUDE_DIRECTORIES(${ToolKit_Root})

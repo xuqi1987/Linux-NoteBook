@@ -13,13 +13,11 @@ namespace v2x {
 
 const string path_name = "./conf.ini";
 
-
-class V2xSettting :public mINI
+class V2xSetting : public mINI
 {
 public:
 
-    V2xSettting(){};
-    virtual ~V2xSettting(){};
+    static V2xSetting &Instance();
 
     void load() {
         this->parseFile(path_name);
@@ -31,11 +29,12 @@ public:
     bool hasKey(const char *key){
         return this->find(key) != this->end();
     }
-private:
 
 };
 
-static V2xSettting gInst;
+#define SET V2xSetting::Instance()
+
+
 }
 
 #endif //CV2X_V2XSETTTING_H

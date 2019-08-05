@@ -1,7 +1,7 @@
 //
 // Created by xuqi on 2019-07-30.
 //
-#include "v2xApp/V2xSettting.h"
+#include "v2xApp/V2xSetting.h"
 #include <iostream>
 
 using namespace std;
@@ -9,15 +9,14 @@ using namespace toolkit;
 using namespace v2x;
 int main()
 {
-    V2xSettting conf;
-
-    conf["Debug.LOG"] = "ON";
-    conf["Common.SpeedLimt"] = 60;
-    conf.save();
+    SET["Debug.LOG"] = "ON";
 
 
-    V2xSettting conf2;
-    conf.load();
+    SET.save();
+
+    SET.load();
+
+    cout << SET["Debug.LOG"];
 //    SET.load();
 //
 //    cout << SET["RV.TIME"];

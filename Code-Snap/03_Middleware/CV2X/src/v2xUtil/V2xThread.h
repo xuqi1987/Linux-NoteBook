@@ -16,7 +16,7 @@ class V2xThread
 public:
     V2xThread();
     virtual ~V2xThread();
-    void start();
+    virtual void start();
     virtual void run() = 0;
 
 private:

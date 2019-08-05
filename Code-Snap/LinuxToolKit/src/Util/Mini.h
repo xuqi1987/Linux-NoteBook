@@ -158,7 +158,7 @@ struct variant: public string
 };
 
 // 定义一个别名
-using mINI = mINI_basic<string, variant>;
+using   mINI = mINI_basic<string, variant>;
 
 }  // namespace toolkit
 
