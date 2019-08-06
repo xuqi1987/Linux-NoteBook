@@ -10,7 +10,7 @@
 #include "v2xUtil/V2xMsg.h"
 #include "v2xUtil/V2xSceneMsg.h"
 #include "v2xUtil/V2xMsgQueue.h"
-
+#include "V2xRvThreadPool.h"
 
 using namespace std;
 using namespace v2x;
@@ -33,7 +33,7 @@ public:
     void setSceneOutQueue(V2xSceneMsg::Queue::Ptr &sceneOutQueue);
 
 private:
-    ThreadPool::Ptr _scene_thread_pool;
+    ThreadPool::Ptr _rvThreadPool;
     V2xMsg::Queue::Ptr _hv_data_queue;
     V2xMsg::Queue::Ptr _rv_data_queue;
     V2xSceneMsg::Pool _scene_pool;

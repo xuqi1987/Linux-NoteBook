@@ -8,21 +8,19 @@ namespace v2x {
 
 void V2xBroker::run()
 {
-    _scene_thread_pool->async(bind(&V2xBroker::sceneCheck, this));
-    _scene_thread_pool->start();
+    _rvThreadPool->async(bind(&V2xBroker::sceneCheck, this));
+    _rvThreadPool->start();
 
     V2xMsg::ValuePtr msg;
     while(_hv_data_queue->pop(msg))
     {
         TraceL << *msg;
     }
-
-
 }
 
 V2xBroker::V2xBroker()
 {
-    _scene_thread_pool = make_shared<ThreadPool>(2,ThreadPool::PRIORITY_HIGHEST, false);
+    _rvThreadPool = make_shared<ThreadPool>(2,ThreadPool::PRIORITY_HIGHEST, false);
     _scene_pool.setSize(100);
 
 }

@@ -43,7 +43,7 @@ BasicSafetyMessage ::= SEQUENCE {
 typedef struct BasicSafetyMessage
 {
     MsgCount_t msgCnt;
-    uint8_t id;
+    uint32_t id;
     OCTET_STRING_t *plateNo    /* OPTIONAL */;
     DSecond_t secMark;
     Position3D_t pos;
@@ -145,6 +145,7 @@ public:
 private:
     msg_type_e _msg_type;
 };
+
 
 }
 
