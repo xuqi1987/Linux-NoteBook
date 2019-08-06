@@ -102,7 +102,7 @@ int v2x::V2xAlgorithm::fcw_level(long lon_hv,
 double v2x::V2xAlgorithm::lonlat2dis(v2x::V2xBSMMsg &bsm1, v2x::V2xBSMMsg &bsm2)
 {
 
-   return lonlat2dis(bsm1.getLongitude(),bsm1.getLatitude(),bsm2.getLongitude(),bsm2.getLatitude());;
+   return lonlat2dis(bsm1.pos.lon,bsm1.pos.lat,bsm2.pos.lon,bsm2.pos.lat);;
 }
 bool v2x::V2xAlgorithm::isLRrear(v2x::V2xBSMMsg &bsm1, v2x::V2xBSMMsg &bsm2)
 {

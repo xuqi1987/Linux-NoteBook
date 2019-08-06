@@ -7,8 +7,8 @@
 #include "v2xUtil/V2xThread.h"
 #include "Thread/ThreadPool.h"
 #include "Util/RecycleResourcePool.h"
-#include "V2xMsg.h"
-#include "V2xSceneMsg.h"
+#include "v2xUtil/V2xMsg.h"
+#include "v2xUtil/V2xSceneMsg.h"
 #include "v2xUtil/V2xMsgQueue.h"
 
 

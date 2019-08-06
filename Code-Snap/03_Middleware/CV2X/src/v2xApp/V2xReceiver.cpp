@@ -3,25 +3,32 @@
 //
 
 #include "v2xApp/V2xReceiver.h"
+#include "v2xStack/V2xFacifAPI.h"
+#include "v2xApp/V2xSetting.h"
+
 #include <exception>
 
 namespace v2x
 {
-
-
 void V2xReceiver::run()
 {
-    // 测试程序启动，模拟发假数据
-    v2xStackAPI::Instance().init();
+    V2xFacifAPI::Instance().init();
 
+    if (SET["Debug.ScenceReplayFlag"].as<bool>())
+    {
+
+    }
+    else
+    {
+
+    }
 
     distribute();
 }
 void V2xReceiver::distribute()
 {
-
-    v2xStackAPI::ValuePtr msg;
-    while (v2xStackAPI::Instance().recv(msg)) {
+    V2xFacifAPI::ValuePtr msg;
+    while (V2xFacifAPI::Instance().recv(msg)) {
 
         switch (msg->getMsgType()) {
             case V2xMsg::MSG_TYPE_HV_BSM:TraceL << "V2xReceiver HV 分配:" << msg;

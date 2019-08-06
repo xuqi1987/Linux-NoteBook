@@ -3,7 +3,6 @@
 //
 
 #include "V2xApp.h"
-#include "v2xStack/v2xStackAPI.h"
 #include "Util/Logger.h"
 namespace v2x
 {

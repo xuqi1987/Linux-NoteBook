@@ -11,12 +11,9 @@
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
 #include "v2xUtil/V2xMsgQueue.h"
-#include "V2xMsg.h"
+#include "v2xUtil/V2xMsg.h"
 #include "Thread/ThreadPool.h"
-#include "v2xStack/V2xITSProducer.h"
-#include "v2xStack/V2xGNSSProducer.h"
-#include "v2xStack/V2xCANProducer.h"
-#include "v2xStack/v2xStackAPI.h"
+#include "Thread/ThreadPool.h"
 #include "V2xRvFilter.h"
 
 using namespace std;

@@ -9,7 +9,7 @@
 #include <thread>
 #include <future>
 #include "Util/RecycleResourcePool.h"
-#include "V2xMsg.h"
+#include "v2xUtil/V2xMsg.h"
 
 using namespace std;
 

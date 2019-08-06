@@ -7,7 +7,7 @@
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
 #include "v2xUtil/V2xMsgQueue.h"
-#include "v2xApp/V2xMsg.h"
+#include "v2xUtil/V2xMsg.h"
 #include "v2xApp/V2xApp.h"
 
 using namespace std;

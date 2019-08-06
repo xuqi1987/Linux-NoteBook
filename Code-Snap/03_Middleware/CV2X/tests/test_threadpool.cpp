@@ -4,7 +4,7 @@
 #include "v2xUtil/V2xThreadPool.h"
 #include "v2xUtil/V2xThread.h"
 #include "Util/RecycleResourcePool.h"
-#include "v2xApp/V2xMsg.h"
+#include "v2xUtil/V2xMsg.h"
 
 using namespace std;
 using namespace toolkit;

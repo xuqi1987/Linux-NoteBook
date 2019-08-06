@@ -3,7 +3,7 @@
 //
 
 #include "V2xSender.h"
-#include "V2xSceneMsg.h"
+#include "v2xUtil/V2xSceneMsg.h"
 
 namespace v2x {
 void V2xSender::run()
