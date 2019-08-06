@@ -32,7 +32,7 @@ void V2xBroker::setRvDataQueue(V2xMsg::Queue::Ptr &rvDataQueue)
 void V2xBroker::sceneCheck()
 {
     V2xMsg::ValuePtr msg;
-    V2xScene::ValuePtr scene;
+    V2xSceneMsg::ValuePtr scene;
 
     while (_rv_data_queue->pop(msg))
     {
@@ -44,21 +44,21 @@ void V2xBroker::sceneCheck()
 
             if(msg->u.rvbsm.getTempId()== 1)
             {
-                scene->setLevel(V2xScene::LEVEL_1);
+                scene->setLevel(V2xSceneMsg::LEVEL_1);
                 scene->assign(StrPrinter <<"高优先级 场景触发，进程:" << getpid()<< " " <<msg );
                 scene->setSecMark(msg->u.rvbsm.getSecMark());
                 _scene_out_queue->push(scene);
             }
             else if (msg->u.rvbsm.getTempId()== 2)
             {
-                scene->setLevel(V2xScene::LEVEL_2);
+                scene->setLevel(V2xSceneMsg::LEVEL_2);
                 scene->setSecMark(msg->u.rvbsm.getSecMark());
                 scene->assign(StrPrinter <<"中优先级 场景触发，进程:" << getpid()<< " " <<msg);
                 _scene_out_queue->push(scene);
             }
             else if (msg->u.rvbsm.getTempId()== 3)
             {
-                scene->setLevel(V2xScene::LEVEL_3);
+                scene->setLevel(V2xSceneMsg::LEVEL_3);
                 scene->setSecMark(msg->u.rvbsm.getSecMark());
                 scene->assign(StrPrinter <<"低优先级 场景触发，进程:" << getpid()<< " " <<msg);
                 _scene_out_queue->push(scene);
@@ -73,7 +73,7 @@ void V2xBroker::sceneCheck()
 
     }
 }
-void V2xBroker::setSceneOutQueue(V2xScene::Queue::Ptr &sceneOutQueue)
+void V2xBroker::setSceneOutQueue(V2xSceneMsg::Queue::Ptr &sceneOutQueue)
 {
     _scene_out_queue = sceneOutQueue;
 }

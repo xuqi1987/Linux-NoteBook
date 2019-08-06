@@ -13,8 +13,8 @@ namespace v2x
 
 void V2xDataReplayer::run()
 {
-    string path = SET["Debug.ReplayerPath"];
-    io::CSVReader<6> in("../../test.csv");
+    string path = SET["Debug.ReplayerPath"].as<string>();
+    io::CSVReader<6> in(path);
     in.read_header(io::ignore_extra_column, "LogRecType","secMark","lat", "long","heading","speed");
     string type;
     unsigned  int secMark;
@@ -44,6 +44,10 @@ V2xDataReplayer::~V2xDataReplayer()
 }
 void V2xDataReplayer::loadData()
 {
+    if (SET["Debug.ReplaySwith"].as<bool>())
+    {
+
+    }
 
 }
 

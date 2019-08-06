@@ -3,12 +3,12 @@
 //
 
 #include "V2xSender.h"
-#include "V2xScene.h"
+#include "V2xSceneMsg.h"
 
 namespace v2x {
 void V2xSender::run()
 {
-    V2xScene::ValuePtr scene;
+    V2xSceneMsg::ValuePtr scene;
 
     while(_scene_queue->pop(scene))
     {
@@ -16,7 +16,7 @@ void V2xSender::run()
         scene.reset();
     }
 }
-void V2xSender::setSceneQueue(V2xScene::Queue::Ptr &sceneQueue)
+void V2xSender::setSceneQueue(V2xSceneMsg::Queue::Ptr &sceneQueue)
 {
     _scene_queue = sceneQueue;
 }

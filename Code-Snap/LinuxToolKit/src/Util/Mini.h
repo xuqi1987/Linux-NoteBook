@@ -63,8 +63,8 @@ public:
     string dump(const string &header = ";",
                 const string &footer = ";") const
     {
-        string output(header + (header.empty() ? "" : "\r\n")), tag;
-
+        //string output(header + (header.empty() ? "" : "\r\n")), tag;
+        string output,tag;
         for (auto &pr : *this) {
 
             vector<string> kv = tokenize(pr.first, ".");
@@ -74,7 +74,8 @@ public:
             output += kv[1] + "=" + pr.second + "\r\n";
         }
 
-        return output + "\r\n" + footer + (footer.empty() ? "" : "\r\n");
+        return output;
+        //return output + "\r\n" + footer + (footer.empty() ? "" : "\r\n");
     }
 
     void dumpFile(const string &fileName = exePath() + ".ini")

@@ -9,7 +9,7 @@
 using namespace std;
 
 int main(){
-    io::CSVReader<6> in("../../test.csv");
+    io::CSVReader<6> in("../../data/test.csv");
     in.read_header(io::ignore_extra_column, "LogRecType","secMark","lat", "long","heading","speed");
     string type;
     unsigned  int secMark;

@@ -9,17 +9,14 @@ using namespace toolkit;
 using namespace v2x;
 int main()
 {
-    SET["Debug.LOG"] = "ON";
-
-
-    SET.save();
 
     SET.load();
 
-    cout << SET["Debug.LOG"];
-//    SET.load();
-//
-//    cout << SET["RV.TIME"];
-
+    int loglevel = SET["Debug.MessageFrameLOG"].as<int>();
+    bool replayswitch = SET["Debug.ScenceReplayFlag"].as<bool>();
+    string path = SET["Debug.ReplayerFilePath"].as<string>();
+    cout << "Log Level:"<<loglevel<<endl;
+    cout << "replayswitch:"<<replayswitch<<endl;
+    cout << "ReplayerFilePath:"<<path<<endl;
     return 0;
 }

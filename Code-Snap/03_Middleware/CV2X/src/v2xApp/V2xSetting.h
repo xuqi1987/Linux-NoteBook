@@ -11,7 +11,7 @@ using namespace std;
 
 namespace v2x {
 
-const string path_name = "./conf.ini";
+const string path_name = "../../data/configures.ini";
 
 class V2xSetting : public mINI
 {

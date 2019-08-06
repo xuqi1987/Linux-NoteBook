@@ -15,13 +15,13 @@ using namespace toolkit;
 
 namespace v2x {
 
-class V2xScene: public string
+class V2xSceneMsg: public string
 {
 public:
 
-    typedef shared_ptr<V2xScene> Ptr;
-    typedef RecycleResourcePool<V2xScene> Pool;
-    typedef RecycleResourcePool<V2xScene>::ValuePtr ValuePtr;
+    typedef shared_ptr<V2xSceneMsg> Ptr;
+    typedef RecycleResourcePool<V2xSceneMsg> Pool;
+    typedef RecycleResourcePool<V2xSceneMsg>::ValuePtr ValuePtr;
     typedef V2xMsgQueue<ValuePtr> Queue;
 
     typedef enum
@@ -35,13 +35,13 @@ public:
 
 
     template<typename ...ArgTypes>
-    V2xScene(ArgTypes &&...args)
+    V2xSceneMsg(ArgTypes &&...args)
     : string(std::forward<ArgTypes>(args)...)
     {
         TraceL << "创建V2xScene对象:" << this << " " << *this;
     };
 
-    ~V2xScene()
+    ~V2xSceneMsg()
     {
         DebugL << "销毁V2xScene对象:" << this << " " << *this;
     };

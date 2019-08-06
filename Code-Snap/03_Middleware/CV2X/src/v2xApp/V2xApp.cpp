@@ -15,7 +15,7 @@ V2xApp::V2xApp()
     _hv_out_queue = make_shared<V2xMsg::Queue>();
     _rv_out_queue = make_shared<V2xMsg::Queue>();
 
-    _scene_out_queue = make_shared<V2xScene::Queue>();
+    _scene_out_queue = make_shared<V2xSceneMsg::Queue>();
 
     _broker = make_shared<V2xBroker>();
     _sender = make_shared<V2xSender>();
