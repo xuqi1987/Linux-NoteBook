@@ -50,7 +50,14 @@ bool V2xReplayReceiver::recv(V2xMsg::ValuePtr &&msg)
         msg->u.rvbsm.heading = heading;
         msg->u.rvbsm.speed = speed;
     }
-    usleep(1000*1);
+
+    static uint32_t lastsecMark = secMark;
+    int t = secMark-lastsecMark;
+    if (t < 0) t= 0;
+    if (t > 200) t =200;
+    usleep(100*t);
+    lastsecMark = secMark;
+
     return true;
 
 }

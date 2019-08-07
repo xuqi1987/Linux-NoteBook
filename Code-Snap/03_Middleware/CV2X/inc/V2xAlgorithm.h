@@ -14,6 +14,8 @@
 namespace v2x {
 
 const double PI = 3.1415926;
+const double EARTH_RADIUS = 6378.137;//地球半径,单位千米
+
 
 typedef enum
 {
@@ -27,6 +29,7 @@ typedef enum
 	UNIFORM_VARIABLE_SPEED_CURV = 3,
 	UNKNOWN_TYPE = 4
 }LINETYPE;
+
 
 typedef enum
 {
@@ -145,9 +148,13 @@ class CrashDetect
 class V2xAlgorithm
 {
 public:
-//
-   
+static long lonlat2dis(Longitude_t lon1,Latitude_t lat1,Longitude_t lon2,Latitude_t lat2);
+static long lonlat2dis(double lon1,double lat1,double lon2,double lat2);
+
+
 private:
+
+static double rad(double d);
 
     
 };

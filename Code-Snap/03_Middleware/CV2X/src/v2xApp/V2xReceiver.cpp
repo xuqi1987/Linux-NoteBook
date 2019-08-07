@@ -21,11 +21,16 @@ void V2xReceiver::distribute(V2xMsg::ValuePtr &&msg)
             _curCar = msg;
             break;
         case V2xMsg::MSG_TYPE_RV_BSM: {
-            if (!_filter->isDiscard(msg, _curCar)) {
 
-                TraceL << "V2xReceiver RV 分配:" << msg;
-                _rv_data_queue->push(msg);
+            if (_curCar != nullptr)
+            {
+                if (!_filter->isDiscard(_curCar,msg)) {
+
+                    TraceL << "V2xReceiver RV 分配:" << msg;
+                    _rv_data_queue->push(msg);
+                }
             }
+
         }
             break;
         default:break;

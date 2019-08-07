@@ -5,7 +5,7 @@
 #ifndef V2XTYPE_H
 #define V2XTYPE_H
 #include <string>
-
+#include <iomanip>
 
 namespace v2x {
 

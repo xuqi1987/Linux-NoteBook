@@ -11,8 +11,13 @@ void V2xRvThreadPool::run(int num)
     V2xMsg::ValuePtr msg;
     V2xSceneMsg::ValuePtr scene;
 
+    Ticker ticker;
     while (this->_broker->_rv_data_queue->pop(msg))
     {
+
+        //用于测试算法的性能
+        ticker.resetTime();
+
         DebugL << "模拟场景判断,如果车辆ID小于5，触发场景:" << msg;
 
         if (msg->u.rvbsm.id< 5)
@@ -47,7 +52,8 @@ void V2xRvThreadPool::run(int num)
         }
         msg.reset();
 
-
+        TraceL << "V2xRvThreadPool "<<num <<"耗时ms:" << ticker.elapsedTime();
+        ticker.resetTime();
     }
 }
 V2xRvThreadPool::V2xRvThreadPool(const shared_ptr<V2xBroker> &broker,int threadnum)
