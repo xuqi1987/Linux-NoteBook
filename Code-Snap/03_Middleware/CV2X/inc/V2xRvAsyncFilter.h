@@ -31,8 +31,6 @@ public:
 
     V2xRvAsyncFilter(int threadnum, Queue::Ptr &iQueue, Queue::Ptr &oQueue);
 
-
-
 private:
     Queue::Ptr _input_queue;
     Queue::Ptr _output_queue;

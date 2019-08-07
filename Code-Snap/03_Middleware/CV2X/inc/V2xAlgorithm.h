@@ -15,7 +15,6 @@ namespace v2x {
 
 const double PI = 3.1415926;
 
-#if 0
 typedef enum
 {
 	//匀速直线行驶
@@ -65,7 +64,7 @@ private:
 	//轨迹预测结束时间timing
 	tm m_stopTime;
 public:
-	DriveLine(float32 factor0, float32 factor2, float32 factor3, LINETYPE lineType, tm startTime, tm stopTime);
+	DriveLine(float factor0, float factor2, float factor3, LINETYPE lineType, tm startTime, tm stopTime);
 	DriveLine(DriveLine& driveline);
 
 	float getFactor0();
@@ -119,18 +118,18 @@ public:
 
 	ERRNO setDriveLineRV(DriveLine &driveLine);
 	ERRNO setDriveLineHV(DriveLine &driveLine);
-	ERRNO setRelativeSpeed(int32 relativeSpeed);
+	ERRNO setRelativeSpeed(int32_t relativeSpeed);
 
 };
 
 class ALGInterface
 {
 public:
-	ALGResult getALGResult(V2xBSMMsg, V2xBSMMsg, V2xMapMsg);
-	ALGResult getALGResult(V2xBSMMsg, V2xMapMsg, V2xSpatMsg);
-	ALGResult getALGResult(V2xBSMMsg, V2xBSMMsg, V2xMapMsg, V2xSpatMsg);
-	ALGResult getALGResult(V2xBSMMsg, V2xRsiMsg);
-	ALGResult getALGResult(V2xBSMMsg, V2xRsmMsg);
+	ALGResult getALGResult(V2xBSMMsg &HV_BsmMsg, V2xBSMMsg& RV_BsmMsg, V2xMapMsg& MapMsg);
+	ALGResult getALGResult(V2xBSMMsg& HV_BsmMsg, V2xMapMsg& MapMsg, V2xSpatMsg& SpatMsg);
+	ALGResult getALGResult(V2xBSMMsg& HV_BsmMsg, V2xBSMMsg& RV_BsmMsg , V2xMapMsg &MapMsg, V2xSpatMsg &SpatMsg);
+	ALGResult getALGResult(V2xBSMMsg& HV_BsmMsg, V2xRsiMsg& RsiMsg);
+	ALGResult getALGResult(V2xBSMMsg& HV_BsmMsg, V2xRsmMsg& RsmMsg);
 };
 
 class CrashDetect
@@ -140,7 +139,8 @@ class CrashDetect
 
 
 
-#endif
+
+
 
 class V2xAlgorithm
 {

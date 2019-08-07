@@ -19,7 +19,6 @@ V2xApp::V2xApp()
     _broker = make_shared<V2xBroker>();
     _sender = make_shared<V2xSender>();
 
-
 }
 
 void V2xApp::run()
@@ -40,11 +39,9 @@ void V2xApp::run()
         _sender->setSceneQueue(_scene_out_queue);
         _sender->start();
     }
-    catch (...)
-    {
+    catch (...) {
         ErrorL << "Error";
     }
-
 
 }
 

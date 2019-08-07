@@ -128,6 +128,44 @@ typedef enum AuxiliaryBrakeStatus {
     AuxiliaryBrakeStatus_reserved	= 3
 } e_AuxiliaryBrakeStatus;
 
+/* Dependencies */
+typedef enum ParticipantType {
+	ParticipantType_unknown	= 0,
+	ParticipantType_motor	= 1,
+	ParticipantType_non_motor	= 2,
+	ParticipantType_pedestrian	= 3,
+	ParticipantType_rsu	= 4
+	/*
+	 * Enumeration is extensible
+	 */
+} e_ParticipantType;
+
+
+/* Dependencies */
+typedef enum SourceType {
+	SourceType_unknown	= 0,
+	SourceType_selfinfo	= 1,
+	SourceType_v2x	= 2,
+	SourceType_video	= 3,
+	SourceType_microwaveRadar	= 4,
+	SourceType_loop	= 5
+	/*
+	 * Enumeration is extensible
+	 */
+} e_SourceType;
+
+/* Dependencies */
+typedef enum PositionOffsetLL_PR {
+	PositionOffsetLL_PR_NOTHING,	/* No components present */
+	PositionOffsetLL_PR_position_LL1,
+	PositionOffsetLL_PR_position_LL2,
+	PositionOffsetLL_PR_position_LL3,
+	PositionOffsetLL_PR_position_LL4,
+	PositionOffsetLL_PR_position_LL5,
+	PositionOffsetLL_PR_position_LL6,
+	PositionOffsetLL_PR_position_LatLon
+} PositionOffsetLL_PR;
+
 /* AuxiliaryBrakeStatus */
 typedef long	 AuxiliaryBrakeStatus_t;
 
@@ -200,7 +238,11 @@ typedef long	 BasicVehicleClass_t;
 /* MinuteOfTheYear */
 typedef long	 MinuteOfTheYear_t;
 
+/* AlertType */
+typedef long	 AlertType_t;
 
+/* Radius */
+typedef long	 Radius_t;
 
 /* NodeList */
 typedef struct NodeList {
@@ -226,6 +268,8 @@ typedef OCTET_STRING_t IA5String_t;  /* Implemented via OCTET STRING */
 /* DescriptiveName */
 typedef IA5String_t	 DescriptiveName_t;
 
+/* Priority */
+typedef OCTET_STRING_t	 Priority_t;
 
 /* Position3D */
 typedef struct Position3D {
@@ -282,6 +326,131 @@ typedef struct IntersectionStateList {
     A_SEQUENCE_OF(struct IntersectionState) list;
 
 } IntersectionStateList_t;
+
+/* PathPointList */
+typedef struct PathPointList {
+	A_SEQUENCE_OF(struct PositionOffsetLLV) list;
+
+} PathPointList_t;
+
+
+/* ParticipantList */
+typedef struct ParticipantList {
+	A_SEQUENCE_OF(struct ParticipantData) list;
+
+} ParticipantList_t;
+
+/* OffsetLL-B14 */
+typedef long	 OffsetLL_B14_t;
+
+/* OffsetLL-B12 */
+typedef long	 OffsetLL_B12_t;
+
+/* OffsetLL-B16 */
+typedef long	 OffsetLL_B16_t;
+
+/* OffsetLL-B18 */
+typedef long	 OffsetLL_B18_t;
+
+/* OffsetLL-B22 */
+typedef long	 OffsetLL_B22_t;
+
+/* OffsetLL-B24 */
+typedef long	 OffsetLL_B24_t;
+
+/* Position-LL-24B */
+typedef struct Position_LL_24B {
+	OffsetLL_B12_t	 lon;
+	OffsetLL_B12_t	 lat;
+} Position_LL_24B_t;
+
+/* Position-LL-28B */
+typedef struct Position_LL_28B {
+	OffsetLL_B14_t	 lon;
+	OffsetLL_B14_t	 lat;
+
+} Position_LL_28B_t;
+
+/* Position-LL-32B */
+typedef struct Position_LL_32B {
+	OffsetLL_B16_t	 lon;
+	OffsetLL_B16_t	 lat;
+} Position_LL_32B_t;
+
+/* Position-LL-36B */
+typedef struct Position_LL_36B {
+	OffsetLL_B18_t	 lon;
+	OffsetLL_B18_t	 lat;
+} Position_LL_36B_t;
+
+/* Position-LL-44B */
+typedef struct Position_LL_44B {
+	OffsetLL_B22_t	 lon;
+	OffsetLL_B22_t	 lat;
+} Position_LL_44B_t;
+
+
+/* Position-LL-48B */
+typedef struct Position_LL_48B {
+	OffsetLL_B24_t	 lon;
+	OffsetLL_B24_t	 lat;
+} Position_LL_48B_t;
+
+/* Position-LLmD-64b */
+typedef struct Position_LLmD_64b {
+	Longitude_t	 lon;
+	Latitude_t	 lat;
+} Position_LLmD_64b_t;
+
+/* PositionOffsetLL */
+typedef struct PositionOffsetLL {
+	PositionOffsetLL_PR present;
+	union PositionOffsetLL_u {
+		Position_LL_24B_t	 position_LL1;
+		Position_LL_28B_t	 position_LL2;
+		Position_LL_32B_t	 position_LL3;
+		Position_LL_36B_t	 position_LL4;
+		Position_LL_44B_t	 position_LL5;
+		Position_LL_48B_t	 position_LL6;
+		Position_LLmD_64b_t	 position_LatLon;
+	} choice;
+
+} PositionOffsetLL_t;
+
+
+/* PositionOffsetLLV */
+typedef struct PositionOffsetLLV {
+	PositionOffsetLL_t	 offsetLL;
+	struct VerticalOffset	*offsetV	/* OPTIONAL */;
+
+} PositionOffsetLLV_t;
+
+/* SourceType */
+typedef long	 SourceType_t;
+
+/* ParticipantType */
+typedef long	 ParticipantType_t;
+/* ParticipantData */
+typedef struct ParticipantData {
+	ParticipantType_t	 ptcType;
+	long	 ptcId;
+	SourceType_t	 source;
+	OCTET_STRING_t	*id	/* OPTIONAL */;
+	OCTET_STRING_t	*plateNo	/* OPTIONAL */;
+	DSecond_t	 secMark;
+	PositionOffsetLLV_t	 pos;
+	PositionConfidenceSet_t	 accuracy;
+	TransmissionState_t	*transmission	/* OPTIONAL */;
+	Speed_t	 speed;
+	Heading_t	 heading;
+	SteeringWheelAngle_t	*angle	/* OPTIONAL */;
+	struct MotionConfidenceSet	*motionCfd	/* OPTIONAL */;
+	struct AccelerationSet4Way	*accelSet	/* OPTIONAL */;
+	VehicleSize_t	 size;
+	struct VehicleClassification	*vehicleClass	/* OPTIONAL */;
+} ParticipantData_t;
+
+
 //define  error number
 typedef enum
 {

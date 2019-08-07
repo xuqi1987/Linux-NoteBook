@@ -15,7 +15,7 @@ using namespace toolkit;
 int main()
 {
     Logger::Instance().add(make_shared<ConsoleChannel>());
-    Logger::Instance().setLevel(LDebug);
+    Logger::Instance().setLevel(LInfo);
 
     // 加载配置
     SET.load();

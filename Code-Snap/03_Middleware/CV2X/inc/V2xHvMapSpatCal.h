@@ -4,8 +4,7 @@
 
 #ifndef CV2X_V2XHVMAPSPATCAL_H
 #define CV2X_V2XHVMAPSPATCAL_H
-#include "V2xThread.h"
-#include "Thread/ThreadPool.h"
+
 
 #include "V2xBroker.h"
 

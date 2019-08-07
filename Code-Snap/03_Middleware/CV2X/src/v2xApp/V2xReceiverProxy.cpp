@@ -50,7 +50,7 @@ bool V2xReplayReceiver::recv(V2xMsg::ValuePtr &&msg)
         msg->u.rvbsm.heading = heading;
         msg->u.rvbsm.speed = speed;
     }
-    usleep(1000*100);
+    usleep(1000*1);
     return true;
 
 }

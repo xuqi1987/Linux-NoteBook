@@ -16,7 +16,7 @@ void V2xReceiver::distribute(V2xMsg::ValuePtr &&msg)
     msg->Print();
     switch (msg->getMsgType()) {
         case V2xMsg::MSG_TYPE_HV_BSM:
-            ErrorL << "V2xReceiver HV 分配:"  <<_hv_data_queue;
+            TraceL << "V2xReceiver HV 分配:"  <<_hv_data_queue;
             _hv_data_queue->push(msg);
             _curCar = msg;
             break;
@@ -52,7 +52,7 @@ V2xReceiver::V2xReceiver()
 
 void V2xReceiver::run()
 {
-    InfoL << "V2xReceiver Thread Start" << endl;
+    TraceL << "V2xReceiver Thread Start" << endl;
     if (_recv_proxy == nullptr) {
         ErrorL << "recv_proxy is null";
     }

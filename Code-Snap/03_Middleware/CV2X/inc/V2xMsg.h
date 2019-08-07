@@ -101,6 +101,78 @@ typedef struct SPAT
     IntersectionStateList_t intersections;
 } V2xSpatMsg;
 
+
+/*
+RoadSideInformation ::= SEQUENCE {
+    msgCnt MsgCount,
+    timeStamp MinuteOfTheYear OPTIONAL,
+    id OCTET STRING (SIZE(8)),
+    -- RSU ID
+    rsiId INTEGER (0..255),
+    -- local ID of this rsi information set by RSU
+    alertType AlertType,
+    -- Text message warning or Traffic sign type according to China GB5768
+    description IA5String (SIZE(1..256)) OPTIONAL,
+    -- Text message if alertType = 0
+    -- Additional description to the traffic sign if alertType > 0
+    -- e.g. describe the subtype of the traffic sign
+    priority Priority OPTIONAL,
+    -- the urgency of this message, a relative
+    -- degree of merit compared with other
+    -- similar messages for this type (not other
+    -- messages being sent by the device), nor a
+    -- priority of display urgency
+    refPos Position3D,
+    -- Position of traffic alert (traffic sign or incident)
+    alertPath PathPointList,
+    -- Warning is active if vehicle is within this path
+    -- Points are listed from upstream to downstream
+    -- along the vehicle drive direction.
+    -- One path includes at least two points.
+    alertRadius Radius,
+    -- The biggest distance away from the alert path
+    -- within which the warning is active.
+    ...
+}
+ */
+
+
+/* RoadSideInformation */
+typedef struct RoadSideInformation {
+    MsgCount_t	 msgCnt;
+    MinuteOfTheYear_t	*timeStamp	/* OPTIONAL */;
+    OCTET_STRING_t	 id;
+    long	 rsiId;
+    AlertType_t	 alertType;
+    IA5String_t	*description	/* OPTIONAL */;
+    Priority_t	*priority	/* OPTIONAL */;
+    Position3D_t	 refPos;
+    PathPointList_t	 alertPath;
+    Radius_t	 alertRadius;
+} V2xRsiMsg;
+
+/*
+RSM ::= SEQUENCE {
+    msgCnt MsgCount,
+    id OCTET STRING (SIZE(8)),
+    -- RSU ID
+    refPos Position3D,
+    -- Reference position of this RSM message
+    participants ParticipantList,//16byte
+    -- All or part of the participants
+    -- detected by RSU
+    ...
+}
+ */
+
+/* RoadsideSafetyMessage */
+typedef struct RoadsideSafetyMessage {
+    MsgCount_t	 msgCnt;
+    OCTET_STRING_t	 id;
+    Position3D_t	 refPos;
+    ParticipantList_t	 participants;
+} V2xRsmMsg;
+
 class V2xMsg: public string
 {
 public:
