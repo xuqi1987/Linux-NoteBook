@@ -10,9 +10,9 @@
 #include <future>
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
-#include "v2xUtil/V2xMsgQueue.h"
-#include "v2xUtil/V2xMsg.h"
-#include "v2xUtil/V2xThreadPool.h"
+#include "V2xMsgQueue.h"
+#include "V2xMsg.h"
+#include "V2xThreadPool.h"
 
 using namespace std;
 using namespace v2x;

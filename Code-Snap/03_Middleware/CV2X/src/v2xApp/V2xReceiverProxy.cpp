@@ -2,7 +2,7 @@
 // Created by xuqi on 2019-08-06.
 //
 
-#include <v2xUtil/V2xMsg.h>
+#include <V2xMsg.h>
 #include "V2xReceiverProxy.h"
 
 

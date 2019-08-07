@@ -1,7 +1,7 @@
 //
 // Created by xuqi on 2019-07-30.
 //
-#include "v2xApp/V2xSetting.h"
+#include "../inc/V2xSetting.h"
 #include <iostream>
 
 using namespace std;

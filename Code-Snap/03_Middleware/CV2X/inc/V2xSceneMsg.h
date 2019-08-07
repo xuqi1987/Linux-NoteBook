@@ -6,9 +6,9 @@
 #define V2XSCENE_H
 #include <string>
 #include "Util/Logger.h"
-#include "v2xUtil/V2xType.h"
+#include "V2xType.h"
 #include "Util/RecycleResourcePool.h"
-#include "v2xUtil/V2xMsgQueue.h"
+#include "V2xMsgQueue.h"
 
 using namespace std;
 using namespace toolkit;

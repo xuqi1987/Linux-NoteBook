@@ -6,9 +6,9 @@
 #include "BasicSafetyMessage.h"
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
-#include "v2xUtil/V2xMsgQueue.h"
-#include "v2xUtil/V2xMsg.h"
-#include "v2xApp/V2xApp.h"
+#include "../inc/V2xMsgQueue.h"
+#include "../inc/V2xMsg.h"
+#include "../inc/V2xApp.h"
 
 using namespace std;
 using namespace v2x;

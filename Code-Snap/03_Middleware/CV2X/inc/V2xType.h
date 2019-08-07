@@ -282,5 +282,13 @@ typedef struct IntersectionStateList {
     A_SEQUENCE_OF(struct IntersectionState) list;
 
 } IntersectionStateList_t;
+//define  error number
+typedef enum
+{
+	REL_SUCCESS = 0,
+	REL_FAILED = 1,
+	REL_INVALID = 2,
+	REL_TIMEOUT = 3,
+}ERRNO;
 }
 #endif //V2XTYPE_H

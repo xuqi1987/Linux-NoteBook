@@ -10,8 +10,8 @@
 #include <future>
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
-#include "v2xUtil/V2xMsgQueue.h"
-#include "v2xUtil/V2xMsg.h"
+#include "V2xMsgQueue.h"
+#include "V2xMsg.h"
 #include "Thread/ThreadPool.h"
 
 #include "V2xRvAsyncFilter.h"

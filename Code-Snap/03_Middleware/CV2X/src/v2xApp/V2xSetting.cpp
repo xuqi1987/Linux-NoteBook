@@ -2,7 +2,7 @@
 // Created by root on 19-7-23.
 //
 
-#include "v2xApp/V2xSetting.h"
+#include "V2xSetting.h"
 #include "Util/Util.h"
 #include "Util/Logger.h"
 

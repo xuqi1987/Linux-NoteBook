@@ -4,7 +4,7 @@
 
 #ifndef V2XRVTHREADPOOL_H
 #define V2XRVTHREADPOOL_H
-#include "v2xUtil/V2xThreadPool.h"
+#include "V2xThreadPool.h"
 
 namespace v2x {
 

@@ -2,11 +2,11 @@
 // Created by xuqi on 2019-07-22.
 //
 
-#include "v2xApp/V2xReceiver.h"
-#include "v2xApp/V2xSetting.h"
+#include "V2xReceiver.h"
+#include "V2xSetting.h"
 
 #include <exception>
-#include <v2xUtil/V2xMsg.h>
+#include <V2xMsg.h>
 
 
 namespace  v2x {
@@ -16,7 +16,7 @@ void V2xReceiver::distribute(V2xMsg::ValuePtr &&msg)
     msg->Print();
     switch (msg->getMsgType()) {
         case V2xMsg::MSG_TYPE_HV_BSM:
-            TraceL << "V2xReceiver HV 分配:" << msg;
+            ErrorL << "V2xReceiver HV 分配:"  <<_hv_data_queue;
             _hv_data_queue->push(msg);
             _curCar = msg;
             break;

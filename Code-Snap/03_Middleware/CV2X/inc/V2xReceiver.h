@@ -4,14 +4,14 @@
 
 #ifndef V2XRECEIVER_H
 #define V2XRECEIVER_H
-#include "v2xUtil/V2xThread.h"
+#include "V2xThread.h"
 #include <memory>
 #include <thread>
 #include <future>
 #include "Util/Logger.h"
 #include "Util/RecycleResourcePool.h"
-#include "v2xUtil/V2xMsgQueue.h"
-#include "v2xUtil/V2xMsg.h"
+#include "V2xMsgQueue.h"
+#include "V2xMsg.h"
 #include "Thread/ThreadPool.h"
 #include "Thread/ThreadPool.h"
 #include "V2xRvFilter.h"
@@ -22,8 +22,6 @@ using namespace v2x;
 using namespace toolkit;
 
 namespace v2x {
-
-
 
 class V2xReceiver : public V2xThread
 {

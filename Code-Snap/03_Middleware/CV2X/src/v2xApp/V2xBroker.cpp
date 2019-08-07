@@ -3,7 +3,7 @@
 //
 
 #include "V2xBroker.h"
-
+#include "V2xHvMapSpatCal.h"
 namespace v2x {
 
 void V2xBroker::run()
@@ -11,11 +11,9 @@ void V2xBroker::run()
     _rvThreadPool->async(bind(&V2xBroker::sceneCheck, this));
     _rvThreadPool->start();
 
-    V2xMsg::ValuePtr msg;
-    while(_hv_data_queue->pop(msg))
-    {
-        TraceL << *msg;
-    }
+    _hv_map_spat = make_shared<V2xHvMapSpatCal>(this->shared_from_this());
+    _hv_map_spat->run();
+
 }
 
 V2xBroker::V2xBroker()
@@ -28,6 +26,7 @@ V2xBroker::V2xBroker()
 void V2xBroker::setHvDataQueue(V2xMsg::Queue::Ptr &hvDataQueue)
 {
     _hv_data_queue = hvDataQueue;
+    ErrorL << _hv_data_queue;
 }
 
 void V2xBroker::setRvDataQueue(V2xMsg::Queue::Ptr &rvDataQueue)

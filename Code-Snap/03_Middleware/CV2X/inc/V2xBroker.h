@@ -4,12 +4,12 @@
 
 #ifndef V2XBROKER_H
 #define V2XBROKER_H
-#include "v2xUtil/V2xThread.h"
+#include "V2xThread.h"
 #include "Thread/ThreadPool.h"
 #include "Util/RecycleResourcePool.h"
-#include "v2xUtil/V2xMsg.h"
-#include "v2xUtil/V2xSceneMsg.h"
-#include "v2xUtil/V2xMsgQueue.h"
+#include "V2xMsg.h"
+#include "V2xSceneMsg.h"
+#include "V2xMsgQueue.h"
 #include "V2xRvThreadPool.h"
 
 using namespace std;
@@ -19,7 +19,9 @@ using namespace toolkit;
 
 namespace v2x {
 
-class V2xBroker : public V2xThread
+class V2xHvMapSpatCal;
+
+class V2xBroker : public V2xThread , public enable_shared_from_this<V2xBroker>
 {
 public:
 
@@ -32,12 +34,15 @@ public:
     void setRvDataQueue(V2xMsg::Queue::Ptr &rvDataQueue);
     void setSceneOutQueue(V2xSceneMsg::Queue::Ptr &sceneOutQueue);
 
+    friend class V2xHvMapSpatCal;
 private:
     ThreadPool::Ptr _rvThreadPool;
     V2xMsg::Queue::Ptr _hv_data_queue;
     V2xMsg::Queue::Ptr _rv_data_queue;
     V2xSceneMsg::Pool _scene_pool;
     V2xSceneMsg::Queue::Ptr _scene_out_queue;
+    shared_ptr<V2xHvMapSpatCal> _hv_map_spat;
+
 };
 
 }

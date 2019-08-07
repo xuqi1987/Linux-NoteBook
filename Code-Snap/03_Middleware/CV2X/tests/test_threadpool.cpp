@@ -1,10 +1,10 @@
 //
 // Created by xuqi on 2019-08-05.
 //
-#include "v2xUtil/V2xThreadPool.h"
-#include "v2xUtil/V2xThread.h"
+#include "../inc/V2xThreadPool.h"
+#include "../inc/V2xThread.h"
 #include "Util/RecycleResourcePool.h"
-#include "v2xUtil/V2xMsg.h"
+#include "../inc/V2xMsg.h"
 
 using namespace std;
 using namespace toolkit;
