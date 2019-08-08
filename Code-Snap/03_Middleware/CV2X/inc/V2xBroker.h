@@ -43,6 +43,8 @@ private:
     V2xSceneMsg::Queue::Ptr _scene_out_queue;
     shared_ptr<V2xHvMapSpatCal> _hv_map_spat;
     shared_ptr<V2xRvThreadPool> _rv_threads;
+    V2xMsg::Queue::Ptr _bsm_queue;
+    
 
 };
 

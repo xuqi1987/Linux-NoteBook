@@ -11,6 +11,8 @@ void V2xBroker::run()
 {
     _rv_threads  = make_shared<V2xRvThreadPool>(this->shared_from_this(),10);
     _hv_map_spat = make_shared<V2xHvMapSpatCal>(this->shared_from_this());
+    _bsm_queue =  make_shared<V2xMsg::Queue>();
+
 
     _rv_threads->start();
     _hv_map_spat->run();

@@ -19,6 +19,8 @@
 #include "V2xBroker.h"
 #include "V2xSender.h"
 
+#include "V2xMapQueue.h"
+
 using namespace std;
 using namespace v2x;
 using namespace toolkit;
@@ -39,6 +41,7 @@ public:
     V2xSceneMsg::Queue::Ptr _scene_out_queue;
     V2xBroker::Ptr _broker;
     V2xSender::Ptr _sender;
+
 };
 }
 
