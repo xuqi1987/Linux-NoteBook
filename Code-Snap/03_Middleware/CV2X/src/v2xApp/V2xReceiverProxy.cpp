@@ -55,7 +55,7 @@ bool V2xReplayReceiver::recv(V2xMsg::ValuePtr &&msg)
     int t = secMark-lastsecMark;
     if (t < 0) t= 0;
     if (t > 200) t =200;
-    usleep(100*t);
+    usleep(10000*t);
     lastsecMark = secMark;
 
     return true;

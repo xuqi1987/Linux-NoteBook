@@ -5,22 +5,24 @@
 #ifndef CV2X_V2XMAPHISTORYQUEUE_H
 #define CV2X_V2XMAPHISTORYQUEUE_H
 
+#include <map>
 #include <queue>
 #include <mutex>
 #include "Util/Util.h"
 #include "Thread/semaphore.h"
+#include <iterator>
 
 using namespace toolkit;
+using namespace std;
 
 namespace v2x
 {
 
-template <typename T>
-class V2xMapQueue: public std::enable_shared_from_this<V2xMapQueue<T> > , public noncopyable
+class V2xVechileHistory
 {
-public:
-    typedef shared_ptr<V2xMapQueue<T> > Ptr;
+
 };
+
 }
 
 

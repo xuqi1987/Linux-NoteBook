@@ -138,17 +138,18 @@ RoadSideInformation ::= SEQUENCE {
 
 
 /* RoadSideInformation */
-typedef struct RoadSideInformation {
-    MsgCount_t	 msgCnt;
-    MinuteOfTheYear_t	*timeStamp	/* OPTIONAL */;
-    OCTET_STRING_t	 id;
-    long	 rsiId;
-    AlertType_t	 alertType;
-    IA5String_t	*description	/* OPTIONAL */;
-    Priority_t	*priority	/* OPTIONAL */;
-    Position3D_t	 refPos;
-    PathPointList_t	 alertPath;
-    Radius_t	 alertRadius;
+typedef struct RoadSideInformation
+{
+    MsgCount_t msgCnt;
+    MinuteOfTheYear_t *timeStamp    /* OPTIONAL */;
+    OCTET_STRING_t id;
+    long rsiId;
+    AlertType_t alertType;
+    IA5String_t *description    /* OPTIONAL */;
+    Priority_t *priority    /* OPTIONAL */;
+    Position3D_t refPos;
+    PathPointList_t alertPath;
+    Radius_t alertRadius;
 } V2xRsiMsg;
 
 /*
@@ -166,11 +167,12 @@ RSM ::= SEQUENCE {
  */
 
 /* RoadsideSafetyMessage */
-typedef struct RoadsideSafetyMessage {
-    MsgCount_t	 msgCnt;
-    OCTET_STRING_t	 id;
-    Position3D_t	 refPos;
-    ParticipantList_t	 participants;
+typedef struct RoadsideSafetyMessage
+{
+    MsgCount_t msgCnt;
+    OCTET_STRING_t id;
+    Position3D_t refPos;
+    ParticipantList_t participants;
 } V2xRsmMsg;
 
 class V2xMsg: public string
@@ -219,6 +221,30 @@ private:
 };
 
 
+class V2xVechileStatus : public string
+{
+public:
+
+    template<typename ...ArgTypes>
+    V2xVechileStatus(ArgTypes &&...args)
+    : string(std::forward<ArgTypes>(args)...)
+    {
+        TraceL << "创建V2xVechile对象:" << this << " " << *this;
+    };
+
+    ~V2xVechileStatus()
+    {
+        DebugL << "销毁V2xVechile对象:" << this << " " << *this;
+    };
+
+private:
+
+    // 平均速度
+
+    // 8方向距离最近的车
+
+
+};
 }
 
 #endif //CV2X_V2XCAR_H

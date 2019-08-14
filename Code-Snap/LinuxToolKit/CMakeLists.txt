@@ -8,7 +8,7 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 #设置可执行程序路径
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 #设置子目录
-set(SUB_DIR_LIST  "Util" "Thread")
+set(SUB_DIR_LIST  "Util" "Thread" "Poller" "Network")
 
 
 set(INSTALL_PATH_LIB lib)

@@ -19,7 +19,7 @@
 #include "V2xBroker.h"
 #include "V2xSender.h"
 
-#include "V2xMapQueue.h"
+#include "V2xVechileHistory.h"
 
 using namespace std;
 using namespace v2x;

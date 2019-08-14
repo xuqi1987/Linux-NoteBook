@@ -14,10 +14,11 @@ namespace  v2x {
 void V2xReceiver::distribute(V2xMsg::ValuePtr &&msg)
 {
     msg->Print();
+
     switch (msg->getMsgType()) {
         case V2xMsg::MSG_TYPE_HV_BSM:
             TraceL << "V2xReceiver HV 分配:"  <<_hv_data_queue;
-            _hv_data_queue->push(msg);
+            _hv_data_queue->push(std::move(msg));
             _curCar = msg;
             break;
         case V2xMsg::MSG_TYPE_RV_BSM: {
@@ -27,7 +28,7 @@ void V2xReceiver::distribute(V2xMsg::ValuePtr &&msg)
                 if (!_filter->isDiscard(_curCar,msg)) {
 
                     TraceL << "V2xReceiver RV 分配:" << msg;
-                    _rv_data_queue->push(msg);
+                    _rv_data_queue->push(std::move(msg));
                 }
             }
 
