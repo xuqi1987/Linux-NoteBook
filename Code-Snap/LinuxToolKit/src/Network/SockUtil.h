@@ -21,7 +21,6 @@ using namespace std;
 
 namespace toolkit {
 
-
 //套接字工具类，封装了socket、网络的一些基本操作
 class SockUtil {
 public:

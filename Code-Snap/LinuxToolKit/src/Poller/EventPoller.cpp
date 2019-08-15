@@ -1,16 +1,15 @@
 ﻿
 #include <fcntl.h>
 #include <string.h>
-#include <list>
 #include "SelectWrap.h"
 #include "EventPoller.h"
-#include "Util/util.h"
-#include "Util/logger.h"
+#include "Util/Util.h"
+#include "Util/Logger.h"
 #include "Util/uv_errno.h"
 #include "Util/TimeTicker.h"
-#include "Util/onceToken.h"
+#include "Util/OnceToken.h"
 #include "Thread/ThreadPool.h"
-#include "Network/sockutil.h"
+#include "Network/SockUtil.h"
 
 
 #if defined(HAS_EPOLL)
@@ -216,7 +215,8 @@ inline void EventPoller::onPipeEvent() {
         _list_swap.swap(_list_task);
     }
 
-    _list_swap.for_each([&](const Task::Ptr &task){
+    for(const auto &task : _list_swap)
+    {
         try {
             (*task)();
         }catch (ExitException &ex){
@@ -224,7 +224,8 @@ inline void EventPoller::onPipeEvent() {
         }catch (std::exception &ex){
             ErrorL << "EventPoller执行异步任务捕获到异常:" << ex.what();
         }
-    });
+    }
+
 }
 
 void EventPoller::wait() {
@@ -285,7 +286,7 @@ void EventPoller::runLoop(bool blocked) {
 #else
         int ret, max_fd;
         FdSet set_read, set_write, set_err;
-        List<Poll_Record::Ptr> callback_list;
+        std::list<Poll_Record::Ptr> callback_list;
         struct timeval tv;
         while (!_exit_flag) {
             //定时器事件中可能操作_event_map
@@ -338,13 +339,15 @@ void EventPoller::runLoop(bool blocked) {
                 }
             }
 
-            callback_list.for_each([](Poll_Record::Ptr &record){
+            for(Poll_Record::Ptr &record : callback_list)
+            {
                 try{
                     record->callBack(record->attach);
                 }catch (std::exception &ex){
                     ErrorL << "EventPoller执行事件回调捕获到异常:" << ex.what();
                 }
-            });
+            }
+
             callback_list.clear();
         }
 #endif //HAS_EPOLL

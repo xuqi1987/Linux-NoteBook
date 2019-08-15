@@ -2,9 +2,9 @@
 
 #include <fcntl.h>
 #include "Pipe.h"
-#include "Util/util.h"
-#include "Util/logger.h"
-#include "Network/sockutil.h"
+#include "Util/Util.h"
+#include "Util/Logger.h"
+#include "Network/SockUtil.h"
 
 using namespace std;
 

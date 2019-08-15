@@ -1,9 +1,9 @@
 ﻿
 #include <stdexcept>
 #include "PipeWrap.h"
-#include "Util/util.h"
+#include "Util/Util.h"
 #include "Util/uv_errno.h"
-#include "Network/sockutil.h"
+#include "Network/SockUtil.h"
 
 using namespace std;
 
