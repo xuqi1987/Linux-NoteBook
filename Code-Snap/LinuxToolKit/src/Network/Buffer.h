@@ -1,6 +1,4 @@
-//
-// Created by xzl on 2019/3/18.
-//
+
 
 #ifndef ZLTOOLKIT_BUFFER_H
 #define ZLTOOLKIT_BUFFER_H

@@ -327,7 +327,34 @@ void for_each_netAdapter_apple(FUN &&fun)
     }
 }
 #endif //defined(__APPLE__)
-
+#if !defined(_WIN32) && !defined(__APPLE__)
+template<typename FUN>
+void for_each_netAdapter_posix(FUN &&fun){ //type: struct ifreq *
+    struct ifconf ifconf;
+    char buf[512];
+    //初始化ifconf
+    ifconf.ifc_len = 512;
+    ifconf.ifc_buf = buf;
+    int sockfd = ::socket(AF_INET, SOCK_DGRAM, 0);
+    if (sockfd < 0) {
+        WarnL << "创建套接字失败:" << get_uv_errmsg(true);
+        return;
+    }
+    if (-1 == ioctl(sockfd, SIOCGIFCONF, &ifconf)) {    //获取所有接口信息
+        WarnL << "ioctl 失败:" << get_uv_errmsg(true);
+        close(sockfd);
+        return;
+    }
+    close(sockfd);
+    //接下来一个一个的获取IP地址
+    struct ifreq * adapter = (struct ifreq*) buf;
+    for (int i = (ifconf.ifc_len / sizeof(struct ifreq)); i > 0; --i,++adapter) {
+        if(fun(adapter)){
+            break;
+        }
+    }
+}
+#endif //!defined(_WIN32) && !defined(__APPLE__)
 
 bool check_ip(string &address, const string &ip)
 {
