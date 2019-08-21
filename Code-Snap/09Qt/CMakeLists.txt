@@ -43,7 +43,7 @@ message(STATUS "File:${GUI_Root_src_list}")
 #find_package(Qt5Widgets REQUIRED NO_DEFAULT_PATH)
 
 # 如果你想要使用系统自带的qt，这样写：
-find_package(Qt5 COMPONENTS Core Widgets Network WebKitWidgets WebKit REQUIRED)
+find_package(Qt5 COMPONENTS Core Widgets Script Network WebKitWidgets WebKit REQUIRED)
 
 #打印库文件
 message(STATUS "将链接依赖库:${LINK_LIB_LIST}")
@@ -54,7 +54,7 @@ add_executable(${CMAKE_PROJECT_NAME} ${GUI_Root_src_list})
 TARGET_LINK_LIBRARIES(${CMAKE_PROJECT_NAME} ${LINK_LIB_LIST})
 
 # 把对应Qt模块的库链接进程序
-TARGET_LINK_LIBRARIES(${CMAKE_PROJECT_NAME} Qt5::Widgets Qt5::WebKitWidgets Qt5::WebKit)
+TARGET_LINK_LIBRARIES(${CMAKE_PROJECT_NAME} Qt5::Widgets Qt5::WebKitWidgets Qt5::WebKit Qt5::Script)
 
 
 

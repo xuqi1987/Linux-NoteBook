@@ -9,6 +9,8 @@
 #include <QWebView>
 #include <QMainWindow>
 
+#include "MyObject.h"
+
 #define MAX_PATH 256
 #define MAX_NUM  128
 #define BUFFER_LEN 2048
@@ -35,16 +37,23 @@ int main(int argc, char *argv[])
     putenv(platform);
     putenv(fontDir);
 
-    QCursor cursor(Qt::BlankCursor);
-    QApplication::setOverrideCursor(cursor);
-    QApplication::changeOverrideCursor(cursor);
-
-
+//    QCursor cursor(Qt::BlankCursor);
+//    QApplication::setOverrideCursor(cursor);
+//    QApplication::changeOverrideCursor(cursor);
     QMainWindow window;
     window.setGeometry(0, 0, 800, 480);
+
     QWebView view(&window);
+    QWebPage page;
+    view.setPage(&page);
+
+    MyObject obj(&page);
+    QObject::connect(&view, SIGNAL(loadFinished(bool)), &obj, SLOT(viewLoad()));
+    page.mainFrame()->addToJavaScriptWindowObject("qt", &obj);
+
     view.setGeometry(0, 0, 800, 480);
     view.load(QUrl("file:///home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/09Qt/cmake-build-debug/bin/index.html"));
+
     window.show();
 
     return app.exec();
