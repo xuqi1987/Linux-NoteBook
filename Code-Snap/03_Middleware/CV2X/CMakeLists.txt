@@ -16,6 +16,7 @@ set(CV2X_Root ${CMAKE_SOURCE_DIR}/src/)
 set(CV2XAsn1_Root ${CMAKE_SOURCE_DIR}/3rdpart/CV2XAsn1/src)
 set(CV2XCVS_Root ${CMAKE_SOURCE_DIR}/3rdpart)
 
+
 #设置头文件目录
 INCLUDE_DIRECTORIES(${ToolKit_Root})
 INCLUDE_DIRECTORIES(${CV2X_Root})
@@ -52,7 +53,6 @@ TARGET_LINK_LIBRARIES(${CMAKE_PROJECT_NAME} ${LINK_LIB_LIST})
 
 #测试程序
 add_subdirectory(tests)
-
 
 
 
