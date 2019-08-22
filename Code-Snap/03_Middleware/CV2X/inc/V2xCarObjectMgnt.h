@@ -13,7 +13,7 @@ class V2xCarObjectMgnt : public V2xThread
 {
 public:
 
-    void run() override;
+    void Run() override;
 };
 
 }

@@ -9,7 +9,7 @@
 #include <thread>
 #include <future>
 #include "Util/Logger.h"
-#include "Util/RecycleResourcePool.h"
+#include "Util/ResourcePool.h"
 #include "V2xMsgQueue.h"
 #include "V2xMsg.h"
 #include "Thread/ThreadPool.h"
@@ -29,23 +29,25 @@ public:
     typedef shared_ptr<V2xReceiver> Ptr;
 
     V2xReceiver();
-    void run() override;
-    void setHvDataQueue(V2xMsg::Queue::Ptr &q);
-    void setRvDataQueue(V2xMsg::Queue::Ptr &q);
+    virtual ~V2xReceiver();
+
+    void Run() override;
+    void SetHvDataQueue(V2xMsg::Queue::Ptr &pQueue);
+    void SetRvDataQueue(V2xMsg::Queue::Ptr &pQueue);
 
 private:
-    void distribute(V2xMsg::ValuePtr && msg);
+    void distribute(V2xMsg::ValuePtr && pMsg);
 
 private:
-    V2xMsg::Queue::Ptr _hv_data_queue;
-    V2xMsg::Queue::Ptr _rv_data_queue;
-    V2xMsg::ValuePtr _curCar;
+    V2xMsg::Queue::Ptr m_pHvDataQueue;
+    V2xMsg::Queue::Ptr m_pRvDataQueue;
+    V2xMsg::ValuePtr m_pCurCar;
 
-    V2xRvFilter::Ptr _filter;
+    V2xRvFilter::Ptr m_pFilter;
     // 新建资源池
-    RecycleResourcePool<V2xMsg> _recycleResourcePool;
+    ResourcePool<V2xMsg> m_recycleResourcePool;
 
-    V2xReceiverProxy::Ptr _recv_proxy;
+    V2xReceiverProxy::Ptr m_pRecvProxy;
 
 
 

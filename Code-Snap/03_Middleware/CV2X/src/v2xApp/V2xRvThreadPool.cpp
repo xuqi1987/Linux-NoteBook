@@ -1,4 +1,4 @@
-//
+﻿//
 // Created by xuqi on 2019-08-07.
 //
 
@@ -6,14 +6,22 @@
 
 namespace v2x {
 
-void V2xRvThreadPool::run(int num)
+void V2xRvThreadPool::Run(int iIndex)
 {
     V2xMsg::ValuePtr msg;
+    V2xMsg::ValuePtr hv_msg;
     V2xSceneMsg::ValuePtr scene;
 
     Ticker ticker;
-    while (this->_broker->_rv_data_queue->pop(msg))
+
+    while (this->m_pBroker->m_pRvDataQueue->pop(msg))
     {
+        hv_msg = this->m_pBroker->m_pHvCurMsg;
+        if(hv_msg)
+        {
+            DebugL << "V2V 场景获取最新自车BSM消息";
+            DebugL << "V2V Sence HV: Lat=" << hv_msg->u.hvbsm.pos.lat << "  Lon=" << hv_msg->u.hvbsm.pos.lon;
+        }
 
         //用于测试算法的性能
         ticker.resetTime();
@@ -22,28 +30,28 @@ void V2xRvThreadPool::run(int num)
 
         if (msg->u.rvbsm.id< 5)
         {
-            scene = this->_broker->_scene_pool.obtain();
+            scene = this->m_pBroker->m_scenePool.obtain();
 
             if(msg->u.rvbsm.id== 1)
             {
                 scene->setLevel(V2xSceneMsg::LEVEL_1);
                 scene->assign(StrPrinter <<"高优先级 场景触发，进程:" << getpid()<< " " <<msg );
                 scene->setSecMark(msg->u.rvbsm.secMark);
-                this->_broker->_scene_out_queue->push(scene);
+                this->m_pBroker->m_pSceneOutQueue->push(move(scene));
             }
             else if (msg->u.rvbsm.id== 2)
             {
                 scene->setLevel(V2xSceneMsg::LEVEL_2);
                 scene->setSecMark(msg->u.rvbsm.secMark);
                 scene->assign(StrPrinter <<"中优先级 场景触发，进程:" << getpid()<< " " <<msg);
-                this->_broker->_scene_out_queue->push(scene);
+                this->m_pBroker->m_pSceneOutQueue->push(move(scene));
             }
             else if (msg->u.rvbsm.id== 3)
             {
                 scene->setLevel(V2xSceneMsg::LEVEL_3);
                 scene->setSecMark(msg->u.rvbsm.secMark);
                 scene->assign(StrPrinter <<"低优先级 场景触发，进程:" << getpid()<< " " <<msg);
-                this->_broker->_scene_out_queue->push(scene);
+                this->m_pBroker->m_pSceneOutQueue->push(move(scene));
             }
             else
             {
@@ -52,14 +60,14 @@ void V2xRvThreadPool::run(int num)
         }
         msg.reset();
 
-        TraceL << "V2xRvThreadPool "<<num <<"耗时ms:" << ticker.elapsedTime();
+        TraceL << "V2xRvThreadPool "<<iIndex <<"耗时ms:" << ticker.elapsedTime();
         ticker.resetTime();
     }
 }
-V2xRvThreadPool::V2xRvThreadPool(const shared_ptr<V2xBroker> &broker,int threadnum)
-:V2xThreadPool(threadnum)
+V2xRvThreadPool::V2xRvThreadPool(const shared_ptr<V2xBroker> &pBroker,int iThreadnum)
+:V2xThreadPool(iThreadnum)
 {
-    this->_broker = broker;
+    this->m_pBroker = pBroker;
 }
 
 }

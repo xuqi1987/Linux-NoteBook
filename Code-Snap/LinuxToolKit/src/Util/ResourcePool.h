@@ -129,17 +129,17 @@ private:
  * @tparam C
  */
 template<typename C>
-class RecycleResourcePool
+class ResourcePool
 {
 public:
     typedef shared_ptr_imp<C> ValuePtr;
-    RecycleResourcePool()
+    ResourcePool()
     {
         pool.reset(new ResourcePool_l<C>());
     }
 #if defined(SUPPORT_DYNAMIC_TEMPLATE)
     template<typename ...ArgTypes>
-    RecycleResourcePool(ArgTypes &&...args)
+    ResourcePool(ArgTypes &&...args)
     {
         pool = std::make_shared<ResourcePool_l<C> >(std::forward<ArgTypes>(args)...);
     }

@@ -6,7 +6,7 @@
 
 namespace v2x {
 
-void V2xCarObjectMgnt::run()
+void V2xCarObjectMgnt::Run()
 {
 
 }

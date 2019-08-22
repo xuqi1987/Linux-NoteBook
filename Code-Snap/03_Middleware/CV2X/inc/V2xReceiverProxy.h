@@ -19,20 +19,20 @@ namespace v2x {
 class IV2xReceiver {
 public:
     typedef shared_ptr<IV2xReceiver> Ptr;
-    virtual void init() = 0;
-    virtual bool recv(V2xMsg::ValuePtr && msg) = 0;
+    virtual void Init() = 0;
+    virtual bool Recv(V2xMsg::ValuePtr &&pMsg) = 0;
 };
 
 class V2xSavariReceiver : public IV2xReceiver {
 public:
-    void init() override;
-    bool recv(V2xMsg::ValuePtr &&msg) override;
+    void Init() override;
+    bool Recv(V2xMsg::ValuePtr &&pMsg) override;
 };
 
 class V2xReplayReceiver : public IV2xReceiver {
 public:
-    void init() override;
-    bool recv(V2xMsg::ValuePtr &&msg) override;
+    void Init() override;
+    bool Recv(V2xMsg::ValuePtr &&pMsg) override;
 private:
     shared_ptr<CSVReader<7>> _csv;
 };
@@ -41,11 +41,11 @@ class V2xReceiverProxy : public IV2xReceiver
 {
 public:
     typedef shared_ptr<V2xReceiverProxy> Ptr;
-    void init() override;
-    bool recv(V2xMsg::ValuePtr &&msg) override;
+    void Init() override;
+    bool Recv(V2xMsg::ValuePtr &&pMsg) override;
 
 private:
-    IV2xReceiver::Ptr _receiver;
+    IV2xReceiver::Ptr m_pReceiver;
 
 };
 

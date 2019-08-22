@@ -7,35 +7,41 @@
 #include "V2xRvThreadPool.h"
 namespace v2x {
 
-void V2xBroker::run()
+void V2xBroker::Run()
 {
-    _rv_threads  = make_shared<V2xRvThreadPool>(this->shared_from_this(),10);
-    _hv_map_spat = make_shared<V2xHvMapSpatCal>(this->shared_from_this());
-    _bsm_queue =  make_shared<V2xMsg::Queue>();
+    m_pRvThreads  = make_shared<V2xRvThreadPool>(this->shared_from_this(),10);
+    m_pHvMapSpat = make_shared<V2xHvMapSpatCal>(this->shared_from_this());
+    m_pBsmQueue =  make_shared<V2xMsg::Queue>();
 
+    if (nullptr == m_pRvThreads
+    || nullptr == m_pHvMapSpat)
+    {
+        ErrorL << "Null point Error";
+        return;
+    }
 
-    _rv_threads->start();
-    _hv_map_spat->run();
+    m_pRvThreads->Start();
+    m_pHvMapSpat->run();
 }
 
 V2xBroker::V2xBroker()
 {
-    _scene_pool.setSize(100);
+    m_scenePool.setSize(100);
 }
 
-void V2xBroker::setHvDataQueue(V2xMsg::Queue::Ptr &hvDataQueue)
+void V2xBroker::setHvDataQueue(V2xMsg::Queue::Ptr &pHvDataQueue)
 {
-    _hv_data_queue = hvDataQueue;
+    m_pHvDataQueue = pHvDataQueue;
 }
 
-void V2xBroker::setRvDataQueue(V2xMsg::Queue::Ptr &rvDataQueue)
+void V2xBroker::setRvDataQueue(V2xMsg::Queue::Ptr &pRvDataQueue)
 {
-    _rv_data_queue = rvDataQueue;
+    m_pRvDataQueue = pRvDataQueue;
 }
 
-void V2xBroker::setSceneOutQueue(V2xSceneMsg::Queue::Ptr &sceneOutQueue)
+void V2xBroker::setSceneOutQueue(V2xSceneMsg::Queue::Ptr &pSceneOutQueue)
 {
-    _scene_out_queue = sceneOutQueue;
+    m_pSceneOutQueue = pSceneOutQueue;
 }
 
 

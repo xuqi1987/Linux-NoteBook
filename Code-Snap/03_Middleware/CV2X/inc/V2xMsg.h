@@ -7,7 +7,7 @@
 #include <string>
 #include "Util/Logger.h"
 #include "V2xType.h"
-#include "Util/RecycleResourcePool.h"
+#include "Util/ResourcePool.h"
 #include "V2xMsgQueue.h"
 
 using namespace std;
@@ -51,13 +51,13 @@ typedef struct BasicSafetyMessage
     TransmissionState_t transmission;
     Speed_t speed;
     Heading_t heading;
-    SteeringWheelAngle_t *angle    /* OPTIONAL */;
+    SteeringWheelAngle_t angle    /* OPTIONAL */;
     struct MotionConfidenceSet *motionCfd    /* OPTIONAL */;
     AccelerationSet4Way_t accelSet;
     BrakeSystemStatus_t brakes;
     VehicleSize_t size;
     VehicleClassification_t vehicleClass;
-    struct VehicleSafetyExtensions *safetyExt    /* OPTIONAL */;
+    struct VehicleSafetyExtensions safetyExt    /* OPTIONAL */;
 } V2xBSMMsg;
 
 /*
@@ -89,7 +89,6 @@ SPAT ::= SEQUENCE {
     -- sets of SPAT data (one per intersection)
     ...
 }
-
  */
 
 /* SPAT */
@@ -100,7 +99,6 @@ typedef struct SPAT
     DescriptiveName_t *name    /* OPTIONAL */;
     IntersectionStateList_t intersections;
 } V2xSpatMsg;
-
 
 /*
 RoadSideInformation ::= SEQUENCE {
@@ -135,7 +133,6 @@ RoadSideInformation ::= SEQUENCE {
     ...
 }
  */
-
 
 /* RoadSideInformation */
 typedef struct RoadSideInformation
@@ -175,11 +172,12 @@ typedef struct RoadsideSafetyMessage
     ParticipantList_t participants;
 } V2xRsmMsg;
 
-class V2xMsg: public string
+
+class V2xMsg: public string, public noncopyable
 {
 public:
     typedef shared_ptr<V2xMsg> Ptr;
-    typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
+    typedef ResourcePool<V2xMsg>::ValuePtr ValuePtr;
     typedef V2xMsgQueue<ValuePtr> Queue;
 
     typedef enum
@@ -188,18 +186,22 @@ public:
         MSG_TYPE_RV_BSM,
         MSG_TYPE_MAP,
         MSG_TYPE_SPAT,
+        MSG_TYPE_RSM,
+        MSG_TYPE_RSI,
         MSG_TYPE_MAX,
-    } msg_type_e;
+    } e_MsgType;
 
     union
     {
         V2xBSMMsg hvbsm; // HV BSM data
         V2xBSMMsg rvbsm; // RV BSM data
-        V2xMapMsg mapintersecton;
+        V2xMapMsg map;
         V2xSpatMsg spat;
-
+        V2xRsiMsg rsi;
+        V2xRsmMsg rsm;
     } u;
 
+    // test block Start
     template<typename ...ArgTypes>
     V2xMsg(ArgTypes &&...args)
         : string(std::forward<ArgTypes>(args)...)
@@ -213,38 +215,12 @@ public:
     };
 
     void Print();
-    msg_type_e getMsgType() const;
-    void setMsgType(msg_type_e msgType);
-
+    e_MsgType GetMsgType() const;
+    void SetMsgType(e_MsgType msgType);
 private:
-    msg_type_e _msg_type;
+    e_MsgType m_eMsgType;
 };
 
-
-class V2xVechileStatus : public string
-{
-public:
-
-    template<typename ...ArgTypes>
-    V2xVechileStatus(ArgTypes &&...args)
-    : string(std::forward<ArgTypes>(args)...)
-    {
-        TraceL << "创建V2xVechile对象:" << this << " " << *this;
-    };
-
-    ~V2xVechileStatus()
-    {
-        DebugL << "销毁V2xVechile对象:" << this << " " << *this;
-    };
-
-private:
-
-    // 平均速度
-
-    // 8方向距离最近的车
-
-
-};
 }
 
 #endif //CV2X_V2XCAR_H

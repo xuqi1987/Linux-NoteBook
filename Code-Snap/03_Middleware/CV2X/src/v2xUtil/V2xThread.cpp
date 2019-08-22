@@ -9,7 +9,7 @@ namespace v2x
 
 v2x::V2xThread::V2xThread()
 {
-    _thread = make_shared<ThreadPool>(1, ThreadPool::PRIORITY_HIGHEST, false);
+    m_pThread = make_shared<ThreadPool>(1, ThreadPool::PRIORITY_HIGHEST, false);
 }
 
 v2x::V2xThread::~V2xThread()
@@ -17,10 +17,11 @@ v2x::V2xThread::~V2xThread()
 
 }
 
-void v2x::V2xThread::start()
+void v2x::V2xThread::Start()
 {
-    _thread->async(bind(&V2xThread::run, this));
-    _thread->start();
+    m_pThread->async(bind(&V2xThread::Run, this));
+
+    m_pThread->start();
 }
 
 }

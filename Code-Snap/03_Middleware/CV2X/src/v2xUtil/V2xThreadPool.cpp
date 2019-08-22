@@ -6,10 +6,10 @@
 
 namespace v2x {
 
-V2xThreadPool::V2xThreadPool(int threadnum)
-:_thread_num(threadnum)
+V2xThreadPool::V2xThreadPool(int iThreadnum)
+:m_iThreadNum(iThreadnum)
 {
-    _thread = make_shared<ThreadPool>(_thread_num, ThreadPool::PRIORITY_HIGHEST, false);
+    m_pThreads = make_shared<ThreadPool>(m_iThreadNum, ThreadPool::PRIORITY_HIGHEST, false);
 }
 
 V2xThreadPool::~V2xThreadPool()
@@ -17,12 +17,12 @@ V2xThreadPool::~V2xThreadPool()
 
 }
 
-void V2xThreadPool::start()
+void V2xThreadPool::Start()
 {
-    for (int i =0 ; i < _thread_num; i++)
+    for (int i =0 ; i < m_iThreadNum; i++)
     {
-        _thread->async(bind(&V2xThreadPool::run, this,i));
-        _thread->start();
+        m_pThreads->async(bind(&V2xThreadPool::Run, this,i));
+        m_pThreads->start();
     }
 
 }

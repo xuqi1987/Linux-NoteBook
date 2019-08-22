@@ -1,15 +1,33 @@
-//
-// Created by root on 19-7-11.
-//
 
 #ifndef CV2X_V2XAPP_H
 #define CV2X_V2XAPP_H
+
+/////////////////////////////////////////////////////////
+//
+// File:
+//
+// V2xApp.h
+//
+// Purpose
+//
+// Definition of the V2xApp class
+//
+// File revision history: 0.1
+//
+// Date: 2019/08/20
+// Reason of change: creation
+// Author: qxu9
+//
+// Copyright Visteon Software Technologies
+/////////////////////////////////////////////////////////
+
+
 #include <iostream>
 #include <memory>
 #include <thread>
 #include <future>
 #include "Util/Logger.h"
-#include "Util/RecycleResourcePool.h"
+#include "Util/ResourcePool.h"
 #include "V2xMsgQueue.h"
 #include "V2xMsg.h"
 #include "Thread/ThreadPool.h"
@@ -19,7 +37,7 @@
 #include "V2xBroker.h"
 #include "V2xSender.h"
 
-#include "V2xVechileHistory.h"
+#include "V2xMapQueue.h"
 
 using namespace std;
 using namespace v2x;
@@ -31,16 +49,23 @@ class V2xApp
 {
 public:
   V2xApp();
-  void run();
+    virtual ~V2xApp();
+    void Run();
 
  private:
-    V2xReceiver::Ptr _receiver;
-    V2xMsg::Queue::Ptr _hv_out_queue;
-    V2xMsg::Queue::Ptr _rv_out_queue;
 
-    V2xSceneMsg::Queue::Ptr _scene_out_queue;
-    V2xBroker::Ptr _broker;
-    V2xSender::Ptr _sender;
+    V2xReceiver::Ptr m_pReceiver; // V2xReceiver Point
+
+    /* V2xReceiver to V2xBroker data Queue */
+    V2xMsg::Queue::Ptr m_pHvOutQueue;
+    V2xMsg::Queue::Ptr m_pRvOutQueue;
+
+    V2xBroker::Ptr m_pBroker; // V2xBroker Point
+
+    /* V2xBroker to V2xSender data Queue */
+    V2xSceneMsg::Queue::Ptr m_pSceneOutQueue;
+
+    V2xSender::Ptr m_pSender; // V2xSender Point
 
 };
 }

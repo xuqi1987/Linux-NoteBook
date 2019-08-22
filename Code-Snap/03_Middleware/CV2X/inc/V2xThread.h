@@ -16,11 +16,11 @@ class V2xThread
 public:
     V2xThread();
     virtual ~V2xThread();
-    virtual void start();
-    virtual void run() = 0;
+    virtual void Start();
+    virtual void Run() = 0;
 
 private:
-    ThreadPool::Ptr _thread;
+    ThreadPool::Ptr m_pThread;
 
 };
 

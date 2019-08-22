@@ -8,7 +8,7 @@
 #include <memory>
 #include <thread>
 #include <future>
-#include "Util/RecycleResourcePool.h"
+#include "Util/ResourcePool.h"
 #include "V2xMsg.h"
 
 using namespace std;

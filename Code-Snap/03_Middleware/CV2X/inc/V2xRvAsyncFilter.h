@@ -9,7 +9,7 @@
 #include <thread>
 #include <future>
 #include "Util/Logger.h"
-#include "Util/RecycleResourcePool.h"
+#include "Util/ResourcePool.h"
 #include "V2xMsgQueue.h"
 #include "V2xMsg.h"
 #include "V2xThreadPool.h"
@@ -23,17 +23,17 @@ namespace v2x
 class V2xRvAsyncFilter: public V2xThreadPool
 {
 public:
-    void run(int num) override;
+    void Run(int num) override;
 
     typedef shared_ptr<V2xRvAsyncFilter> Ptr;
-    typedef RecycleResourcePool<V2xMsg>::ValuePtr ValuePtr;
+    typedef ResourcePool<V2xMsg>::ValuePtr ValuePtr;
     typedef V2xMsgQueue<ValuePtr> Queue;
 
-    V2xRvAsyncFilter(int threadnum, Queue::Ptr &iQueue, Queue::Ptr &oQueue);
+    V2xRvAsyncFilter(int iThreadNum, Queue::Ptr &pIn_Queue, Queue::Ptr &pOut_Queue);
 
 private:
-    Queue::Ptr _input_queue;
-    Queue::Ptr _output_queue;
+    Queue::Ptr m_pInputQueue;
+    Queue::Ptr m_pOutputQueue;
 
 };
 }

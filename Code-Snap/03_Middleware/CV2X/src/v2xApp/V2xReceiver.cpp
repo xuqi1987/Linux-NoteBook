@@ -8,27 +8,26 @@
 #include <exception>
 #include <V2xMsg.h>
 
+using namespace std;
 
-namespace  v2x {
-
-void V2xReceiver::distribute(V2xMsg::ValuePtr &&msg)
+namespace v2x
 {
-    msg->Print();
 
-    switch (msg->getMsgType()) {
-        case V2xMsg::MSG_TYPE_HV_BSM:
-            TraceL << "V2xReceiver HV 分配:"  <<_hv_data_queue;
-            _hv_data_queue->push(std::move(msg));
-            _curCar = msg;
+void V2xReceiver::distribute(V2xMsg::ValuePtr &&pMsg)
+{
+    pMsg->Print();
+    switch (pMsg->GetMsgType()) {
+        case V2xMsg::MSG_TYPE_HV_BSM:TraceL << "V2xReceiver HV 分配:" << m_pHvDataQueue;
+            m_pHvDataQueue->push(move(pMsg));
+            m_pCurCar = pMsg;
             break;
         case V2xMsg::MSG_TYPE_RV_BSM: {
 
-            if (_curCar != nullptr)
-            {
-                if (!_filter->isDiscard(_curCar,msg)) {
+            if (m_pCurCar != nullptr) {
+                if (!m_pFilter->isDiscard(m_pCurCar, pMsg)) {
 
-                    TraceL << "V2xReceiver RV 分配:" << msg;
-                    _rv_data_queue->push(std::move(msg));
+                    TraceL << "V2xReceiver RV 分配:" << pMsg;
+                    m_pRvDataQueue->push(move(pMsg));
                 }
             }
 
@@ -38,40 +37,45 @@ void V2xReceiver::distribute(V2xMsg::ValuePtr &&msg)
     }
 
 }
-void V2xReceiver::setHvDataQueue(V2xMsg::Queue::Ptr &q)
+void V2xReceiver::SetHvDataQueue(V2xMsg::Queue::Ptr &pQueue)
 {
-    _hv_data_queue = q;
+    m_pHvDataQueue = pQueue;
 }
 
-void V2xReceiver::setRvDataQueue(V2xMsg::Queue::Ptr &q)
+void V2xReceiver::SetRvDataQueue(V2xMsg::Queue::Ptr &pQueue)
 {
-    _rv_data_queue = q;
+    m_pRvDataQueue = pQueue;
 }
 
 V2xReceiver::V2xReceiver()
-    : _hv_data_queue(nullptr), _rv_data_queue(nullptr), _filter(nullptr)
+    : m_pHvDataQueue(nullptr), m_pRvDataQueue(nullptr), m_pFilter(nullptr)
 {
-    _filter = make_shared<V2xRvFilter>();
-    _recv_proxy = make_shared<V2xReceiverProxy>();
-    _recycleResourcePool.setSize(100);
+    m_pFilter = make_shared<V2xRvFilter>();
+    m_pRecvProxy = make_shared<V2xReceiverProxy>();
+    m_recycleResourcePool.setSize(100);
 }
 
-void V2xReceiver::run()
+void V2xReceiver::Run()
 {
     TraceL << "V2xReceiver Thread Start" << endl;
-    if (_recv_proxy == nullptr) {
-        ErrorL << "recv_proxy is null";
-    }
-    _recv_proxy->init();
+   // m_pVmfReceiver = make_shared<V2xVmfReceiver>();
 
-    V2xMsg::ValuePtr msg = _recycleResourcePool.obtain();
+   // m_pVmfReceiver->Start();
+    m_pRecvProxy->Init();
 
-    while (_recv_proxy->recv(move(msg))) {
+    V2xMsg::ValuePtr msg = m_recycleResourcePool.obtain();
+
+    // if no data, recv will block
+    while (m_pRecvProxy->Recv(move(msg))) {
 
         distribute(std::move(msg));
         // 获取一个msg
-        msg = _recycleResourcePool.obtain();
+        msg = m_recycleResourcePool.obtain();
     }
+
+}
+V2xReceiver::~V2xReceiver()
+{
 
 }
 

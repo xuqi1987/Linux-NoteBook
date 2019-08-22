@@ -13,11 +13,11 @@ class V2xRvThreadPool : public V2xThreadPool
 {
 public:
     typedef shared_ptr<V2xRvThreadPool> Ptr;
-    V2xRvThreadPool(const shared_ptr<V2xBroker> &broker,int threadnum);
-    void run(int num) override;
+    V2xRvThreadPool(const shared_ptr<V2xBroker> &pBroker,int iThreadnum);
+    void Run(int iIndex) override;
 
 private:
-    V2xBroker::Ptr _broker;
+    V2xBroker::Ptr m_pBroker;
 };
 
 }

@@ -8,7 +8,7 @@
 
 namespace v2x {
 
-void V2xReplayReceiver::init()
+void V2xReplayReceiver::Init()
 {
     string path = SET["Debug.ReplayerFilePath"].as<string>();
     DebugL << "Log回放，读取log文件:" <<path;
@@ -17,7 +17,7 @@ void V2xReplayReceiver::init()
     _csv->read_header(io::ignore_extra_column, "TempId","LogRecType","secMark","lat", "long","heading","speed");
 
 }
-bool V2xReplayReceiver::recv(V2xMsg::ValuePtr &&msg)
+bool V2xReplayReceiver::Recv(V2xMsg::ValuePtr &&pMsg)
 {
     string type;
     uint32_t id;
@@ -31,63 +31,63 @@ bool V2xReplayReceiver::recv(V2xMsg::ValuePtr &&msg)
     TraceL <<" "<<id <<" " << type<< " " <<secMark<<" " <<lat<<" " <<lon<< " " <<heading<< " " <<speed<< endl;
     if (type == "TX")
     {
-        msg->setMsgType(V2xMsg::MSG_TYPE_HV_BSM);
-        msg->u.hvbsm.secMark = secMark;
-        msg->u.hvbsm.id = id;
-        msg->u.hvbsm.pos.lat = lat * 1000 * 1000;
-        msg->u.hvbsm.pos.lon = lon * 1000 * 1000;
-        msg->u.hvbsm.heading = heading;
-        msg->u.hvbsm.speed = speed;
+        pMsg->SetMsgType(V2xMsg::MSG_TYPE_HV_BSM);
+        pMsg->u.hvbsm.secMark = secMark;
+        pMsg->u.hvbsm.id = id;
+        pMsg->u.hvbsm.pos.lat = lat * 1000 * 1000;
+        pMsg->u.hvbsm.pos.lon = lon * 1000 * 1000;
+        pMsg->u.hvbsm.heading = heading;
+        pMsg->u.hvbsm.speed = speed;
 
     }
     else if(type == "RX")
     {
-        msg->setMsgType(V2xMsg::MSG_TYPE_RV_BSM);
-        msg->u.rvbsm.secMark = secMark;
-        msg->u.rvbsm.id = id;
-        msg->u.rvbsm.pos.lat = lat * 1000 * 1000;
-        msg->u.rvbsm.pos.lon = lon * 1000 * 1000;
-        msg->u.rvbsm.heading = heading;
-        msg->u.rvbsm.speed = speed;
+        pMsg->SetMsgType(V2xMsg::MSG_TYPE_RV_BSM);
+        pMsg->u.rvbsm.secMark = secMark;
+        pMsg->u.rvbsm.id = id;
+        pMsg->u.rvbsm.pos.lat = lat * 1000 * 1000;
+        pMsg->u.rvbsm.pos.lon = lon * 1000 * 1000;
+        pMsg->u.rvbsm.heading = heading;
+        pMsg->u.rvbsm.speed = speed;
     }
 
     static uint32_t lastsecMark = secMark;
     int t = secMark-lastsecMark;
     if (t < 0) t= 0;
     if (t > 200) t =200;
-    usleep(10000*t);
+    usleep(100*t);
     lastsecMark = secMark;
 
     return true;
 
 }
 
-void V2xSavariReceiver::init()
+void V2xSavariReceiver::Init()
 {
 
 }
-bool V2xSavariReceiver::recv(V2xMsg::ValuePtr &&msg)
+bool V2xSavariReceiver::Recv(V2xMsg::ValuePtr &&pMsg)
 {
 
 }
 
-void V2xReceiverProxy::init()
+void V2xReceiverProxy::Init()
 {
     if (SET["Debug.ScenceReplayFlag"].as<bool>())
     {
-        TraceL << "new V2xReplayReceiver::init" << endl;
-        _receiver = make_shared<V2xReplayReceiver>();
+        TraceL << "new V2xReplayReceiver::Init" << endl;
+        m_pReceiver = make_shared<V2xReplayReceiver>();
     }
     else
     {
-        TraceL << "new V2xSavariReceiver::init" << endl;
-        _receiver = make_shared<V2xSavariReceiver>();
+        TraceL << "new V2xSavariReceiver::Init" << endl;
+        m_pReceiver = make_shared<V2xSavariReceiver>();
     }
-    _receiver->init();
+    m_pReceiver->Init();
 
 }
-bool V2xReceiverProxy::recv(V2xMsg::ValuePtr &&msg)
+bool V2xReceiverProxy::Recv(V2xMsg::ValuePtr &&pMsg)
 {
-    return _receiver->recv(move(msg));
+    return m_pReceiver->Recv(move(pMsg));
 }
 }

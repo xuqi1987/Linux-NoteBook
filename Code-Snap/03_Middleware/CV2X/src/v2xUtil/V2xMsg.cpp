@@ -2,22 +2,24 @@
 // Created by root on 19-7-11.
 //
 
+#include <V2xMsg.h>
+
 #include "V2xMsg.h"
 
 namespace v2x
 {
-v2x::V2xMsg::msg_type_e v2x::V2xMsg::getMsgType() const
+v2x::V2xMsg::e_MsgType v2x::V2xMsg::GetMsgType() const
 {
-    return _msg_type;
+    return m_eMsgType;
 }
-void v2x::V2xMsg::setMsgType(v2x::V2xMsg::msg_type_e msgType)
+void v2x::V2xMsg::SetMsgType(v2x::V2xMsg::e_MsgType msgType)
 {
-    _msg_type = msgType;
+    m_eMsgType = msgType;
 }
 void v2x::V2xMsg::Print()
 {
     string info;
-    if (_msg_type == MSG_TYPE_HV_BSM) {
+    if (m_eMsgType == MSG_TYPE_HV_BSM) {
         info = StrPrinter << "【HV_BSM】"
                           << "\tlatitude:" << u.hvbsm.pos.lat
                           << "\tlongitude:" << u.hvbsm.pos.lon
@@ -26,7 +28,7 @@ void v2x::V2xMsg::Print()
                           << "\t车辆id:" << int(u.hvbsm.id);
 
     }
-    else if (_msg_type == MSG_TYPE_RV_BSM) {
+    else if (m_eMsgType == MSG_TYPE_RV_BSM) {
         info = StrPrinter << "【RV_BSM】"
                           << "\tlatitude:" << u.rvbsm.pos.lat
                           << "\tlongitude:" << u.rvbsm.pos.lon

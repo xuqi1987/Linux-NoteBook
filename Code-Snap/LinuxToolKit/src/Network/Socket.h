@@ -15,7 +15,7 @@
 #include "Util/OnceToken.h"
 #include "Util/uv_errno.h"
 #include "Util/TimeTicker.h"
-#include "Util/RecycleResourcePool.h"
+#include "Util/ResourcePool.h"
 #include "Poller/Timer.h"
 #include "Poller/EventPoller.h"
 #include "Network/SockUtil.h"

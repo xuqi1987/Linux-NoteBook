@@ -28,6 +28,12 @@ public:
         _sem.post();
     }
 
+    /**
+     * this funciton will block,until data push
+     * @tparam C
+     * @param data
+     * @return
+     */
     template <typename C>
     bool pop(C &data) {
         _sem.wait();

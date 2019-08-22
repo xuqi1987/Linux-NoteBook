@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "BasicSafetyMessage.h"
 #include "Util/Logger.h"
-#include "Util/RecycleResourcePool.h"
+#include "Util/ResourcePool.h"
 #include "../inc/V2xMsgQueue.h"
 #include "../inc/V2xMsg.h"
 #include "../inc/V2xApp.h"

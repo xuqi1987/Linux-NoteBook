@@ -26,7 +26,7 @@
 #include <random>
 #include "Util/Util.h"
 #include "Util/Logger.h"
-#include "Util/RecycleResourcePool.h"
+#include "Util/ResourcePool.h"
 #include <list>
 
 using namespace std;

@@ -4,44 +4,55 @@
 
 #include "V2xApp.h"
 #include "Util/Logger.h"
+#include "V2xException.h"
 namespace v2x
 {
 
 V2xApp::V2xApp()
 {
     // 接收消息
-    _receiver = make_shared<V2xReceiver>();
-    _hv_out_queue = make_shared<V2xMsg::Queue>();
-    _rv_out_queue = make_shared<V2xMsg::Queue>();
+    m_pReceiver = make_shared<V2xReceiver>();
+    m_pHvOutQueue = make_shared<V2xMsg::Queue>();
+    m_pRvOutQueue = make_shared<V2xMsg::Queue>();
 
-    _scene_out_queue = make_shared<V2xSceneMsg::Queue>();
+    m_pSceneOutQueue = make_shared<V2xSceneMsg::Queue>();
 
-    _broker = make_shared<V2xBroker>();
-    _sender = make_shared<V2xSender>();
+    m_pBroker = make_shared<V2xBroker>();
+    m_pSender = make_shared<V2xSender>();
 
 }
 
-void V2xApp::run()
+V2xApp::~V2xApp()
 {
 
-    try {
+}
+void V2xApp::Run()
+{
 
-        // 设置Receiver的输出是_hv_out_pool和_rv_out_pool
-        _receiver->setHvDataQueue(_hv_out_queue);
-        _receiver->setRvDataQueue(_rv_out_queue);
-        _receiver->start();
-
-        _broker->setHvDataQueue(_hv_out_queue);
-        _broker->setRvDataQueue(_rv_out_queue);
-        _broker->setSceneOutQueue(_scene_out_queue);
-        _broker->start();
-
-        _sender->setSceneQueue(_scene_out_queue);
-        _sender->start();
+    if (nullptr == m_pSender
+    || nullptr == m_pBroker
+    || nullptr == m_pReceiver)
+    {
+        ErrorL << "Null point Error";
+        return;
     }
-    catch (...) {
-        ErrorL << "Error";
-    }
+    /*
+    m_pSender->SetSceneQueue(m_pSceneOutQueue);
+    m_pSender->Start();
+    usleep(1000);
+*/
+
+    m_pBroker->setHvDataQueue(m_pHvOutQueue);
+    m_pBroker->setRvDataQueue(m_pRvOutQueue);
+    m_pBroker->setSceneOutQueue(m_pSceneOutQueue);
+    m_pBroker->Start();
+    usleep(1000);
+
+    m_pReceiver->SetHvDataQueue(m_pHvOutQueue);
+    m_pReceiver->SetRvDataQueue(m_pRvOutQueue);
+    m_pReceiver->Start();
+
+
 
 }
 

@@ -14,13 +14,13 @@ namespace v2x {
 class V2xThreadPool
 {
 public:
-    V2xThreadPool(int threadnum = 1);
+    V2xThreadPool(int iThreadnum = 1);
     virtual ~V2xThreadPool();
-    void start();
-    virtual void run(int num) = 0;
+    void Start();
+    virtual void Run(int iIndex) = 0;
 private:
-    ThreadPool::Ptr _thread;
-    int _thread_num;
+    ThreadPool::Ptr m_pThreads;
+    int m_iThreadNum;
 };
 
 }

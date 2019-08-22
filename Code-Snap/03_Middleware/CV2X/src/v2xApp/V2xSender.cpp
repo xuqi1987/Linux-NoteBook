@@ -6,19 +6,19 @@
 #include "V2xSceneMsg.h"
 
 namespace v2x {
-void V2xSender::run()
+void V2xSender::Run()
 {
     V2xSceneMsg::ValuePtr scene;
 
-    while(_scene_queue->pop(scene))
+    while(m_pSceneQueue->pop(scene))
     {
         InfoL << *scene;
         scene.reset();
     }
 }
-void V2xSender::setSceneQueue(V2xSceneMsg::Queue::Ptr &sceneQueue)
+void V2xSender::SetSceneQueue(V2xSceneMsg::Queue::Ptr &pSceneQueue)
 {
-    _scene_queue = sceneQueue;
+    m_pSceneQueue = pSceneQueue;
 }
 }
 

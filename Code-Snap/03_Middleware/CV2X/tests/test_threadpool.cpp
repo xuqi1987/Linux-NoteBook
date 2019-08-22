@@ -3,7 +3,7 @@
 //
 #include "../inc/V2xThreadPool.h"
 #include "../inc/V2xThread.h"
-#include "Util/RecycleResourcePool.h"
+#include "Util/ResourcePool.h"
 #include "../inc/V2xMsg.h"
 
 using namespace std;
@@ -61,7 +61,7 @@ public:
         }
 
         // 设置一个资源池，最多回收10个V2xMsg的内存
-        RecycleResourcePool<V2xMsg> r_pool;
+        ResourcePool<V2xMsg> r_pool;
         r_pool.setSize(2);
 
         for (int i =0; i < 2000; i++)

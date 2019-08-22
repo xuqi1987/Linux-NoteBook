@@ -5,21 +5,21 @@
 #include "V2xRvAsyncFilter.h"
 namespace v2x
 {
-V2xRvAsyncFilter::V2xRvAsyncFilter(int threadnum, Queue::Ptr &iQueue, Queue::Ptr &oQueue)
+V2xRvAsyncFilter::V2xRvAsyncFilter(int iThreadNum, Queue::Ptr &pIn_Queue, Queue::Ptr &pOut_Queue)
 
 {
-  _input_queue = iQueue;
-  _output_queue = oQueue;
+  m_pInputQueue = pIn_Queue;
+  m_pOutputQueue = pOut_Queue;
 
 }
 
-void V2xRvAsyncFilter::run(int num)
+void V2xRvAsyncFilter::Run(int num)
 {
 
   ValuePtr oneCar;
 
   while (1) {
-    bool ret = _input_queue->pop(oneCar);
+    bool ret = m_pInputQueue->pop(oneCar);
 
     TraceL << "线程( " << num << " )\t从pool中拿到数据处理，数据内容是：" << *oneCar << " 地址是：" << oneCar;
 
@@ -30,7 +30,7 @@ void V2xRvAsyncFilter::run(int num)
     }
     else {
       TraceL << "需要的数据，放入下一个队列" << *oneCar << "数据地址: " << oneCar;
-      _output_queue->push(oneCar);
+      m_pOutputQueue->push(move(oneCar));
     }
 
     sleep(1);

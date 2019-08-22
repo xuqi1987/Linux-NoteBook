@@ -12,11 +12,11 @@ class V2xSender : public V2xThread
 {
 public:
     typedef shared_ptr<V2xSender> Ptr;
-    void run() override;
+    void Run() override;
 
-    void setSceneQueue(V2xSceneMsg::Queue::Ptr &sceneQueue);
+    void SetSceneQueue(V2xSceneMsg::Queue::Ptr &pSceneQueue);
 private:
-    V2xSceneMsg::Queue::Ptr _scene_queue;
+    V2xSceneMsg::Queue::Ptr m_pSceneQueue;
 };
 
 

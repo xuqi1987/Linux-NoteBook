@@ -1,4 +1,4 @@
-//
+﻿//
 // Created by xuqi on 2019-07-22.
 //
 
@@ -6,7 +6,7 @@
 #define V2XBROKER_H
 #include "V2xThread.h"
 #include "Thread/ThreadPool.h"
-#include "Util/RecycleResourcePool.h"
+#include "Util/ResourcePool.h"
 #include "V2xMsg.h"
 #include "V2xSceneMsg.h"
 #include "V2xMsgQueue.h"
@@ -28,24 +28,27 @@ public:
     V2xBroker();
     typedef shared_ptr<V2xBroker> Ptr;
 
-    void run() override;
-    void setHvDataQueue(V2xMsg::Queue::Ptr &hvDataQueue);
-    void setRvDataQueue(V2xMsg::Queue::Ptr &rvDataQueue);
-    void setSceneOutQueue(V2xSceneMsg::Queue::Ptr &sceneOutQueue);
+    void Run() override;
+    void setHvDataQueue(V2xMsg::Queue::Ptr &pHvDataQueue);
+    void setRvDataQueue(V2xMsg::Queue::Ptr &pRvDataQueue);
+    void setSceneOutQueue(V2xSceneMsg::Queue::Ptr &pSceneOutQueue);
 
     friend class V2xHvMapSpatCal;
     friend class V2xRvThreadPool;
 private:
 
-    V2xMsg::Queue::Ptr _hv_data_queue;
-    V2xMsg::Queue::Ptr _rv_data_queue;
-    V2xSceneMsg::Pool _scene_pool;
-    V2xSceneMsg::Queue::Ptr _scene_out_queue;
-    shared_ptr<V2xHvMapSpatCal> _hv_map_spat;
-    shared_ptr<V2xRvThreadPool> _rv_threads;
-    V2xMsg::Queue::Ptr _bsm_queue;
-    
-
+    V2xMsg::Queue::Ptr m_pHvDataQueue; // RVMsgQueue
+    V2xMsg::Queue::Ptr m_pRvDataQueue; // HVMsgQueue (Map/Spat/HV)
+    V2xMsg::Queue::Ptr m_pBsmQueue; // BSMMsgQueue
+    V2xSceneMsg::Pool m_scenePool;
+    V2xSceneMsg::Queue::Ptr m_pSceneOutQueue;
+    shared_ptr<V2xHvMapSpatCal> m_pHvMapSpat;
+    shared_ptr<V2xRvThreadPool> m_pRvThreads;
+    V2xMsg::ValuePtr m_pHvCurMsg;
+    V2xMsg::ValuePtr m_pMapCurMsg;
+    V2xMsg::ValuePtr m_pSpatCurMsg;
+    V2xMsg::ValuePtr m_pRsiCurMsg;
+    V2xMsg::ValuePtr m_pRsmCurMsg;
 };
 
 }
