@@ -14,7 +14,7 @@ namespace v2x {
 
 class Consumer : public V2xThreadPool{
 public:
-    void run(int num) override
+    void Run(int num) override
     {
         if(msg_queue == nullptr)
         {
@@ -51,7 +51,7 @@ private:
 
 class Producer : public V2xThread {
 public:
-    void run() override
+    void Run() override
     {
 
         if(msg_queue == nullptr)
@@ -118,12 +118,12 @@ int main()
     consumers->setMsgQueue(msg_queue);
 
     //消费者们先启动
-    consumers->start();
+    consumers->Start();
 
     sleep(1);
 
     //生产者启动
-    producer->start();
+    producer->Start();
 
     while (1)
     {

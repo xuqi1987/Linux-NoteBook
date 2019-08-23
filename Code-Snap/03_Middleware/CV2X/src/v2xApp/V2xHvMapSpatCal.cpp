@@ -26,9 +26,9 @@ void V2xHvMapSpatCal::run()
             this->m_pBroker->m_pHvCurMsg = pMsg;
             if (pMsg->u.hvbsm.speed > 0)
             {
-                InfoL << "自车开始动了 speed" <<pMsg->u.hvbsm.speed;
+                DebugL << "自车开始动了 speed" <<pMsg->u.hvbsm.speed;
             }
-            DebugL << "HV: Lat=" << pMsg->u.hvbsm.pos.lat << "  Lon=" << pMsg->u.hvbsm.pos.lon;
+            //DebugL << "HV: Lat=" << pMsg->u.hvbsm.pos.lat << "  Lon=" << pMsg->u.hvbsm.pos.lon;
             break;
         case V2xMsg::MSG_TYPE_MAP:
 

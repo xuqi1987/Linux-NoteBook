@@ -1,33 +1,45 @@
+/////////////////////////////////////////////////////////
+//
+// File:
+//
+// V2xAlgorithm.h
+//
+// Purpose
+//
+// <Describe here the purpose of the file>
+// Ex:
+// Definition of the String class
+//
+// File revision history:
+//
+// <comply with the configuration management system, or
+// follow the following template:
+// Date:
+// Reason of change: create 1st version
+// root
+//
+// Copyright Yanfeng Visteon Electronics Co.,Ltd
+/////////////////////////////////////////////////////////
 
-#ifndef V2XALGORITHM_H
-#define V2XALGORITHM_H
-#include <stdint.h>
-#include "V2xMsg.h"
+//
+// Created by root on 19-8-23.
+//
 
-namespace v2x {
-
-/*
-地球半径:赤道半径 = 6378.140 公里
-极半径 = 6356.755 公里
-平均半径 = 6371.004 公里
- */
-
-#define EARTH_RADIUS	6371.004 // the earth radius km
-#define PI				(3.14159265358979323846264338327950288419717) //this macro is aim to control the putty log when release.
+#ifndef CV2X_V2XALGORITHM_H
+#define CV2X_V2XALGORITHM_H
 
 
 class V2xAlgorithm
 {
 public:
-
     /**
-     * http://blog.sina.com.cn/s/blog_5e7960620101vi0d.html
-     * 适用范围：此方法适用于球面上任意两点间的距离求算，用高中数学知识即可证明此方法是球面余弦函数的一个变换，
-     * 因为其中换掉了cos项，因此不存在短距离求算时对系统计算精度的过多顾虑的问题。
-     * 已知两点经纬度，求两点间距离；Haversine法
-     * @param 经纬度使用十进制度，i.e.DDD.DDDDDD°，非度分或度分秒
-     * @return cm
-     */
+ * http://blog.sina.com.cn/s/blog_5e7960620101vi0d.html
+ * 适用范围：此方法适用于球面上任意两点间的距离求算，用高中数学知识即可证明此方法是球面余弦函数的一个变换，
+ * 因为其中换掉了cos项，因此不存在短距离求算时对系统计算精度的过多顾虑的问题。
+ * 已知两点经纬度，求两点间距离；Haversine法
+ * @param 经纬度使用十进制度，i.e.DDD.DDDDDD°，非度分或度分秒
+ * @return cm
+ */
     static double Lonlat2dis(double lon1, double lat1, double lon2, double lat2);
     /**
      * 将角度化为弧度后求取距离
@@ -65,6 +77,5 @@ public:
 
 };
 
-}
 
-#endif //V2XALGORITHM_H
+#endif //CV2X_V2XALGORITHM_H

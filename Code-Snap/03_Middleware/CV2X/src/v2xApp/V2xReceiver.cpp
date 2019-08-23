@@ -15,10 +15,11 @@ namespace v2x
 
 void V2xReceiver::distribute(V2xMsg::ValuePtr &&pMsg)
 {
-    pMsg->Print();
+    //pMsg->Print();
     switch (pMsg->GetMsgType()) {
-        case V2xMsg::MSG_TYPE_HV_BSM:TraceL << "V2xReceiver HV 分配:" << m_pHvDataQueue;
-            m_pHvDataQueue->push(move(pMsg));
+        case V2xMsg::MSG_TYPE_HV_BSM:
+            TraceL << "V2xReceiver HV 分配:" << m_pHvDataQueue;
+            m_pHvDataQueue->push(pMsg);
             m_pCurCar = pMsg;
             break;
         case V2xMsg::MSG_TYPE_RV_BSM: {

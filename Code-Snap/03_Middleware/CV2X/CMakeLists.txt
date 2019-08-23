@@ -52,7 +52,7 @@ add_executable(${CMAKE_PROJECT_NAME} ${CV2X_src_list})
 TARGET_LINK_LIBRARIES(${CMAKE_PROJECT_NAME} ${LINK_LIB_LIST})
 
 #测试程序
-add_subdirectory(tests)
+#add_subdirectory(tests)
 
 
 
