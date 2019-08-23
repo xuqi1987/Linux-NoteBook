@@ -36,8 +36,8 @@ bool V2xReplayReceiver::Recv(V2xMsg::ValuePtr &&pMsg)
         pMsg->u.hvbsm.id = id;
         pMsg->u.hvbsm.pos.lat = lat * 1000 * 1000;
         pMsg->u.hvbsm.pos.lon = lon * 1000 * 1000;
-        pMsg->u.hvbsm.heading = heading;
-        pMsg->u.hvbsm.speed = speed;
+        pMsg->u.hvbsm.heading = heading /0.0125;
+        pMsg->u.hvbsm.speed = speed / 0.02 / 3.6;
 
     }
     else if(type == "RX")
@@ -47,8 +47,8 @@ bool V2xReplayReceiver::Recv(V2xMsg::ValuePtr &&pMsg)
         pMsg->u.rvbsm.id = id;
         pMsg->u.rvbsm.pos.lat = lat * 1000 * 1000;
         pMsg->u.rvbsm.pos.lon = lon * 1000 * 1000;
-        pMsg->u.rvbsm.heading = heading;
-        pMsg->u.rvbsm.speed = speed;
+        pMsg->u.rvbsm.heading = heading /0.0125;
+        pMsg->u.rvbsm.speed = speed / 0.02 / 3.6;
     }
 
     static uint32_t lastsecMark = secMark;
