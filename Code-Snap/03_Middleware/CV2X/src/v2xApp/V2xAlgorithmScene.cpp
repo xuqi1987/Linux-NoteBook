@@ -16,7 +16,8 @@ bool v2x::V2xAlgorithmScene::IsFWCWarning(double lon_hv,
                                           double speed_rv)
 {
     // 先判断在正前方
-    if (V2xAlgorithmTest::IsFront(lon_hv,lat_hv,heading_hv,lon_rv,lat_rv))
+     if (abs(int(heading_hv) - int(heading_rv)) < 3)
+    //if (V2xAlgorithmTest::IsFront(lon_hv,lat_hv,heading_hv,lon_rv,lat_rv))
     {
         // 低速跟驰碰撞
         if ((speed_hv < 15.0) && (speed_hv > 2.0))

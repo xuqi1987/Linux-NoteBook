@@ -1,4 +1,4 @@
-# Install script for directory: /home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/03_Middleware/CV2X
+# Install script for directory: /media/root/d734d900-672a-4ab2-b5e9-a4ba6f543d281/xuqi/proj/Private/Linux-NoteBook/Code-Snap/03_Middleware/CV2X
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/xuqi/proj/Private/Linux-NoteBook/Code-Snap/03_Middleware/CV2X/linux_build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/media/root/d734d900-672a-4ab2-b5e9-a4ba6f543d281/xuqi/proj/Private/Linux-NoteBook/Code-Snap/03_Middleware/CV2X/linux_build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

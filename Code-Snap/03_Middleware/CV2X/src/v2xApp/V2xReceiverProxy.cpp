@@ -36,7 +36,7 @@ bool V2xReplayReceiver::Recv(V2xMsg::ValuePtr &&pMsg)
         pMsg->u.hvbsm.id = id;
         pMsg->u.hvbsm.pos.lat = lat * 1000 * 1000;
         pMsg->u.hvbsm.pos.lon = lon * 1000 * 1000;
-        pMsg->u.hvbsm.heading = heading /0.0125;
+        pMsg->u.hvbsm.heading = heading /1000 * 1000 /0.0125;
         pMsg->u.hvbsm.speed = speed / 0.02 / 3.6;
 
     }
@@ -47,7 +47,7 @@ bool V2xReplayReceiver::Recv(V2xMsg::ValuePtr &&pMsg)
         pMsg->u.rvbsm.id = id;
         pMsg->u.rvbsm.pos.lat = lat * 1000 * 1000;
         pMsg->u.rvbsm.pos.lon = lon * 1000 * 1000;
-        pMsg->u.rvbsm.heading = heading /0.0125;
+        pMsg->u.rvbsm.heading = heading /1000 * 1000 /0.0125;
         pMsg->u.rvbsm.speed = speed / 0.02 / 3.6;
     }
 
