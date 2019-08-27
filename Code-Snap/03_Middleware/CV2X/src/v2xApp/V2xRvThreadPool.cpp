@@ -26,7 +26,9 @@ void V2xRvThreadPool::Run(int iIndex)
             //WarnL << "HV: Lat=" << hv_msg->u.hvbsm.pos.lat << "  Lon=" << hv_msg->u.hvbsm.pos.lon;
             WarnL << "Distance:" << V2xAlgorithmAdapter::Lonlat2dis(hv_msg,rv_msg) /100.0 << "m\t"
                 <<"H Speed "<< Speed2Double(hv_msg->u.hvbsm.speed) << "km/h\t"
-                <<"R Speed " << Speed2Double(rv_msg->u.rvbsm.speed)<< "km/h\t";
+                <<"R Speed " << Speed2Double(rv_msg->u.rvbsm.speed)<< "km/h\t"
+                <<"H Heading "<< Heading2Double(hv_msg->u.hvbsm.heading) << "deg\t"
+                <<"R Heading " << Heading2Double(rv_msg->u.rvbsm.heading)<< "deg\t";
 
         }
 

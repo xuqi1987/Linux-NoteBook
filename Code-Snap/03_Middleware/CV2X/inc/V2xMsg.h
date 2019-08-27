@@ -199,7 +199,7 @@ public:
         V2xSpatMsg spat;
         V2xRsiMsg rsi;
         V2xRsmMsg rsm;
-    } u;
+    }u;
 
     // test block Start
     template<typename ...ArgTypes>
@@ -217,6 +217,7 @@ public:
     void Print();
     e_MsgType GetMsgType() const;
     void SetMsgType(e_MsgType msgType);
+
 private:
     e_MsgType m_eMsgType;
 };

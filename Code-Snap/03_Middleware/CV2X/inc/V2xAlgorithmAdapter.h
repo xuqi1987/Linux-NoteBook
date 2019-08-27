@@ -29,6 +29,7 @@
 #define CV2X_V2XALGORITHMADAPTER_H
 #include "V2xAlgorithmTest.h"
 #include "V2xAlgorithmScene.h"
+#include "V2xAlgorithm.h"
 
 namespace v2x {
 
@@ -36,7 +37,7 @@ namespace v2x {
 #define Heading2Double(v) (v*0.0125)  // deg
 #define Speed2Double(v) (v * 0.02 * 3.6) // km/h
 
-class V2xAlgorithmAdapter : public V2xAlgorithmTest,V2xAlgorithmScene
+class V2xAlgorithmAdapter : public V2xAlgorithm,V2xAlgorithmScene
 {
 public:
     /**
@@ -52,6 +53,9 @@ public:
     static bool IsFWCWarning(V2xMsg::Ptr &hv,V2xMsg::Ptr &rv);
 
     static double Lonlat2dis(V2xMsg::Ptr &hv,V2xMsg::Ptr &rv);
+
+    static Direction RelHeadingJudge(Heading_t hvHeading, Heading_t rvHeading);
+
 
 };
 
