@@ -1,10 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基于百度地图的历史轨迹</title>
+    <style>
+        body,
+        html {
+            padding: 0;
+            margin: 0
+        }
 
+        #container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            background: #444444;
+        }
+
+        .btn-grounp {
+            position: fixed;
+            right: 100px;
+            top: 10px;
+        }
+
+        .btn-grounp>input[type="button"] {
+            height: 25px;
+
+            border-radius: 5px;
+            color: #444444;
+            background-color: #F8F8F8;
+            border: 1px solid #BBBBBB;
+        }
+    </style>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=x1ySji2AxajkmThvd8weGwOQ"></script>
+</head>
+
+<body onload="wsConnect();" onunload=ws.disconnect();">
+<div id="container">
+    <div id="map" ></div>
+
+</div>
+</div>
 </body>
+
+<script type="text/javascript">
+
+    // 定义全局变量
+    // 自车和他车的起始点
+    this.hvpoints = [{lng:112.995441, lat:28.234125,heading:0}];
+    this.rvpoints = [{lng:112.994441, lat:28.234125,heading:0}];
+
+    // 初始化
+    initV2x();
+
+
+    function update_hv(p)
+    {
+        console.log(p);
+        this.hvpoints.push(p);
+
+        if (this.hvmarker)
+        {
+            this.map.removeOverlay(this.hvmarker);
+        }
+        this.hvmarker = new BMap.Marker(p, {
+            icon: this.hvicon
+        });
+
+        this.hvmarker.setRotation(p.heading);
+        this.hvlabel.setContent("自车<br>经度: " + p.lng + "<br>纬度: " + p.lat);
+        this.hvmarker.setPosition(p);
+        this.hvmarker.setLabel(this.hvlabel);
+        this.map.addOverlay(this.hvmarker);
+        //this.hvmarker.setAnimation(BMAP_ANIMATION_BOUNCE);
+        this.centerPoint = new BMap.Point(p.lng,p.lat);
+        this.map.panTo(this.centerPoint);
+    };
+    function update_rv(p) {
+        console.log(p);
+        this.rvpoints.push(p);
+
+        if (this.rvmarker)
+        {
+            this.map.removeOverlay(this.rvmarker);
+        }
+        this.rvmarker = new BMap.Marker(p, {
+            icon: this.rvicon
+        });
+
+        this.rvmarker.setRotation(p.heading);
+        this.rvlabel.setContent("他车<br>经度: " + p.lng + "<br>纬度: " + p.lat);
+        this.rvmarker.setPosition(p);
+        this.rvmarker.setLabel(this.rvlabel);
+        this.map.addOverlay(this.rvmarker);
+
+    };
+
+    function init_hv(p) {
+        this.centerPoint = new BMap.Point(p.lng,p.lat);
+        this.map.centerAndZoom(centerPoint, 19);
+
+        // 初始化自车信息
+        if(!this.hvlabel){
+            this.hvlabel = new BMap.Label("自车", {
+                offset: new BMap.Size(40, 20)
+            });
+            this.hvlabel.setStyle({
+                color: '#444444',
+                backgroundColor: '#f8f8f8',
+                border: '1px solid #bbbbbb',
+                borderRadius: '5px'
+            })
+        }
+
+        if(!this.hvicon){
+            this.hvicon = new BMap.Icon(
+                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAA0CAYAAACU7CiIAAAAAXNSR0IArs4c6QAABHppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iCiAgICAgICAgICAgIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIj4KICAgICAgICAgPHhtcE1NOkRlcml2ZWRGcm9tIHJkZjpwYXJzZVR5cGU9IlJlc291cmNlIj4KICAgICAgICAgICAgPHN0UmVmOmluc3RhbmNlSUQ+eG1wLmlpZDpFRURBQ0Y5RjEwMjA2ODExODIyQUVGMjVCOTMzQUUzNTwvc3RSZWY6aW5zdGFuY2VJRD4KICAgICAgICAgICAgPHN0UmVmOmRvY3VtZW50SUQ+eG1wLmRpZDo0QkJENUI1QjFBMjA2ODExODIyQURGMURFN0RDNjk1MTwvc3RSZWY6ZG9jdW1lbnRJRD4KICAgICAgICAgPC94bXBNTTpEZXJpdmVkRnJvbT4KICAgICAgICAgPHhtcE1NOkRvY3VtZW50SUQ+eG1wLmRpZDpERkI3OTVGQTAwMjgxMUU0ODcwNjg0ODkyQzg3NTc2QTwveG1wTU06RG9jdW1lbnRJRD4KICAgICAgICAgPHhtcE1NOkluc3RhbmNlSUQ+eG1wLmlpZDpERkI3OTVGOTAwMjgxMUU0ODcwNjg0ODkyQzg3NTc2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"
+                ,
+                new BMap.Size(20, 40), {
+                anchor: new BMap.Size(20, 10),
+                imageSize: new BMap.Size(20, 40),
+            });
+        }
+
+        if(!this.hvmarker){
+            this.hvmarker = new BMap.Marker(p, {
+                icon: this.hvicon
+            });
+        }
+
+        this.hvmarker.setRotation(p.heading);
+
+        this.hvmarker.setLabel(this.hvlabel);
+        //
+        this.map.addOverlay(this.hvmarker);
+    }
+
+    function init_rv(p) {
+        // 初始化他车信息
+        if(!this.rvlabel){
+            this.rvlabel = new BMap.Label("他车", {
+                offset: new BMap.Size(40, 20)
+            });
+            this.rvlabel.setStyle({
+                color: '#444444',
+                backgroundColor: '#f8f8f8',
+                border: '1px solid #bbbbbb',
+                borderRadius: '5px'
+            })
+        }
+
+        if(!this.rvicon){
+            this.rvicon = new BMap.Icon(
+                "data:image/png;base64,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"
+                , new BMap.Size(20, 40), {
+                anchor: new BMap.Size(20, 10),
+                imageSize: new BMap.Size(20, 40),
+            });
+        }
+
+        if(!this.rvmarker){
+            this.rvmarker = new BMap.Marker(p, {
+                icon: this.rvicon
+            });
+        }
+
+        this.rvmarker.setRotation(p.heading);
+        this.rvmarker.setLabel(this.rvlabel);
+        this.map.addOverlay(this.rvmarker);
+    }
+
+    function initV2x() {
+        // 初始化地图
+        this.map = new BMap.Map("map");
+        //this.map.enableScrollWheelZoom();
+        init_hv(hvpoints[0]);
+        init_rv(rvpoints[0]);
+        var loc = window.location;
+        this.wsUri = "ws:" + "//" + loc.host + loc.pathname.replace("v2x","ws/v2x");
+        this.ws = null;
+
+
+    };
+
+    function wsConnect()
+    {
+
+        var wsUri = "ws:";
+        var loc = window.location;
+
+        if (loc.protocol === "https:") { wsUri = "wss:"; }
+        // This needs to point to the web socket in the Node-RED flow
+        // ... in this case it's ws/simple
+        wsUri += "//" + loc.host + loc.pathname.replace("v2x","ws/v2x");
+
+        console.log(wsUri);
+        this.ws = new WebSocket(wsUri);
+
+        this.ws.onmessage = function(msg) {
+            var hvp =JSON.parse(msg.data).hv;
+            var rvp =JSON.parse(msg.data).rv;
+
+
+
+            update_hv(hvp);
+            update_rv(rvp);
+
+
+
+        };
+        this.ws.onopen = function() {
+            console.log("connected");
+        };
+        this.ws.onclose = function() {
+            setTimeout(wsConnect,3000);
+        };
+    }
+
+
+</script>
+
 </html>
