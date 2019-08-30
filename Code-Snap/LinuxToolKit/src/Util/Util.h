@@ -10,6 +10,7 @@
 #include <sstream>
 #include <unistd.h>
 #include <sys/time.h>
+#include <vector>
 
 using namespace std;
 
@@ -63,6 +64,8 @@ class noncopyable {
 string exePath();
 string exeDir();
 string exeName();
+
+vector<string> split(const string& s, const char *delim);
 
 //去除前后的空格、回车符、制表符...
 std::string &trim(std::string &s, const string &chars = " \r\n\t");

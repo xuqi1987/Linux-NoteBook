@@ -7,8 +7,6 @@
 
 
 #include "V2xBroker.h"
-#include "V2xAlgorithmTest.h"
-
 
 namespace v2x
 {
@@ -29,7 +27,6 @@ public:
 
 private:
     V2xBroker::Ptr m_pBroker;
-    V2xAlgorithmTest   m_algorithm;
     VehicleSize_t   m_stRsuSize;
 
     //Define V2I scene function

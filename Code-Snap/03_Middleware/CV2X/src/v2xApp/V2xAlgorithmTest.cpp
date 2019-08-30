@@ -1,21 +1,22 @@
 //
-// Created by xuqi on 2019-07-17.
+// Created by root on 19-8-23.
 //
 
+#include "V2xAlgorithmTest.h"
 #include <cmath>
 #include <V2xAlgorithmTest.h>
 
-#include "V2xAlgorithmTest.h"
 
 namespace v2x
 {
+
 
 double V2xAlgorithmTest::Rad(double d)
 {
     return d * PI / 180.0;
 }
 
-double V2xAlgorithmTest::Lonlat2dis(double lon1, double lat1, double lon2, double lat2)
+double V2xAlgorithmTest::GetDistance(double lon1, double lat1, double lon2, double lat2)
 {
 
     double radLat1 = Rad(lat1);
@@ -27,74 +28,96 @@ double V2xAlgorithmTest::Lonlat2dis(double lon1, double lat1, double lon2, doubl
     double s = 2 * asin(sqrt(pow(sin(a / 2), 2) + cos(radLat1) * cos(radLat2) * pow(sin(b / 2), 2)));
     s = s * EARTH_RADIUS;
     //四舍五入到最邻近的整数
-    s = round(s * 10000.0) * 10;
+    s = round(s * 100) / 100;
 
     return s;
 }
-bool V2xAlgorithmTest::IsFront(double lon_hv, double lat_hv, double heading_hv, double lon_rv, double lat_rv)
+
+
+V2xAlgorithmTest::Direction V2xAlgorithmTest::RelHeadingJudge(double hvHeading, double rvHeading)
 {
-
-    // 弧长向弧度的转换
-    double angle_hv = (450-heading_hv)/180* PI;
-    double delta_lon = lon_rv - lon_hv;
-    double delta_lat = lat_rv - lat_hv;
-    // 水平坐标分量
-    double para = cos(angle_hv)* delta_lon + sin(angle_hv)*delta_lat;
-    // 正交经纬度差
-    double orth_dis = 1000 * Lonlat2dis(lon_hv,lat_hv,lon_hv + (delta_lon-para*cos(angle_hv)),lat_hv + (delta_lat-para*sin(angle_hv)));
-
-    if ((para>0.0) && (orth_dis<4.5)) //orth_dis<4.5 depends on vehicle size
-    {
-        return true;
+    // 相对航向角Theta
+    double theta = 0.0;
+    if (rvHeading >= hvHeading) {
+        theta = rvHeading - hvHeading;
     }
-    return false;
-}
-bool V2xAlgorithmTest::IsLRrear(double lon_hv, double lat_hv, double heading_hv, double lon_rv, double lat_rv)
-{
-    // 弧长向弧度的转换
-    double angle_hv = (450-heading_hv)/180* PI;
-    double delta_lon = lon_rv - lon_hv;
-    double delta_lat = lat_rv - lat_hv;
-    // 水平坐标分量
-    double para = cos(angle_hv)* delta_lon + sin(angle_hv)*delta_lat;
-    // 正交经纬度差
-    double orth_dis = 1000 * Lonlat2dis(lon_hv,lat_hv,lon_hv + (delta_lon-para*cos(angle_hv)),lat_hv + (delta_lat-para*sin(angle_hv)));
-
-    if ((para < 0.0) &&(orth_dis >4.5)) //orth_dis<4.5 depends on vehicle size
-    {
-        return true;
+    else {
+        theta = rvHeading - hvHeading + 360;
     }
-    return false;
+
+    // Theta = 0~15 or 345~360:  %二车同向行驶
+    if ((theta >= 0 && theta < 15)
+        || (theta > 345 && theta <= 360)) {
+        return Direction_Same;
+    }
+        // Theta = 165~195：
+    else if (theta > 165 && theta < 195) {
+        return Direction_Reverse;
+    }
+    else {
+        return Direction_Cross;
+    }
 
 }
-double V2xAlgorithmTest::CalVecicleTTC(double lon_hv,
-                                       double lat_hv,
-                                       double heading_hv,
-                                       double speed_hv,
-                                       double lon_rv,
-                                       double lat_rv,
-                                       double heading_rv,
-                                       double speed_rv)
+void V2xAlgorithmTest::GetXYDistance(double hvLon,
+                                 double hvLat,
+                                 double rvLon,
+                                 double rvLat,
+                                 double hvHeading,
+                                 V2xAlgorithmTest::RelPosPoints_t &relPos)
 {
-    double delta_lon = lon_rv - lon_hv;
-    double delta_lat = lat_rv - lat_hv;
-    double angle_hv = (450-heading_hv)/180* PI;
-    double angle_rv = (450-heading_rv)/180* PI;
+    double radhvLon = Rad(hvLon);
+    double radhvLat = Rad(hvLat);
+    double radrvLon = Rad(rvLon);
+    double radrvLat = Rad(rvLat);
+    double radhvTheta = Rad(hvHeading);
 
-    double delta_position_lon = delta_lon * PI * EARTH_RADIUS * 1000.0/180.0;// 单位：m
-    double delta_position_lat = delta_lat * PI * EARTH_RADIUS * 1000.0/180.0; //单位：m
+    // 根据经纬度信息计算X方向（东西，东为正）、Y方向（南北，北为正）上两车相对距离
+    double x = 2 * EARTH_RADIUS * asin(cos(radrvLat) * sin((radrvLon - radhvLon) / 2.0));
+    double y = EARTH_RADIUS * (radrvLat - radhvLat);
 
-    double delta_speed_lon = (speed_hv * cos(angle_hv) - speed_rv* cos(angle_rv))/3.6; //单位:m/s
-    double delta_speed_lat = (speed_hv * sin(angle_hv) - speed_rv* sin(angle_rv))/3.6; //单位:m/s
+    relPos.y = cos(radhvTheta) * y + sin(radhvTheta) * x;
+    relPos.x = -sin(radhvTheta) * y + cos(radhvTheta) * x;
 
-    double a = delta_position_lon * delta_speed_lon + delta_position_lat * delta_speed_lat; // sum(delta_position.*delta_speed)
-
-    double b = sqrt(pow(delta_speed_lon,2) + pow (delta_speed_lat,2)); // norm(delta_speed)
-
-    // ttc = -1*sum(delta_position.*delta_speed)/norm(delta_speed)/norm(delta_speed);
-    double ttc = -1 * a /b /b;
-    std::cout << "碰撞时间:" << ttc << "s" <<std::endl;
-    return ttc;
+    relPos.y = round(relPos.y * 100) / 100;
+    relPos.x = round(relPos.x * 100) / 100;
 }
 
+V2xAlgorithmTest::RelPos V2xAlgorithmTest::RvRelPosition(V2xAlgorithmTest::RelPosPoints_t &rvPos,
+                                                 double dHvWidth,
+                                                 double dRvWidth,
+                                                 double dHvConf,
+                                                 double dRvConf)
+{
+    double x = rvPos.x;
+    double y = rvPos.y;
+
+    double t = 0.5 * (dHvWidth + dRvWidth + dHvConf + dRvConf);
+    if (y > 0) {
+        //  X 介于 ±0.5*(HV车宽 + RV车宽 + HV位置精度 + RV位置精度)
+        if (x > t) {
+            return RelPos::RelPos_RFront;
+        }
+        else if (x < -t) {
+            return RelPos::RelPos_LFront;
+        }
+        else {
+            return RelPos::RelPos_Front;
+        }
+    }
+    else {
+        if (x > t) {
+            return RelPos::RelPos_RBack;
+        }
+        else if (x < -t) {
+            return RelPos::RelPos_LBack;
+        }
+        else {
+            return RelPos::RelPos_Back;
+        }
+    }
 }
+
+
+}
+

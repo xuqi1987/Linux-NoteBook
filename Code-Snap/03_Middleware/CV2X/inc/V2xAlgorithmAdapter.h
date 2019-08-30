@@ -28,8 +28,6 @@
 #ifndef CV2X_V2XALGORITHMADAPTER_H
 #define CV2X_V2XALGORITHMADAPTER_H
 #include "V2xAlgorithmTest.h"
-#include "V2xAlgorithmScene.h"
-#include "V2xAlgorithm.h"
 
 namespace v2x {
 
@@ -37,24 +35,12 @@ namespace v2x {
 #define Heading2Double(v) (v*0.0125)  // deg
 #define Speed2Double(v) (v * 0.02 * 3.6) // km/h
 
-class V2xAlgorithmAdapter : public V2xAlgorithm,V2xAlgorithmScene
+class V2xAlgorithmAdapter : public V2xAlgorithmTest
 {
 public:
-    /**
-    * 根据TTC来判断FCW是否触发
-    * 1. 车速>= 15 km/h 时，同车道上同向行驶预计 3S 后将发生碰撞时给用户预警
-    * 2. 车速>=60km/h 时，同车道上与前车距离<= 3m 时给用户预警
-    * 3. 15km/h > 车速 > 2km/h 时，同车道上与前车距离<= 0.5 M 时给用户预警
-    * @param lonlat 经纬度使用十进制度，i.e.DDD.DDDDDD°
-    * @param heading 为车辆航向角，即为车头方向与正北方向的顺时针夹角。
-    * @param speed km/h
-    * @return
-    */
-    static bool IsFWCWarning(V2xMsg::Ptr &hv,V2xMsg::Ptr &rv);
 
-    static double Lonlat2dis(V2xMsg::Ptr &hv,V2xMsg::Ptr &rv);
-
-    static Direction RelHeadingJudge(Heading_t hvHeading, Heading_t rvHeading);
+    static double GetDistance(V2xBSMMsg &hv, V2xBSMMsg &rv);
+    static Direction GetRVDirection(V2xBSMMsg &hv, V2xBSMMsg &rv);
 
 
 };

@@ -10,29 +10,22 @@ namespace v2x {
 
 
 
-
-bool V2xAlgorithmAdapter::IsFWCWarning(V2xMsg::Ptr &hv, V2xMsg::Ptr &rv)
+double V2xAlgorithmAdapter::GetDistance(V2xBSMMsg &hv, V2xBSMMsg &rv)
 {
-    double lon_hv = Pos2Double(hv->u.hvbsm.pos.lon); //deg
-    double lat_hv = Pos2Double(hv->u.hvbsm.pos.lat); //deg
-    double heading_hv = Heading2Double(hv->u.hvbsm.heading); // deg
-    double speed_hv = Speed2Double(hv->u.hvbsm.speed); // km
-    double lon_rv = Pos2Double(rv->u.rvbsm.pos.lon);
-    double lat_rv = Pos2Double(rv->u.rvbsm.pos.lat);
-    double heading_rv = Heading2Double(rv->u.hvbsm.heading);
-    double speed_rv =Speed2Double(rv->u.rvbsm.speed);
+    double lon_hv = Pos2Double(hv.pos.lon); //deg
+    double lat_hv = Pos2Double(hv.pos.lat); //deg
 
-    return V2xAlgorithmScene::IsFWCWarning(lon_hv,lat_hv,heading_hv,speed_hv,lon_rv,lat_rv,heading_rv,speed_rv);
+    double lon_rv = Pos2Double(rv.pos.lon);
+    double lat_rv = Pos2Double(rv.pos.lat);
 
+    return V2xAlgorithmTest::GetDistance(lon_hv, lat_hv, lon_rv, lat_rv);
 }
-double V2xAlgorithmAdapter::Lonlat2dis(V2xMsg::Ptr &hv, V2xMsg::Ptr &rv)
+
+V2xAlgorithmTest::Direction V2xAlgorithmAdapter::GetRVDirection(V2xBSMMsg &hv, V2xBSMMsg &rv)
 {
-    double lon_hv = Pos2Double(hv->u.hvbsm.pos.lon); //deg
-    double lat_hv = Pos2Double(hv->u.hvbsm.pos.lat); //deg
+    double heading_hv = Heading2Double(hv.heading);
+    double heading_rv = Heading2Double(rv.heading);
 
-    double lon_rv = Pos2Double(rv->u.rvbsm.pos.lon);
-    double lat_rv = Pos2Double(rv->u.rvbsm.pos.lat);
-
-    return V2xAlgorithmTest::Lonlat2dis(lon_hv,lat_hv,lon_rv,lat_rv);
+    return V2xAlgorithmTest::RelHeadingJudge(heading_hv,heading_rv);
 }
 }
