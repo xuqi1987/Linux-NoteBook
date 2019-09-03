@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include "csv/csv.h"
+#include "csv/csv_w.h"
 
 using namespace std;
 
@@ -18,13 +19,20 @@ int main(){
     double heading;
     double speed;
 
-    while(in.read_row(type,secMark, lat,lon,heading,speed)){
-        // do stuff with the data
-        cout << "Type:" << type << "\t";
-        cout << "secMark:" << secMark << "\t";
-        cout << "lat:" << lat << "\t";
-        cout << "lon:" << lon << "\t";
-        cout << "speed:" << speed << "\t";
-        cout << "heading:" << heading << endl;
-    }
+//    while(in.read_row(type,secMark, lat,lon,heading,speed)){
+//        // do stuff with the data
+//        cout << "Type:" << type << "\t";
+//        cout << "secMark:" << secMark << "\t";
+//        cout << "lat:" << lat << "\t";
+//        cout << "lon:" << lon << "\t";
+//        cout << "speed:" << speed << "\t";
+//        cout << "heading:" << heading << endl;
+//    }
+
+    io::CSVWriter<6> out("../../data/test2.csv");
+    out.write_header("LogRecType","secMark","lat", "long","heading","speed");
+
+    out << "hello" << secMark << lat << lon;
+    cout << out.toString();
+
 }
