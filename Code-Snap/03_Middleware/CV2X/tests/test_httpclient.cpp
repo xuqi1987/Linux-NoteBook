@@ -26,11 +26,9 @@ int main()
     requesterPost->addHeader("Origin", url);
     //设置POST参数列表
     HttpArgs args;
-    args["query"] = "test";
-    args["from"] = "en";
-    args["to"] = "zh";
-    args["transtype"] = "translang";
-    args["simple_means_flag"] = "3";
+    args["hv"] = "test";
+    args["rv"] = "en";
+    args["warning"] = "zh";
     requesterPost->setBody(args.make());
     //开启请求
     requesterPost->startRequester(url,//url地址
